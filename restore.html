@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lyra 记忆恢复</title>
+<style>
+  body{font-family:-apple-system,sans-serif;background:#0b1026;color:#cfe8ff;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0}
+  .card{max-width:520px;padding:32px;border:1px solid #24406b;border-radius:16px;background:#101a38;text-align:center}
+  h1{font-size:20px} p{line-height:1.6;color:#8fb3d9}
+  .ok{color:#5dffa8;white-space:pre-wrap;text-align:left;max-height:240px;overflow:auto;font-size:13px}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🌙 Lyra 记忆恢复</h1>
+  <p>选择 lyra-backup 的 json 文件，把记忆写回这个浏览器</p>
+  <input type="file" id="f" accept=".json,application/json">
+  <div id="msg"></div>
+  <div id="out" class="ok"></div>
+  <p id="go" style="display:none"><a href="/" style="color:#5dffa8">恢复完成 → 点这里进入 Lyra</a></p>
+</div>
+<script>
+document.getElementById('f').addEventListener('change', async (e) => {
+  const file = e.target.files[0]; if (!file) return;
+  const msg = document.getElementById('msg'), out = document.getElementById('out');
+  try {
+    const j = JSON.parse(await file.text());
+    const data = j.data || j;
+    let n = 0;
+    for (const [k, v] of Object.entries(data)) {
+      localStorage.setItem(k, typeof v === 'string' ? v : JSON.stringify(v));
+      n++; out.textContent += '✓ ' + k + '\n';
+    }
+    msg.innerHTML = '<span style="color:#5dffa8">完成！写入了 ' + n + ' 项记忆</span>';
+    document.getElementById('go').style.display = 'block';
+  } catch (err) {
+    msg.innerHTML = '<span style="color:#ff7b7b">失败：' + err.message + '</span>';
+  }
+});
+</script>
+</body>
+</html>
