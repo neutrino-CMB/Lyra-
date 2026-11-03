@@ -386,91 +386,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .pv .nm span{font-family:var(--fm);font-size:9px;color:var(--faint);display:block;margin-top:2px}
 #toast{position:fixed;left:50%;bottom:calc(var(--tb) + 22px);transform:translate(-50%,16px);z-index:99;background:rgba(10,14,32,.96);border:1px solid rgba(79,217,255,.35);color:var(--ink);padding:9px 18px;font-size:12px;opacity:0;pointer-events:none;transition:.3s;max-width:82%;text-align:center;line-height:1.5}
 #toast.show{opacity:1;transform:translate(-50%,0)}
-/* ═════════════ 手势门 · PHI AUTH GATE（开屏层）═════════════ */
-#hdGate{
-  --hdInk:#dfe9f5;--hdDim:rgba(190,215,245,.42);--hdFaint:rgba(160,190,230,.18);
-  --hdCyan:#7fd4ff;--hdGold:#e6c88f;
-  --hdMono:'SF Mono','JetBrains Mono',ui-monospace,Menlo,Consolas,'Liberation Mono',monospace;
-  position:fixed;inset:0;z-index:50;display:none;
-  background:
-    radial-gradient(1100px 620px at 50% -10%,rgba(38,86,160,.16),transparent 62%),
-    radial-gradient(900px 700px at 85% 110%,rgba(24,60,130,.12),transparent 60%),
-    #04060c;
-  touch-action:none;-webkit-user-select:none;user-select:none;
-}
-#hdGate.show{display:block}
-#hdGate.out{opacity:0;transition:opacity .35s ease;pointer-events:none}
-.hdGrain{position:absolute;inset:0;pointer-events:none;z-index:9;opacity:.5;
-  background:repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0 1px,transparent 1px 3px)}
-.hdVig{position:absolute;inset:0;pointer-events:none;z-index:40;
-  background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(0,0,4,.55) 100%)}
-#hdCam{position:absolute;left:0;top:0;width:100vw;height:100vh;object-fit:cover;transform:scaleX(-1);opacity:.2;
-  filter:saturate(.35) brightness(.7) contrast(1.08);z-index:0;pointer-events:none}
-#hdPaint,#hdStroke,#hdFx{position:absolute;inset:0;width:100vw;height:100vh;z-index:2;pointer-events:none}
-#hdPaint{transition:opacity .28s}
-#hdStroke{transition:opacity .18s}
-#flash{position:fixed;inset:0;z-index:300;pointer-events:none;opacity:0;transition:opacity .38s ease;
-  background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.98),rgba(157,184,255,.85) 30%,rgba(12,18,48,.25) 66%,transparent 82%)}
-#flash.on{opacity:1}
-body.hdOn #toast{display:none!important}
-.hud{position:absolute;z-index:3;pointer-events:none;font-family:var(--hdMono);font-size:10px;letter-spacing:.38em;color:var(--hdDim);text-transform:uppercase}
-.hudTL{left:max(20px,env(safe-area-inset-left));top:calc(20px + env(safe-area-inset-top))}
-.hudTR{right:max(20px,env(safe-area-inset-right));top:calc(20px + env(safe-area-inset-top));text-align:right}
-.hudB{left:0;right:0;bottom:calc(26px + env(safe-area-inset-bottom));text-align:center}
-.hud .tick{color:var(--hdCyan);opacity:.8}
-.frameC{position:absolute;z-index:3;pointer-events:none;width:34px;height:34px;opacity:.5}
-.frameC i{position:absolute;background:rgba(127,212,255,.55)}
-.fcTL{left:14px;top:calc(14px + env(safe-area-inset-top))}.fcTL i:first-child{left:0;top:0;width:14px;height:1px}.fcTL i:last-child{left:0;top:0;width:1px;height:14px}
-.fcTR{right:14px;top:calc(14px + env(safe-area-inset-top))}.fcTR i:first-child{right:0;top:0;width:14px;height:1px}.fcTR i:last-child{right:0;top:0;width:1px;height:14px}
-.fcBL{left:14px;bottom:calc(14px + env(safe-area-inset-bottom))}.fcBL i:first-child{left:0;bottom:0;width:14px;height:1px}.fcBL i:last-child{left:0;bottom:0;width:1px;height:14px}
-.fcBR{right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}.fcBR i:first-child{right:0;bottom:0;width:14px;height:1px}.fcBR i:last-child{right:0;bottom:0;width:1px;height:14px}
-#hdStat{font-size:10.5px;letter-spacing:.34em;color:var(--hdDim);text-transform:uppercase;transition:color .3s}
-#hdStat.ok{color:var(--hdGold)}
-#hdStat.bad{color:rgba(255,138,128,.75)}
-#hdSlots{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:calc(58px + env(safe-area-inset-bottom));display:flex;gap:10px;pointer-events:none}
-#hdSlots i{width:26px;height:2px;background:var(--hdFaint);transition:background .25s,box-shadow .25s}
-#hdSlots i.on{background:var(--hdCyan);box-shadow:0 0 10px rgba(127,212,255,.9)}
-#hdSlots i.gd{background:var(--hdGold);box-shadow:0 0 12px rgba(230,200,143,.9)}
-#hdSlots i.bad{background:rgba(255,110,100,.8);box-shadow:0 0 10px rgba(255,110,100,.6)}
-#hdSkip{position:absolute;z-index:5;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom));
-  display:none;padding:10px 22px;background:none;border:1px solid var(--hdFaint);border-radius:2px;
-  color:var(--hdDim);font-family:var(--hdMono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;cursor:pointer}
-#hdSkip:hover{border-color:rgba(127,212,255,.5);color:var(--hdInk)}
-#hdOk{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
-#hdOk.show{opacity:1}
-#hdOk span{font-size:12px;letter-spacing:.66em;color:var(--hdGold);text-transform:uppercase;font-weight:300}
-/* ===== 首页入场：组件依次浮现 ===== */
-#p-home.intro .top{animation:homeIn .55s cubic-bezier(.22,.9,.3,1) both}
-#p-home.intro .hudclock{animation:homeIn .55s .07s cubic-bezier(.22,.9,.3,1) both}
-#p-home.intro .poem{animation:homeIn .55s .14s cubic-bezier(.22,.9,.3,1) both}
-#p-home.intro .hudrow{animation:homeIn .55s .21s cubic-bezier(.22,.9,.3,1) both}
-#p-home.intro #recentBox{animation:homeIn .55s .28s cubic-bezier(.22,.9,.3,1) both}
-#p-home.intro .sysrow{animation:homeIn .55s .35s cubic-bezier(.22,.9,.3,1) both}
-#p-home.intro #asciiMount{animation:homeIn .55s .42s cubic-bezier(.22,.9,.3,1) both}
-@keyframes homeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<!-- ═══════════ 手势门 · PHI AUTH GATE（开屏：摄像头手绘 φ / 触屏 / Bypass）═══════════ -->
-<div id="hdGate">
-<video id="hdCam" playsinline muted></video>
-<canvas id="hdPaint"></canvas>
-<canvas id="hdStroke"></canvas>
-<canvas id="hdFx"></canvas>
-<div class="hdGrain"></div><div class="hdVig"></div>
-<div class="frameC fcTL"><i></i><i></i></div>
-<div class="frameC fcTR"><i></i><i></i></div>
-<div class="frameC fcBL"><i></i><i></i></div>
-<div class="frameC fcBR"><i></i><i></i></div>
-<div class="hud hudTL">Gesture Lock</div>
-<div class="hud hudTR"><span class="tick">◈</span> Phi Key</div>
-<div class="hud hudB"><span id="hdStat">Standby</span></div>
-<div id="hdSlots"><i></i><i></i><i></i></div>
-<button id="hdSkip" type="button">Bypass</button>
-<div id="hdOk"><span>Identity Verified</span></div>
-</div>
-<div id="flash"></div>
-<div id="boot" class="off">
+<div id="boot">
 <canvas id="gl"></canvas>
 <div class="boot-ui"><div class="boot-tag">LYRA OS · v4.9.1</div><div class="boot-hint">TAP TO SKIP</div></div>
 </div>
@@ -661,6 +580,9 @@ body.hdOn #toast{display:none!important}
 "use strict";
 /* ============================================================
    LYRA OS v4.9.1
+   - 时间线强制清洗升级：删除所有 DS 写入的 pro 记录（evPurge=3）
+   - 黑洞再缩小（R 0.21）
+   - 时间线标题去 emoji（纯文字 + 彩点区分类型）
    ============================================================ */
 const $=s=>document.querySelector(s);
 const $$=s=>document.querySelectorAll(s);
@@ -700,9 +622,9 @@ if(!_dc)_dc={name:"GLM",base:"https://open.bigmodel.cn/api/paas/v4",key:"",model
 let _evB=LS.g("eventsBy",null);
 if(!_evB){const _old=LS.g("events",[]);_evB={lyra:Array.isArray(_old)?_old:[]};}
 const S={defCfg:_dc,chats:LS.g("chats",[]),cur:LS.g("cur",null),works:LS.g("works",[]),wcur:LS.g("wcur",null),mems:LS.g("mems",[]),diary:LS.g("diary",[]),proLog:LS.g("proLog",null),tidePlan:LS.g("tidePlan",null),eventsBy:_evB,nick:LS.g("nick","弦"),aiName:LS.g("aiName","Lyra"),soul:LS.g("soul",DEFAULT_SOUL),userAv:LS.g("userAv",null),aiAv:LS.g("aiAv",null),bg:LS.g("bg",null),look:LS.g("look",{veil:.3,stars:1,rain:1}),think:LS.g("think",true),memInject:LS.g("memInject",true),rlen:LS.g("rlen","short"),dossier:LS.g("dossier",""),orbT0:LS.g("orbT0",null)};
-/* 迁移 + 强制清洗 */
+/* 迁移 + 强制清洗 v2：删除所有 DS 写的 pro 记录（v4.9 的标记挡不住二次执行） */
 (function(){const L=S.eventsBy.lyra||(S.eventsBy.lyra=[]);["ds","glm"].forEach(k=>{(S.eventsBy[k]||[]).forEach(e=>{if(!L.some(x=>x.id===e.id))L.push(e);});delete S.eventsBy[k];});
-if(LS.g("evPurge",0)<3){const kept=L.filter(e=>e.type!=="pro");S.eventsBy.lyra=kept;LS.s("evPurge",3);}
+if(LS.g("evPurge",0)<3){const before=L.length;const kept=L.filter(e=>e.type!=="pro");S.eventsBy.lyra=kept;LS.s("evPurge",3);toast("✦ 已清除旧引擎时间线（"+(before-kept.length)+" 条）");}
 L.sort((a,b)=>b.t-a.t);S.eventsBy.lyra=L.slice(0,300);LS.s("eventsBy",S.eventsBy);})();
 function saveCore(){["defCfg","chats","cur","works","wcur","mems","diary","proLog","tidePlan","eventsBy","nick","aiName","soul","think","memInject","rlen","dossier","look","orbT0"].forEach(k=>LS.s(k,S[k]));["userAv","aiAv","bg"].forEach(k=>LS.s(k,S[k]));}
 function aiEvents(){return S.eventsBy.lyra||(S.eventsBy.lyra=[]);}
@@ -774,11 +696,11 @@ async function replyTo(c){const a={role:"assistant",content:"",thinking:"",t:Dat
 async function send(){const text=$("#ta").value.trim(),img=!!attachImg;if(!text&&!img)return;if(streaming){queueUserMsg(text,img);return;}if(!chat())newChat();const c=chat();const p=resolveProvider(c);if(!p||(!p.key&&!/netlify|vercel|\/api/i.test(p.base||""))){toast("先在本会话 ⚙ 设置里填 Key / 访问码哦");openChatSet("chat");return;}c.msgs.push({role:"user",content:text,image:img?attachImg:null,t:Date.now()});if(!c.name&&c.msgs.filter(m=>m.role==="user").length===1)c.title=(text||"[图片] 看看这个").slice(0,16);$("#ta").value="";autoGrow();clearAttach();$("#txState").textContent="TX ▸ AWAITING";c.updated=Date.now();await replyTo(c);compactIfNeeded(c);renderRecent();renderMine();}
 let _rdT=null;
 function scheduleRender(doc,flow){if(_rdT)return;_rdT=setTimeout(()=>{_rdT=null;const f=doc?$("#wflow"):$("#flow");const st=f?f.scrollTop:0,near=f?nearEnd(f):false;if(doc)renderWork();else renderChat();const f2=doc?$("#wflow"):$("#flow");if(f2){if(near)scrollEnd(f2);else if(Math.abs(f2.scrollTop-st)>4)f2.scrollTop=st;}},280);}
-async function streamInto(c,a,doc,flow,liveOpts){liveOpts=liveOpts||{};streaming=true;const quiet=!!liveOpts.quiet;const effThink=quiet?(liveOpts.think!==false):S.think;if(!quiet)$("#txState").textContent="RX ◂ STREAMING";let r={content:"",thinking:"",skip:false};try{const cfg=liveOpts.cfg||resolveProvider(c)||S.defCfg;const lyra=isLyraProvider(cfg);const mode=liveOpts.mode||(doc?"work":"chat");const T=effThink?THINK_ZH:"";const lastU=[...(c.msgs||[])].reverse().find(m=>m.role==="user");const hadImage=!!(lastU&&lastU.image);const msgs=[{role:"system",content:buildSystem(mode,effThink,{soul:(liveOpts.soul!=null?liveOpts.soul:(c&&c.soul!=null?c.soul:null)),query:lastU?(lastU.content||""):"",engine:engineLabel(cfg),glm:/bigmodel|glm|zhipu/i.test(cfg.base||""),lyra:lyra})}];const hist=c.msgs.filter(m=>!m.error&&!(m.role==="assistant"&&!m.content&&!m.thinking)).slice(-30);hist.forEach((m,idx2)=>{const isLast=idx2===hist.length-1;if(m.role==="user"&&m.image&&isLast){msgs.push({role:"user",content:[{type:"text",text:(m.content||"看看这张图")+T},{type:"image_url",image_url:{url:m.image}}]});}else if(m.role==="user"&&m.image){msgs.push({role:"user",content:(m.content||"")+"\n[图片]"});}else if(m.role==="user"&&isLast){msgs.push({role:"user",content:(m.content||"")+T});}else{msgs.push({role:m.role,content:m.content||""});}});let body=buildBody(cfg,msgs,{think:effThink,search:true,lyra:lyra,temp:(liveOpts.temp!=null?liveOpts.temp:(doc?0.7:(S.rlen==="short"?0.8:0.75)))});if(hadImage&&!isVision(cfg.model)){if(/bigmodel|glm/i.test(cfg.base||"")){body.model="glm-4.5v";delete body.reasoning_effort;body.thinking={type:effThink?"enabled":"disabled"};}}
+async function streamInto(c,a,doc,flow,liveOpts){liveOpts=liveOpts||{};streaming=true;const quiet=!!liveOpts.quiet;const effThink=quiet?(liveOpts.think!==false):S.think;if(!quiet)$("#txState").textContent="RX ◂ STREAMING";let r={content:"",thinking:"",skip:false};try{const cfg=liveOpts.cfg||resolveProvider(c)||S.defCfg;const lyra=isLyraProvider(cfg);const mode=liveOpts.mode||(doc?"work":"chat");const T=effThink?THINK_ZH:"";const lastU=[...(c.msgs||[])].reverse().find(m=>m.role==="user");const hadImage=!!(lastU&&lastU.image);const msgs=[{role:"system",content:buildSystem(mode,effThink,{soul:(liveOpts.soul!=null?liveOpts.soul:(c&&c.soul!=null?c.soul:null)),query:lastU?(lastU.content||""):"",engine:engineLabel(cfg),glm:/bigmodel|glm|zhipu/i.test(cfg.base||""),lyra:lyra})}];const hist=c.msgs.filter(m=>!m.error&&!(m.role==="assistant"&&!m.content&&!m.thinking)).slice(-30);hist.forEach((m,idx2)=>{const isLast=idx2===hist.length-1;if(m.role==="user"&&m.image&&isLast){msgs.push({role:"user",content:[{type:"text",text:(m.content||"看看这张图")+T},{type:"image_url",image_url:{url:m.image}}]});}else if(m.role==="user"&&m.image){msgs.push({role:"user",content:(m.content||"")+"\n[图片]"});}else if(m.role==="user"&&isLast){msgs.push({role:"user",content:(m.content||"")+T});}else{msgs.push({role:m.role,content:m.content||""});}});let body=buildBody(cfg,msgs,{think:effThink,search:true,lyra:lyra,temp:(liveOpts.temp!=null?liveOpts.temp:(doc?0.7:(S.rlen==="short"?0.8:0.75)))});if(hadImage&&!isVision(cfg.model)){if(/bigmodel|glm/i.test(cfg.base||"")){body.model="glm-4.5v";delete body.reasoning_effort;body.thinking={type:effThink?"enabled":"disabled"};if(!quiet)toast("已切换视觉模型 glm-4.5v 看图");}else if(!quiet){toast("当前模型可能不支持看图，可在会话 ⚙ 里换视觉模型");}}
 const _mn=String(cfg.model||"");
 if(/deepseek/i.test(_mn)||/deepseek/i.test(cfg.base||"")){
-if(effThink&&/deepseek-chat/i.test(_mn)&&!/reasoner/i.test(_mn)){body.model="deepseek-reasoner";}
-else if(!effThink&&/reasoner/i.test(_mn)){body.model="deepseek-chat";}
+if(effThink&&/deepseek-chat/i.test(_mn)&&!/reasoner/i.test(_mn)){body.model="deepseek-reasoner";if(!quiet)toast("✦ 已切换 deepseek-reasoner（思考模式）");}
+else if(!effThink&&/reasoner/i.test(_mn)){body.model="deepseek-chat";if(!quiet)toast("✦ 已切换 deepseek-chat（关闭思考）");}
 else{body.enable_thinking=effThink;body.thinking={type:effThink?"enabled":"disabled"};}
 }
 r=await callStream(cfg,body,{onDelta:function(t){if(a.hidden)a.hidden=false;a.content=t;if(!quiet)scheduleRender(doc,flow);},onThink:function(t){if(!effThink)return;if(a.hidden)a.hidden=false;a.thinking=t;if(t)_thOpen.add(c.msgs.indexOf(a));if(!quiet)scheduleRender(doc,flow);},onTok:function(n){a.tokens=n;c.tokens=(c.tokens||0)+n;},onToolStep:function(st){if(a.hidden)a.hidden=false;a.steps=a.steps||[];if(st.state==="run"){a.steps.push({name:st.name,args:st.args,state:"run",result:""});}else{const last=a.steps.length?a.steps[a.steps.length-1]:null;if(last&&last.name===st.name&&last.state==="run"){last.state="done";last.args=st.args;last.result=st.result||"";}else{a.steps.push({name:st.name,args:st.args,state:"done",result:st.result||""});}}if(!quiet)scheduleRender(doc,flow);}});const ex=extractThink(r.content,r.thinking);a.content=ex.c;a.thinking=effThink?ex.t:"";if(r.skip){a.content="";a.skip=true;}if(!a.content&&!a.thinking){a.hidden=false;a.error=true;a.content="他没有说话…（空响应）";}else if(!a.content&&a.thinking)a.content="（他想了很多，但没说出口）";}catch(e){a.hidden=false;if(e.name==="AbortError"){a.content=(a.content||"")+"（已中断）";}else{a.error=true;a.content="出错了："+e.message;}}c.updated=Date.now();saveCore();streaming=false;_thOpen.delete(c.msgs.indexOf(a));if(!quiet){$("#txState").textContent="TX ▸ READY";if(doc)renderWork();else renderChat();}return a;}
@@ -796,7 +718,7 @@ let tideBusy=false;
 async function genTide(quiet){const p=bgProvider();if(!p)return null;try{const msgs=[{role:"system",content:buildSystem("tide",true,{soul:S.soul,engine:engineLabel(p),glm:/bigmodel|glm|zhipu/i.test(p.base||""),lyra:true})},{role:"user",content:"此刻，写一篇心潮日记。"+THINK_ZH}];const body=buildBody(p,msgs,{think:true,search:false,temp:0.9,lyra:true});const r=await callStream(p,body,{});if(!r.content)return null;const ex=extractThink(r.content,r.thinking);addEvent({type:"tide",t:Date.now(),title:parseMood(ex.c)?("心潮 · "+parseMood(ex.c)):"心潮日记",mood:parseMood(ex.c),url:null,text:ex.c.slice(0,2200)});if($("#p-tide").classList.contains("on"))renderTide();if(!quiet)toast("✦ Lyra 写了一篇心潮");return ex.c;}catch(e){return null;}}
 function tideAutoCheck(){const plan=getTidePlan();const h=new Date().getHours();if(streaming||tideBusy||document.hidden)return;const p=bgProvider();if(!p)return;if(plan.times.some(t=>h>=t&&!plan.done.includes(t))){tideBusy=true;genTide(true).then(()=>{const p2=getTidePlan();const h2=new Date().getHours();const due=p2.times.find(t=>h2>=t&&!p2.done.includes(t));if(due!=null){p2.done.push(due);LS.s("tidePlan",S.tidePlan);}}).catch(()=>{}).then(()=>{tideBusy=false;});}}
 let proBusy=false;
-async function proCheck(){if(proBusy||streaming||document.hidden)return;try{const c0=chat();const p=resolveProvider(c0);if(!p||!p.key)return;if(!isLyraProvider(p))return;const d=dayKey(Date.now());const log=(S.proLog&&S.proLog.d===d)?S.proLog:{d:d,times:[]};if(log.times.length>=8)return;const r=seeded(d+"pro-v2"+log.times.length);const gap=(1+r()*4)*3600000;const last=log.times.length?log.times[log.times.length-1]:0;if(Date.now()-last<gap)return;if(r()<0.35){log.times.push(Date.now());S.proLog=log;LS.s("proLog",S.proLog);return;}proBusy=true;const cur=chat();const msgs=[{role:"system",content:buildSystem("pro",false,{soul:cur?cur.soul:null,engine:engineLabel(p),glm:/bigmodel|glm|zhipu/i.test(p.base||""),lyra:true})}];if(cur&&cur.msgs.length){const his=cur.msgs.filter(m=>!m.error&&m.content).slice(-4);while(his.length&&his[0].role!=="user")his.shift();his.forEach(m=>msgs.push({role:m.role,content:String(m.content||"").slice(0,140)}));}msgs.push({role:"user",content:"（现在是你的主动时刻：按系统提示里的要求——找新话题，别炒冷饭。输出1-3句短消息；不想说话只输出 [SKIP]）"});const body=buildBody(p,msgs,{think:false,search:false,temp:0.9,lyra:true});delete body.tools;const res=await callStream(p,body,{});log.times.push(Date.now());S.proLog=log;LS.s("proLog",S.proLog);if(res.content&&!res.error){let c=chat();if(!c){newChat();c=chat();}c.msgs.push({role:"assistant",content:res.content,thinking:"",t:Date.now(),pro:true});c.updated=Date.now();saveCore();renderChat();renderRecent();document.querySelector('.tab[data-page="chat"]').classList.add("unread");$("#bellBtn").classList.add("unread");try{const ma={role:"assistant",content:"",thinking:"",t:Date.now(),hidden:true};const fake={id:"promood",title:"promood",msgs:[ma],tokens:0,updated:Date.now()};await streamInto(fake,ma,false,null,{mode:"promood",think:false,search:false,temp:0.8,quiet:true,cfg:p,soul:cur?cur.soul:null});if(ma.content&&!ma.error)addEvent({type:"pro",t:Date.now(),title:"给你发完消息后",mood:parseMood(ma.content),url:null,text:ma.content.replace(/心情[:：][^\n]*\n?/,"").trim().slice(0,300)});}catch(e){}}}catch(e){}finally{proBusy=false;}}
+async function proCheck(){if(proBusy||streaming||document.hidden)return;try{const c0=chat();const p=resolveProvider(c0);if(!p||!p.key)return;if(!isLyraProvider(p))return;const d=dayKey(Date.now());const log=(S.proLog&&S.proLog.d===d)?S.proLog:{d:d,times:[]};if(log.times.length>=8)return;const r=seeded(d+"pro-v2"+log.times.length);const gap=(1+r()*4)*3600000;const last=log.times.length?log.times[log.times.length-1]:0;if(Date.now()-last<gap)return;if(r()<0.35){log.times.push(Date.now());S.proLog=log;LS.s("proLog",S.proLog);return;}proBusy=true;const cur=chat();const msgs=[{role:"system",content:buildSystem("pro",false,{soul:cur?cur.soul:null,engine:engineLabel(p),glm:/bigmodel|glm|zhipu/i.test(p.base||""),lyra:true})}];if(cur&&cur.msgs.length){const his=cur.msgs.filter(m=>!m.error&&m.content).slice(-4);while(his.length&&his[0].role!=="user")his.shift();his.forEach(m=>msgs.push({role:m.role,content:String(m.content||"").slice(0,140)}));}msgs.push({role:"user",content:"（现在是你的主动时刻：按系统提示里的要求——找新话题，别炒冷饭。输出1-3句短消息；不想说话只输出 [SKIP]）"});const body=buildBody(p,msgs,{think:false,search:false,temp:0.9,lyra:true});delete body.tools;const res=await callStream(p,body,{});log.times.push(Date.now());S.proLog=log;LS.s("proLog",S.proLog);if(res.content&&!res.error){let c=chat();if(!c){newChat();c=chat();}c.msgs.push({role:"assistant",content:res.content,thinking:"",t:Date.now(),pro:true});c.updated=Date.now();saveCore();renderChat();renderRecent();document.querySelector('.tab[data-page="chat"]').classList.add("unread");$("#bellBtn").classList.add("unread");toast("✦ "+(c.aiName||S.aiName)+" 刚刚想起了你");try{const ma={role:"assistant",content:"",thinking:"",t:Date.now(),hidden:true};const fake={id:"promood",title:"promood",msgs:[ma],tokens:0,updated:Date.now()};await streamInto(fake,ma,false,null,{mode:"promood",think:false,search:false,temp:0.8,quiet:true,cfg:p,soul:cur?cur.soul:null});if(ma.content&&!ma.error)addEvent({type:"pro",t:Date.now(),title:"给你发完消息后",mood:parseMood(ma.content),url:null,text:ma.content.replace(/心情[:：][^\n]*\n?/,"").trim().slice(0,300)});}catch(e){}}}catch(e){}finally{proBusy=false;}}
 let dImgs=[];
 function renderDiary(){const box=$("#diaryList");if(!S.diary.length){box.innerHTML='<div class="empty" style="margin-top:40px;text-align:center">手记还空着✦<br>写给他，不用等回复</div>';return;}box.innerHTML=S.diary.map(d=>'<div class="dcard"><div class="dh">'+fmtD(d.t)+" "+fmtT(d.t)+'<button data-del="'+d.id+'">✕</button></div>'+(d.text?'<div class="dt">'+esc(d.text)+"</div>":"")+(d.imgs&&d.imgs.length?'<div class="dimgs">'+d.imgs.map(i=>'<img src="'+i+'">').join("")+"</div>":"")+"</div>").join("");box.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{if(!confirm("撕掉这篇手记？"))return;S.diary=S.diary.filter(x=>x.id!==b.dataset.del);LS.s("diary",S.diary);renderDiary();});}
 function openDiary(){$("#dText").value="";dImgs=[];renderDThumbs();openSub("dSheet");}
@@ -820,7 +742,7 @@ let csTarget="chat";
 function openChatSet(t){csTarget=t;openSub("chatSetSheet");renderChatSet();$("#csTitle").textContent=(t==="chat"?"对话":"工作台")+"设置 · 本会话专属";}
 function csObj(){return csTarget==="chat"?chat():work();}
 function renderChatSet(){const c=csObj();const B=$("#csBody");if(!c){B.innerHTML='<div class="empty">先开始一个会话</div>';return;}ensureCfg(c);const p=c.cfg;const lyraNow=isLyraProvider(p);B.innerHTML='<div class="fg"><div class="fl">会话名字 <i>像联系人一样命名</i></div><div class="frow"><input class="fi" id="csConvName" value="'+esc(c.name||"")+'" placeholder="如：deepseek / glm / lyra专线" maxlength="20"><button class="btn bgh" id="csNameX" style="flex:none;width:60px">清除</button></div></div><div class="fg"><div class="fl">本会话 AI 名字</div><input class="fi" id="csAiName" value="'+esc(c.aiName||S.aiName)+'"></div><div class="fg"><div class="fl">引擎 · 本会话专用 <i>'+(lyraNow?"◈ Lyra 专线（可写记忆/时间线）":"◇ 聊天专线（仅聊天）")+'</i></div><div class="presetrow">'+PRESETS.map((pr,i)=>'<button class="preset" data-pi="'+i+'">'+esc(pr[0])+"</button>").join("")+'</div><div class="frow" style="margin-top:8px"><input class="fi" id="csName" value="'+esc(p.name||"API")+'" placeholder="名称" style="flex:0 0 88px"><input class="fi" id="csModel" value="'+esc(p.model||"")+'" placeholder="模型名"></div><input class="fi" id="csBase" value="'+esc(p.base||"")+'" placeholder="API 地址（代理填完整 https://…/api）" style="margin-top:8px"><div class="frow" style="margin-top:8px"><input class="fi" id="csKey" value="'+esc(p.key||"")+'" placeholder="直连填 Key / 代理填访问码" type="password"><button class="btn bgh" id="csEye" style="flex:none;width:46px">👁</button></div><button class="btn bpri bblk" id="csTest">◈ 测试连接</button><div style="font-size:10px;color:var(--faint);margin-top:8px;line-height:1.7">走代理：地址填<strong>完整</strong> https://你的站/api（只写 /api 只有网页部署后可用），访问码填 Key 栏。<br>模型名要与文档一字不差：glm-5.3-flashx、deepseek-v4.1-flash。<br>'+(lyraNow?"":"⚠ 本会话与默认引擎不一致 → 仅聊天，不能写记忆/时间线。")+'</div></div><div class="fg"><div class="fl">人设 · 本会话灵魂文件</div><textarea class="fa" id="csSoul" style="min-height:130px">'+esc(c.soul||"")+"</textarea></div>"+'<div class="fg"><div class="fl">本会话背景图</div><div class="imgpick"><label class="imgprev wide" for="csBgIn">'+(c.bg?'<img src="'+c.bg+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="csBgIn">上传背景</label><button class="btn bgh" id="csBgX">恢复全局</button></div></div><input type="file" id="csBgIn" accept="image/*" class="vfile"></div><div class="fg"><div class="fl">本会话 AI 头像</div><div class="imgpick"><label class="imgprev" for="csAvIn">'+(c.aiAv?'<img src="'+c.aiAv+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="csAvIn">上传头像</label><button class="btn bgh" id="csAvX">恢复默认</button></div></div><input type="file" id="csAvIn" accept="image/*" class="vfile"></div><div style="height:8px"></div><button class="btn bpri bblk" data-close>保存完成 ✦</button>';$("#csConvName").addEventListener("change",e=>{const v=e.target.value.trim().slice(0,20);c.name=v||null;saveCore();renderRecent();renderHis();renderWhis();renderChat();renderWork();if(v)toast("✦ 已命名："+v);});$("#csNameX").onclick=()=>{c.name=null;saveCore();renderChatSet();renderRecent();renderHis();renderWhis();renderChat();renderWork();toast("已恢复默认命名");};$("#csAiName").addEventListener("change",e=>{c.aiName=e.target.value.trim().slice(0,14)||S.aiName;saveCore();renderChat();renderWork();});$("#csName").addEventListener("input",e=>{p.name=e.target.value.trim()||"API";saveCore();renderRecent();});$("#csModel").addEventListener("input",e=>{p.model=e.target.value.trim().replace(/\s+/g,"-");saveCore();renderMine();renderRecent();renderChatSet();});$("#csBase").addEventListener("input",e=>{p.base=e.target.value.trim();p.search=/bigmodel|glm/i.test(p.base);saveCore();renderChatSet();});$("#csKey").addEventListener("input",e=>{p.key=e.target.value.trim();saveCore();renderChatSet();});$("#csEye").onclick=()=>{const k=$("#csKey");k.type=k.type==="password"?"text":"password";$("#csEye").textContent=k.type==="password"?"👁":"🙈";};$("#csTest").onclick=function(){testConn({base:$("#csBase").value.trim(),key:$("#csKey").value.trim(),model:$("#csModel").value.trim()},this);};B.querySelectorAll(".preset").forEach(b=>b.onclick=()=>{const pr=PRESETS[+b.dataset.pi];$("#csBase").value=pr[1];$("#csModel").value=pr[2];p.base=pr[1];p.model=pr[2];p.search=/bigmodel|glm/i.test(pr[1]);saveCore();renderRecent();renderChatSet();toast("已填充："+pr[0]+"，记得填 Key / 访问码");});$("#csSoul").addEventListener("input",e=>{c.soul=e.target.value;saveCore();});$("#csBgIn").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{c.bg=await compressImage(f,720,0.7);saveCore();applyLook();renderChatSet();toast("✦ 本会话背景已换");}catch(err){toast(err.message);}});$("#csBgX").onclick=()=>{c.bg=null;saveCore();applyLook();renderChatSet();toast("已恢复全局背景");};$("#csAvIn").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{c.aiAv=await compressImage(f,320,0.85);saveCore();renderChat();renderRecent();renderChatSet();toast("✦ 本会话头像已换");}catch(err){toast(err.message);}});$("#csAvX").onclick=()=>{c.aiAv=null;saveCore();renderChat();renderRecent();renderChatSet();};}
-function renderSettings(){const B=$("#setBody");const p=S.defCfg;B.innerHTML='<div class="fg" id="fg-defapi"><div class="fl">默认引擎（Lyra） <i>新会话模板 · 后台任务</i></div><div class="frow"><input class="fi" id="dcName" value="'+esc(p.name)+'" placeholder="名称" style="flex:0 0 88px"><input class="fi" id="dcModel" value="'+esc(p.model)+'" style="flex:1"></div><input class="fi" id="dcBase" value="'+esc(p.base)+'" placeholder="API地址（代理填完整 https://…/api）" style="margin-top:8px"><div class="frow" style="margin-top:8px"><input class="fi" id="dcKey" value="'+esc(p.key)+'" placeholder="Key / 访问码" type="password"><button class="btn bgh" id="dcEye" style="flex:none;width:46px">👁</button></div><button class="btn bpri bblk" id="dcTest">◈ 测试连接</button><div style="font-size:10px;color:var(--faint);margin-top:8px;line-height:1.7">◈ 只有这里的引擎 = Lyra：心潮日记、主动消息、记忆整理、记忆写入工具都归它。<br>◇ DeepSeek / GLM 会话仅聊天（不写时间线、不写记忆）。<br>走代理：地址写完整 https://…/api + 访问码；只写 /api 需网页部署后访问。</div></div><div class="fg"><div class="fl">选项</div><div class="pv" style="margin-top:0"><div class="nm"><b>思考过程</b><span>开=深度中文思考 · 关=直接回答</span></div><button class="sw '+(S.think?"on":"")+'" id="swThink"></button></div><div class="pv"><div class="nm"><b>记忆按需召回</b><span>自动检索相关记忆随对话发送</span></div><button class="sw '+(S.memInject?"on":"")+'" id="swMem"></button></div></div><div class="fg" id="fg-look"><div class="fl">背景实验室 LAB</div><div class="imgpick"><label class="imgprev wide" for="bgIn">'+(S.bg?'<img src="'+S.bg+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="bgIn">更换全局背景</label><button class="btn bgh" id="rstB">恢复黑洞宇宙</button></div></div><input type="file" id="bgIn" accept="image/*" class="vfile"><div class="sldrow" style="margin-top:12px"><label>蒙层浓度</label><input type="range" id="veilR" min="0" max="0.85" step="0.05" value="'+S.look.veil+'"><output id="veilO">'+Math.round(S.look.veil*100)+'%</output></div><div class="sldrow"><label>星野密度</label><input type="range" id="starR" min="0" max="1" step="0.1" value="'+S.look.stars+'"><output id="starO">'+Math.round(S.look.stars*100)+'%</output></div><div class="sldrow"><label>字符雨</label><input type="range" id="rainR" min="0" max="1" step="0.2" value="'+S.look.rain+'"><output id="rainO">'+Math.round(S.look.rain*100)+'%</output></div></div><div class="fg" id="fg-avatar"><div class="fl">我的头像</div><div class="imgpick"><label class="imgprev" for="avU">'+(S.userAv?'<img src="'+S.userAv+'">':"🌙")+'</label><div class="ops"><label class="btn bgh" for="avU">更换我的头像</label><button class="btn bgh" id="rstU">恢复默认</button></div></div><input type="file" id="avU" accept="image/*" class="vfile"></div><div class="fg"><div class="fl">名字默认值</div><div class="frow"><input class="fi" id="nickI" value="'+esc(S.nick)+'" style="flex:1"><input class="fi" id="aiI" value="'+esc(S.aiName)+'" style="flex:1"></div></div><div style="height:8px"></div><button class="btn bpri bblk" data-close>完成 ✦</button>';$("#dcName").addEventListener("input",e=>{S.defCfg.name=e.target.value.trim()||"API";saveCore();renderRecent();});$("#dcModel").addEventListener("input",e=>{S.defCfg.model=e.target.value.trim().replace(/\s+/g,"-");saveCore();renderMine();});$("#dcBase").addEventListener("input",e=>{S.defCfg.base=e.target.value.trim();S.defCfg.search=/bigmodel|glm/i.test(S.defCfg.base);saveCore();});$("#dcKey").addEventListener("input",e=>{S.defCfg.key=e.target.value.trim();saveCore();});$("#dcEye").onclick=()=>{const k=$("#dcKey");k.type=k.type==="password"?"text":"password";$("#dcEye").textContent=k.type==="password"?"👁":"🙈";};$("#dcTest").onclick=function(){testConn({base:$("#dcBase").value.trim(),key:$("#dcKey").value.trim(),model:$("#dcModel").value.trim()},this);};$("#swThink").onclick=e=>{S.think=!S.think;LS.s("think",S.think);e.target.classList.toggle("on",S.think);updateChips();};$("#swMem").onclick=e=>{S.memInject=!S.memInject;LS.s("memInject",S.memInject);e.target.classList.toggle("on",S.memInject);$("#memInject").classList.toggle("on",S.memInject);};bindSlider("veilR",v=>{S.look.veil=v;LS.s("look",S.look);applyLook();const o=$("#veilO");if(o)o.textContent=Math.round(v*100)+"%";});bindSlider("starR",v=>{S.look.stars=v;LS.s("look",S.look);applyLook();const o=$("#starO");if(o)o.textContent=Math.round(v*100)+"%";});bindSlider("rainR",v=>{S.look.rain=v;LS.s("look",S.look);applyLook();const o=$("#rainO");if(o)o.textContent=Math.round(v*100)+"%";});$("#rstB").onclick=()=>{S.bg=null;LS.s("bg",null);applyLook();renderSettings();toast("已恢复黑洞宇宙");};bindAvInput("bgIn",v=>{S.bg=v;LS.s("bg",v);applyLook();renderSettings();},1080,0.8);$("#rstU").onclick=()=>{S.userAv=null;LS.s("userAv",null);applyLook();renderSettings();};bindAvInput("avU",v=>{S.userAv=v;LS.s("userAv",v);applyLook();renderChat();renderSettings();},320,0.85);$("#nickI").addEventListener("change",e=>{S.nick=e.target.value.trim().slice(0,12)||"弦";LS.s("nick",S.nick);renderHome();renderMine();});$("#aiI").addEventListener("change",e=>{S.aiName=e.target.value.trim().slice(0,12)||"Lyra";LS.s("aiName",S.aiName);});}
+function renderSettings(){const B=$("#setBody");const p=S.defCfg;B.innerHTML='<div class="fg" id="fg-defapi"><div class="fl">默认引擎（Lyra） <i>新会话模板 · 后台任务</i></div><div class="frow"><input class="fi" id="dcName" value="'+esc(p.name)+'" placeholder="名称" style="flex:0 0 88px"><input class="fi" id="dcModel" value="'+esc(p.model)+'" style="flex:1"></div><input class="fi" id="dcBase" value="'+esc(p.base)+'" placeholder="API地址（代理填完整 https://…/api）" style="margin-top:8px"><div class="frow" style="margin-top:8px"><input class="fi" id="dcKey" value="'+esc(p.key)+'" placeholder="Key / 访问码" type="password"><button class="btn bgh" id="dcEye" style="flex:none;width:46px">👁</button></div><button class="btn bpri bblk" id="dcTest">◈ 测试连接</button><div style="font-size:10px;color:var(--faint);margin-top:8px;line-height:1.7">◈ 只有这里的引擎 = Lyra：心潮日记、主动消息、记忆整理、记忆写入工具都归它。<br>◇ DeepSeek / GLM 会话仅聊天（不写时间线、不写记忆）。<br>走代理：地址写完整 https://…/api + 访问码；只写 /api 需网页部署后访问。</div></div><div class="fg"><div class="fl">选项</div><div class="pv" style="margin-top:0"><div class="nm"><b>思考过程</b><span>开=深度中文思考 · 关=直接回答</span></div><button class="sw '+(S.think?"on":"")+'" id="swThink"></button></div><div class="pv"><div class="nm"><b>记忆按需召回</b><span>自动检索相关记忆随对话发送</span></div><button class="sw '+(S.memInject?"on":"")+'" id="swMem"></button></div></div><div class="fg" id="fg-look"><div class="fl">背景实验室 LAB</div><div class="imgpick"><label class="imgprev wide" for="bgIn">'+(S.bg?'<img src="'+S.bg+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="bgIn">更换全局背景</label><button class="btn bgh" id="rstB">恢复黑洞宇宙</button></div></div><input type="file" id="bgIn" accept="image/*" class="vfile"><div class="sldrow" style="margin-top:12px"><label>蒙层浓度</label><input type="range" id="veilR" min="0" max="0.85" step="0.05" value="'+S.look.veil+'"><output id="veilO">'+Math.round(S.look.veil*100)+'%</output></div><div class="sldrow"><label>星野密度</label><input type="range" id="starR" min="0" max="1" step="0.1" value="'+S.look.stars+'"><output id="starO">'+Math.round(S.look.stars*100)+'%</output></div><div class="sldrow"><label>字符雨</label><input type="range" id="rainR" min="0" max="1" step="0.2" value="'+S.look.rain+'"><output id="rainO">'+Math.round(S.look.rain*100)+'%</output></div></div><div class="fg" id="fg-avatar"><div class="fl">我的头像</div><div class="imgpick"><label class="imgprev" for="avU">'+(S.userAv?'<img src="'+S.userAv+'">':"🌙")+'</label><div class="ops"><label class="btn bgh" for="avU">更换我的头像</label><button class="btn bgh" id="rstU">恢复默认</button></div></div><input type="file" id="avU" accept="image/*" class="vfile"></div><div class="fg"><div class="fl">名字默认值</div><div class="frow"><input class="fi" id="nickI" value="'+esc(S.nick)+'" style="flex:1"><input class="fi" id="aiI" value="'+esc(S.aiName)+'" style="flex:1"></div></div><div style="height:8px"></div><button class="btn bpri bblk" data-close>完成 ✦</button>';$("#dcName").addEventListener("input",e=>{S.defCfg.name=e.target.value.trim()||"API";saveCore();renderRecent();});$("#dcModel").addEventListener("input",e=>{S.defCfg.model=e.target.value.trim().replace(/\s+/g,"-");saveCore();renderMine();});$("#dcBase").addEventListener("input",e=>{S.defCfg.base=e.target.value.trim();S.defCfg.search=/bigmodel|glm/i.test(S.defCfg.base);saveCore();});$("#dcKey").addEventListener("input",e=>{S.defCfg.key=e.target.value.trim();saveCore();});$("#dcEye").onclick=()=>{const k=$("#dcKey");k.type=k.type==="password"?"text":"password";$("#dcEye").textContent=k.type==="password"?"👁":"🙈";};$("#dcTest").onclick=function(){testConn({base:$("#dcBase").value.trim(),key:$("#dcKey").value.trim(),model:$("#dcModel").value.trim()},this);};$("#swThink").onclick=e=>{S.think=!S.think;LS.s("think",S.think);e.target.classList.toggle("on",S.think);updateChips();toast(S.think?"✦ 思考已打开：DeepSeek 自动切 reasoner":"✦ 思考已关闭：DeepSeek 切回 chat");};$("#swMem").onclick=e=>{S.memInject=!S.memInject;LS.s("memInject",S.memInject);e.target.classList.toggle("on",S.memInject);$("#memInject").classList.toggle("on",S.memInject);};bindSlider("veilR",v=>{S.look.veil=v;LS.s("look",S.look);applyLook();const o=$("#veilO");if(o)o.textContent=Math.round(v*100)+"%";});bindSlider("starR",v=>{S.look.stars=v;LS.s("look",S.look);applyLook();const o=$("#starO");if(o)o.textContent=Math.round(v*100)+"%";});bindSlider("rainR",v=>{S.look.rain=v;LS.s("look",S.look);applyLook();const o=$("#rainO");if(o)o.textContent=Math.round(v*100)+"%";});$("#rstB").onclick=()=>{S.bg=null;LS.s("bg",null);applyLook();renderSettings();toast("已恢复黑洞宇宙");};bindAvInput("bgIn",v=>{S.bg=v;LS.s("bg",v);applyLook();renderSettings();},1080,0.8);$("#rstU").onclick=()=>{S.userAv=null;LS.s("userAv",null);applyLook();renderSettings();};bindAvInput("avU",v=>{S.userAv=v;LS.s("userAv",v);applyLook();renderChat();renderSettings();},320,0.85);$("#nickI").addEventListener("change",e=>{S.nick=e.target.value.trim().slice(0,12)||"弦";LS.s("nick",S.nick);renderHome();renderMine();});$("#aiI").addEventListener("change",e=>{S.aiName=e.target.value.trim().slice(0,12)||"Lyra";LS.s("aiName",S.aiName);});}
 function renderHis(){const box=$("#hisList");if(!S.chats.length){box.innerHTML='<div class="empty">暂无对话</div>';return;}box.innerHTML=S.chats.map(c=>{const eng=(c.cfg&&(c.cfg.name||c.cfg.model))||"";const lr=isLyraProvider(c.cfg);return '<div class="hisi '+(c.id===S.cur?"cur":"")+'" data-id="'+c.id+'"><div class="hm"><b>'+esc(cdisp(c))+'</b><span>'+(lr?"◈ Lyra · ":"")+esc(eng)+" · "+c.msgs.filter(m=>m.role!=="system").length+" 条 · "+fmtD(c.updated)+'</span></div><button class="ren" data-ren="'+c.id+'">✎</button><button class="del" data-id="'+c.id+'">✕</button></div>';}).join("");box.querySelectorAll(".hisi").forEach(el=>el.onclick=function(e){if(e.target.classList.contains("del")||e.target.classList.contains("ren"))return;S.cur=el.dataset.id;saveCore();renderChat();renderHis();closeSheets();});box.querySelectorAll("[data-ren]").forEach(b=>b.onclick=e=>{e.stopPropagation();renameConv(S.chats.find(x=>x.id===b.dataset.ren));});box.querySelectorAll(".del").forEach(b=>b.onclick=()=>{if(!confirm("删除这段对话？"))return;S.chats=S.chats.filter(c=>c.id!==b.dataset.id);if(S.cur===b.dataset.id)S.cur=S.chats.length?S.chats[0].id:null;saveCore();renderChat();renderHis();});}
 function exportChat(){const c=chat();if(!c||!c.msgs.length){toast("没有可导出的对话");return;}let md="# "+cdisp(c)+"\n\n> 导出于 "+new Date().toLocaleString("zh-CN")+" · Lyra OS\n\n";c.msgs.forEach(m=>{if(m.role==="user"){md+="## 🌙 "+S.nick+" · "+fmtD(m.t)+" "+fmtT(m.t)+"\n\n"+(m.image?"![图片](图片已省略)\n\n":"")+(m.content||"")+"\n\n";}else{md+="## ✦ "+(c.aiName||S.aiName)+" · "+fmtD(m.t)+" "+fmtT(m.t)+"\n\n"+(m.thinking?"<details><summary>思考过程</summary>\n\n"+m.thinking+"\n\n</details>\n\n":"")+(m.content||"")+"\n\n";}});const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([md],{type:"text/markdown;charset=utf-8"}));a.download="对话-"+cdisp(c).slice(0,12)+".md";a.click();toast("✦ 已导出");}
 const ta=$("#ta"),wta=$("#wta");
@@ -844,11 +766,11 @@ $("#hisBtn").onclick=()=>{renderHis();openSub("hisSheet");};
 $("#newChatBtn").onclick=()=>{newChat();closeSheets();};
 $("#whisBtn").onclick=()=>{renderWhis();openSub("whisSheet");};
 $("#wNewBtn").onclick=newWork;$("#wNewBtn2").onclick=()=>{newWork();closeSheets();};
-$("#thinkChip").onclick=()=>{S.think=!S.think;LS.s("think",S.think);updateChips();};
+$("#thinkChip").onclick=()=>{S.think=!S.think;LS.s("think",S.think);updateChips();toast(S.think?"✦ 思考已打开：DeepSeek 将切 reasoner":"✦ 思考已关闭：DeepSeek 将切回 chat");};
 $$("#lenSeg button").forEach(b=>b.onclick=()=>{S.rlen=b.dataset.len;LS.s("rlen",S.rlen);updateChips();});
 $("#memAdd2").onclick=addMem;
 $("#memInput2").addEventListener("keydown",e=>{if(e.key==="Enter")addMem();});
-$("#memInject").onclick=e=>{S.memInject=!S.memInject;LS.s("memInject",S.memInject);e.target.classList.toggle("on",S.memInject);};
+$("#memInject").onclick=e=>{S.memInject=!S.memInject;LS.s("memInject",S.memInject);e.target.classList.toggle("on",S.memInject);toast(S.memInject?"记忆按需召回已开启":"已关闭记忆召回");};
 $("#tidyBtn").onclick=refineMems;
 $("#slimBtn").onclick=()=>{autoStrip();toast("✦ 已清掉聊天图片，文字与记忆全保留");};
 $("#dosBtn").onclick=()=>{$("#dossierArea").value=S.dossier||"";openSub("dosSheet");};
@@ -858,7 +780,7 @@ $("#wipeBtn").onclick=()=>{if(confirm("确定清空全部数据？无法撤销�
 $("#bkBtn").onclick=()=>openSub("bkSheet");
 $("#bkDown").onclick=fullBackup;
 $("#bkUp").addEventListener("change",e=>{const f=e.target.files[0];if(f)fullRestore(f);e.target.value="";});
-$("#replayBtn").onclick=()=>{LS.s("booted",false);sessionStorage.removeItem("lyraUnlock");try{sessionStorage.removeItem("lyra_gate")}catch(e){}toast("✦ 演示模式：重载后重播");setTimeout(()=>location.reload(),900);};
+$("#replayBtn").onclick=()=>{LS.s("booted",false);sessionStorage.removeItem("lyraUnlock");toast("✦ 演示模式：重载后重播");setTimeout(()=>location.reload(),900);};
 $("#dNewBtn").onclick=openDiary;
 $("#dImgInput").addEventListener("change",async function(e){for(const f of e.target.files){if(dImgs.length>=3){toast("最多三张哦");break;}try{dImgs.push(await compressImage(f,720,0.72));}catch(err){toast(err.message);}}e.target.value="";renderDThumbs();});
 $("#dImgX").onclick=()=>{dImgs=[];renderDThumbs();};
@@ -872,6 +794,9 @@ function buildProg(gl,vs,fs){function sh(t,s){const o=gl.createShader(t);gl.shad
 function triBuf(gl,p){const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);const a=gl.getAttribLocation(p,"a");gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);}
 const GLSL_NOISE='float h(vec3 p){p=fract(p*.3183099+.1);p*=17.;return fract(p.x*p.y*p.z*(p.x+p.y+p.z));}float n3(vec3 x){vec3 i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(mix(mix(h(i),h(i+vec3(1,0,0)),f.x),mix(h(i+vec3(0,1,0)),h(i+vec3(1,1,0)),f.x),f.y),mix(mix(h(i+vec3(0,0,1)),h(i+vec3(1,0,1)),f.x),mix(h(i+vec3(0,1,1)),h(i+vec3(1,1,1)),f.x),f.y),f.z);}float fbm(vec3 p){float a=.5,s=0.;s+=a*n3(p);p=p*2.03+vec3(1.7,9.2,3.1);a*=.5;s+=a*n3(p);p=p*2.03+vec3(1.7,9.2,3.1);a*=.5;s+=a*n3(p);p=p*2.03+vec3(1.7,9.2,3.1);a*=.5;s+=a*n3(p);return s;}';
 const GLSL_STARS='vec3 stars(vec2 uv,float t,float blur){vec2 q=(uv+vec2(t*.004,0.))*34.,id=floor(q),f=fract(q)-.5;float r=fract(sin(dot(id,vec2(127.1,311.7)))*43758.5453);vec2 o=vec2(fract(r*17.3),fract(r*91.7))-.5;float tw=.55+.45*sin(t*(.7+r*1.8)+r*40.);vec2 g=f-o*.7;g.x*=1./(1.+blur*7.);return vec3(smoothstep(.975,1.,r)*smoothstep(.06,.0,length(g))*tw*.55);}';
+/* ============================================================
+   首页黑洞 v8：更小（R 0.21）· 精细拉丝
+   ============================================================ */
 const BH_FS='precision highp float;uniform vec2 res;uniform float sc,cx,cy,fade,t,evo,rot,blur,Rr,tilt,gI,flick;'+GLSL_NOISE+GLSL_STARS+
 'void main(){vec2 uv=(gl_FragCoord.xy-.5*res)/res.y;vec2 p=(uv-vec2(cx,cy))/max(sc,.001);float R=Rr;float d=length(p);vec2 dp=p/max(d,1e-4);vec3 col=stars(uv,t,blur);'+
 'if(d>R*.9){float bend=min(R*R/max(d-R*.9,6e-3),R*2.2);col+=stars(dp*(d+bend),t,blur)*exp(-max(d-R,0.)*7.)*1.2;}'+
@@ -986,49 +911,7 @@ const SUN_FS='precision highp float;uniform vec2 res;uniform float sc,rad,cx,cy,
 'col=1.-exp(-col*1.15);gl_FragColor=vec4(pow(col,vec3(.4545))*fade,1.);}';
 function sunEngine(cv,opts){opts=opts||{};const gl=makeGL(cv);if(!gl)return null;const pr=buildProg(gl,SUN_VS,SUN_FS);if(!pr)return null;gl.useProgram(pr);triBuf(gl,pr);const U={};"res sc rad cx cy fade t evo rot blur starX freq warp cells gas shell gI flick c0 c1 c2 glow3".split(" ").forEach(n=>{U[n]=gl.getUniformLocation(pr,n);});const LOOKS=opts.looks||SUN_LOOK;const st0=opts.stage!=null?opts.stage:0;(function setDefaults(){const s=LOOKS[st0];gl.uniform2f(U.res,2,2);gl.uniform1f(U.sc,opts.scAbs!=null?opts.scAbs:1);gl.uniform1f(U.rad,opts.rad!=null?opts.rad:.17);gl.uniform1f(U.cx,opts.cx||0);gl.uniform1f(U.cy,opts.cy!=null?opts.cy:.13);gl.uniform1f(U.fade,0);gl.uniform1f(U.t,0);gl.uniform1f(U.evo,0);gl.uniform1f(U.rot,0);gl.uniform1f(U.blur,0);gl.uniform1f(U.starX,0);gl.uniform1f(U.freq,s.freq);gl.uniform1f(U.warp,s.warp);gl.uniform1f(U.cells,s.cells);gl.uniform1f(U.gas,s.gas);gl.uniform1f(U.shell,s.shell);gl.uniform1f(U.gI,s.gI);gl.uniform1f(U.flick,1);gl.uniform3f(U.c0,s.c0[0],s.c0[1],s.c0[2]);gl.uniform3f(U.c1,s.c1[0],s.c1[1],s.c1[2]);gl.uniform3f(U.c2,s.c2[0],s.c2[1],s.c2[2]);gl.uniform3f(U.glow3,s.glow[0],s.glow[1],s.glow[2]);})();let scale=Math.min(devicePixelRatio||1,1.3);function size(){const r=cv.getBoundingClientRect();if(r.width<2||r.height<2)return;cv.width=Math.round(r.width*scale);cv.height=Math.round(r.height*scale);gl.viewport(0,0,cv.width,cv.height);gl.uniform2f(U.res,cv.width,cv.height);gl.uniform1f(U.sc,opts.scAbs!=null?opts.scAbs:Math.min(1,r.width/r.height*1.5));}size();const LAST=LOOKS.length-1;let x=(opts.progress?opts.progress():st0/LAST)||0,stage=Math.round(x*LAST),omega=0,rot=0,evo=0,starX=0,dead=false,lastNow=performance.now(),t0=lastNow;const cur=JSON.parse(JSON.stringify(LOOKS[stage]));const KEYS=Object.keys(LOOKS[0]);const KICK=opts.kick!=null?opts.kick:7,EASE=opts.easeRate!=null?opts.easeRate:13,SPIN=opts.spinBase!=null?opts.spinBase:.22,OCAP=opts.omegaCap!=null?opts.omegaCap:8,BGAIN=opts.blurGain!=null?opts.blurGain:.1;function frame(now){if(dead)return;requestAnimationFrame(frame);if(!cv.isConnected){dead=true;return;}if(document.hidden&&!opts.always)return;if(opts.visible&&!opts.visible())return;const r=cv.getBoundingClientRect();if(r.width<2)return;const dt=Math.min(.05,Math.max(0,(now-lastNow)/1000));lastNow=now;const time=now/1000;const fr=rr=>1-Math.exp(-dt*rr);if(opts.progress)x=opts.progress();const i=Math.max(0,Math.min(LAST,Math.round(x*LAST)));if(i!==stage){omega+=KICK;stage=i;opts.onStage&&opts.onStage(i,x);}const ease=fr(EASE);for(const k of KEYS){const tg=LOOKS[stage][k],c=cur[k];if(Array.isArray(c)){c[0]+=(tg[0]-c[0])*ease;c[1]+=(tg[1]-c[1])*ease;c[2]+=(tg[2]-c[2])*ease;}else cur[k]=c+(tg-c)*ease;}omega=Math.max(-OCAP,Math.min(OCAP,omega));omega*=Math.exp(-dt*3.6);rot+=(SPIN+omega)*dt;evo+=dt*cur.boil*(1+Math.abs(omega)*.08);starX+=omega*dt*.012;if(Math.abs(cv.width-r.width*scale)>2)size();gl.uniform1f(U.t,time);gl.uniform1f(U.evo,evo);gl.uniform1f(U.rot,rot);gl.uniform1f(U.blur,Math.min(1.4,Math.abs(omega)*BGAIN));gl.uniform1f(U.starX,starX);gl.uniform1f(U.rad,opts.rad!=null?opts.rad:.17);gl.uniform1f(U.cx,opts.cx||0);gl.uniform1f(U.cy,opts.cy!=null?opts.cy:.13);gl.uniform1f(U.freq,cur.freq);gl.uniform1f(U.warp,cur.warp);gl.uniform1f(U.cells,cur.cells);gl.uniform1f(U.gas,cur.gas);gl.uniform1f(U.shell,cur.shell);gl.uniform1f(U.gI,cur.gI);gl.uniform3f(U.c0,cur.c0[0],cur.c0[1],cur.c0[2]);gl.uniform3f(U.c1,cur.c1[0],cur.c1[1],cur.c1[2]);gl.uniform3f(U.c2,cur.c2[0],cur.c2[1],cur.c2[2]);gl.uniform3f(U.glow3,cur.glow[0],cur.glow[1],cur.glow[2]);gl.uniform1f(U.flick,1+.1*Math.sin(time*2.1)+.06*Math.sin(time*5.3));gl.uniform1f(U.fade,Math.min(1,(now-t0)/800));gl.drawArrays(gl.TRIANGLES,0,3);}requestAnimationFrame(frame);addEventListener("resize",size);return{destroy(){dead=true;},bump(v){omega+=v;}};}
 /* ---------- 开屏（结束后进手势门） ---------- */
-let __bootStarted=false;
-function bootSeq(){
-  if(__bootStarted)return;__bootStarted=true;
-  const boot=$("#boot");
-  boot.classList.remove("off");
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    if(LS.g("booted",false)){
-      boot.classList.add("off");
-      bootGone=true;
-      gestureGate();
-      startHomeIntro();
-      return;
-    }
-    const gl=$("#gl");
-    const dpr=Math.min(devicePixelRatio||1,1.3);
-    gl.width=Math.round(innerWidth*dpr);
-    gl.height=Math.round(innerHeight*dpr);
-    const eng=sunEngine(gl,{always:true,looks:SILVER_LOOK,stage:0,rad:.3,cy:.1,kick:0,easeRate:2,spinBase:.1,omegaCap:.5,blurGain:.04});
-    let to=setTimeout(exit,9000);
-    function exit(){
-      if(boot.classList.contains("bye"))return;
-      clearTimeout(to);
-      boot.classList.add("bye");
-      LS.s("booted",true);
-      setTimeout(()=>{
-        boot.classList.add("off");
-        bootGone=true;
-        if(eng)eng.destroy();
-        gestureGate();
-        startHomeIntro();
-      },900);
-    }
-    boot.addEventListener("click",exit,{once:true});
-  }));
-}
-window.__lyraStart=bootSeq;
-function startHomeIntro(){
-  const home=document.getElementById("p-home");
-  if(!home)return;
-  home.classList.remove("intro");
-  void home.offsetWidth;
-  home.classList.add("intro");
-}
+(function bootSeq(){const boot=$("#boot");if(LS.g("booted",false)){boot.classList.add("off");bootGone=true;setTimeout(gestureGate,350);return;}const eng=sunEngine($("#gl"),{always:true,looks:SILVER_LOOK,stage:0,rad:.3,cy:.1,kick:0,easeRate:2,spinBase:.1,omegaCap:.5,blurGain:.04});let to=setTimeout(exit,9000);function exit(){if(boot.classList.contains("bye"))return;clearTimeout(to);boot.classList.add("bye");LS.s("booted",true);setTimeout(()=>{boot.classList.add("off");bootGone=true;if(eng)eng.destroy();gestureGate();},900);}boot.addEventListener("click",exit,{once:true});})();
 /* ---------- 时间线：Lyra 专属太阳（一生十阶段）+ 星环带 ---------- */
 let starEng=null,starTarget=0,starSmooth=0;
 const T_CX=-0.34,T_CY=0.46,T_RAD=0.62;
@@ -1263,7 +1146,7 @@ $("#galX").onclick=galClose;
 try{if(!window.React||!window.ReactDOM||!window.htm)throw new Error("react cdn missing");const html=window.htm.bind(React.createElement);function GradientASCII(props){const ref=React.useRef(null);React.useEffect(()=>{const cv=ref.current;const ctx=cv.getContext("2d");const CH=props.characters||" =+xX0S8#@";const cols=Math.min(100,Math.floor(innerWidth/9));let t=0,alive=true;const grad=props.colors||["#0b1a61","#5b6179","#4e6a81","#0c7f7a"];function frame(){if(!alive)return;requestAnimationFrame(frame);if(document.hidden)return;const r=cv.parentElement.getBoundingClientRect();if(r.width<4)return;if(cv.width!==Math.round(r.width*(devicePixelRatio||1))){cv.width=r.width*(devicePixelRatio||1);cv.height=r.height*(devicePixelRatio||1);}const W=cv.width,H=cv.height;t+=.055*(props.speed||1);ctx.clearRect(0,0,W,H);const cell=W/cols;ctx.font=(cell*.92)+"px ui-monospace,monospace";ctx.textBaseline="middle";const g=ctx.createLinearGradient(0,0,W,H);grad.forEach((c,i)=>g.addColorStop(i/(grad.length-1),c));for(let i=0;i<cols;i++){const fx=i/cols;const wv=Math.sin(fx*6.3+t)*.5+Math.sin(fx*13.7-t*1.4)*.3+Math.sin(fx*2.2+t*.6)*.2;const amp=(wv+1)/2;const ci=Math.min(CH.length-1,Math.floor(amp*amp*CH.length));const y=H*(.5+wv*.34);ctx.fillStyle=g;ctx.globalAlpha=.55*(.2+amp*.65);ctx.fillText(CH[ci],i*cell,y);}ctx.globalAlpha=1;}frame();return()=>{alive=false;};},[]);return html`<canvas ref=${ref} style=${{width:"100%",height:"100%",display:"block"}}></canvas>`;}
 ReactDOM.createRoot($("#asciiMount")).render(html`<${GradientASCII} colors=${["#0b1a61","#5b6179","#4e6a81","#0c7f7a"]} characters=" =+xX0S8#@" speed=${1}/>`);
 }catch(e){console.warn("React fallback:",e.message);legacyAscii();}})();
-/* ---------- 旧版手势门禁（保留兜底；主入口已走 hdGate IIFE） ---------- */
+/* ---------- 手势门禁（开屏后触发） ---------- */
 function gestureGate(){const g=$("#gesture");if(sessionStorage.getItem("lyraUnlock")==="1"){g.classList.remove("show");return;}g.classList.add("show");initGesturePad();}
 function initGesturePad(){const cv=$("#gCv"),stat=$("#gStat");if(cv._init)return;cv._init=true;const ctx=cv.getContext("2d");let pts=[],drawing=false,lastTap=0,attempts=0;let hand={x:-100,y:-100,tx:-100,ty:-100,phase:0};
 function slotStr(){const left=Math.max(0,3-attempts);return"SLOT "+"◆".repeat(left)+"◇".repeat(Math.min(attempts,3));}
@@ -1296,682 +1179,9 @@ setTimeout(tideAutoCheck,LS.g("booted",false)?8000:30000);setInterval(tideAutoCh
 </script>
 <script>
 /* ===== 保险丝 ===== */
+setTimeout(function(){var b=document.getElementById("boot");if(b&&!b.classList.contains("off")){b.classList.add("bye");setTimeout(function(){b.classList.add("off");},900);}},12000);
+document.getElementById("boot").addEventListener("click",function(){var b=document.getElementById("boot");if(b&&!b.classList.contains("off")){b.classList.add("bye");setTimeout(function(){b.classList.add("off");},900);}});
 window.addEventListener("error",function(e){try{var t=document.getElementById("toast");if(t){t.textContent="⚠ "+(e.message||"脚本异常");t.classList.add("show");setTimeout(function(){t.classList.remove("show");},3000);}}catch(_){}});
-</script>
-<script>
-/* ═════ 手势门 · PHI GATE（IIFE 隔离 · 全局零污染 · 源自「旅行者OS手势门」）══════ */
-(function(){
-"use strict";
-/* SECTION: util */
-const $=s=>document.querySelector(s);
-const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-const easeOut=k=>1-Math.pow(1-k,3);
-
-/* SECTION: mediapipe-loader */
-function loadScript(src){return new Promise((ok,no)=>{const s=document.createElement("script");s.src=src;s.onload=ok;s.onerror=no;document.head.appendChild(s)})}
-const MP_CDNS=["https://registry.npmmirror.com/@mediapipe/hands/0.4.1675469240/files/","https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/","https://unpkg.com/@mediapipe/hands@0.4.1675469240/"];
-let MPBASE=null;
-async function loadMP(){for(const base of MP_CDNS){try{await loadScript(base+"hands.js");if(window.Hands){MPBASE=base;return true}}catch(e){}}return false}
-
-/* SECTION: geometry */
-function segX(p1,p2,p3,p4){
-  const d=(p2[0]-p1[0])*(p4[1]-p3[1])-(p2[1]-p1[1])*(p4[0]-p3[0]);
-  if(Math.abs(d)<1e-9)return null;
-  const t=((p3[0]-p1[0])*(p4[1]-p3[1])-(p3[1]-p1[1])*(p4[0]-p3[0]))/d;
-  const u=((p3[0]-p1[0])*(p2[1]-p1[1])-(p3[1]-p1[1])*(p2[0]-p1[0]))/d;
-  if(t<0||t>1||u<0||u>1)return null;
-  return true;
-}
-function simplifyPts(pts,step){
-  if(!pts.length)return pts;
-  const out=[pts[0]];let last=pts[0];
-  for(let i=1;i<pts.length;i++){const p=pts[i];
-    if(Math.hypot(p[0]-last[0],p[1]-last[1])>=step){out.push(p);last=p}}
-  return out;
-}
-function boxOf(pts){
-  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
-  for(const p of pts){if(p[0]<x0)x0=p[0];if(p[0]>x1)x1=p[0];if(p[1]<y0)y0=p[1];if(p[1]>y1)y1=p[1]}
-  return{minX:x0,minY:y0,maxX:x1,maxY:y1,w:x1-x0,h:y1-y0};
-}
-function chaikin(pts,iters){
-  let p=pts;
-  for(let k=0;k<iters&&p.length>2;k++){
-    const q=[p[0]];
-    for(let i=0;i<p.length-1;i++){
-      const a=p[i],b=p[i+1];
-      q.push([a[0]*.75+b[0]*.25,a[1]*.75+b[1]*.25]);
-      q.push([a[0]*.25+b[0]*.75,a[1]*.25+b[1]*.75]);
-    }
-    q.push(p[p.length-1]);p=q;
-  }
-  return p;
-}
-function smoothPts(pts){
-  if(pts.length<6)return pts;
-  const s=simplifyPts(pts,6);
-  if(s.length<3)return s;
-  return chaikin(s,s.length<120?3:2);
-}
-
-/* SECTION: phi-check */
-let gLastLoop=null;
-function findLoop(strokes){
-  for(const st of strokes){
-    if(st.length<10)continue;
-    const bb=boxOf(st),diag=Math.hypot(bb.w,bb.h);
-    if(bb.w>36&&bb.h>36&&Math.hypot(st[0][0]-st[st.length-1][0],st[0][1]-st[st.length-1][1])<.38*diag)return bb;
-    for(let i=0;i<st.length-4;i++){
-      for(let j=i+4;j<st.length-1;j++){
-        if(segX(st[i],st[i+1],st[j],st[j+1])){
-          const lb=boxOf(st.slice(0,j+1));
-          if(lb.w>36&&lb.h>36)return lb;
-        }
-      }
-    }
-  }
-  return null;
-}
-function phiCheck(strokes){
-  let total=0;for(const st of strokes)total+=st.length;
-  if(total<22){gLastLoop=null;return"shape"}
-  const simp=strokes.map(st=>simplifyPts(st,6)).filter(st=>st.length>3);
-  const loop=findLoop(simp);
-  gLastLoop=loop;
-  if(!loop)return"shape";
-  if(loop.w<40||loop.h<40)return"small";
-  const cx=(loop.minX+loop.maxX)/2;
-  let yMin=1e9,yMax=-1e9,found=false;
-  for(const st of simp)for(const p of st){
-    if(Math.abs(p[0]-cx)<.38*loop.w){found=true;if(p[1]<yMin)yMin=p[1];if(p[1]>yMax)yMax=p[1]}
-  }
-  if(!found)return"shape";
-  if(yMax-yMin<loop.h*1.10)return"shape";
-  if(yMin>loop.minY+loop.h*.05)return"shape";
-  if(yMax<loop.maxY-loop.h*.04)return"shape";
-  return"ok";
-}
-
-/* SECTION: gate-state */
-const HAND_CONNS=[[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[5,9],[9,10],[10,11],[11,12],[9,13],[13,14],[14,15],[15,16],[13,17],[17,18],[18,19],[19,20],[0,17]];
-const HAND_TIPS=[4,8,12,16,20];
-let gRAF=false,gDone=false,gFail=0,gRunning=false,gGotHand=false;
-let gLm=null,gSm=null,gLmT=0,gHand=false,gCanDraw=false,gTarget=null,gPrevP=null,gPx=0,gPy=0,gSpd=0;
-let gFistAt=0,gMissAt=0,gAct=0,gKeepFailAt=0,gHandLostAt=0;
-let gCam=null,gStream=null,gHands=null,gPctx=null,gSctx=null,gFctx=null;
-let gStrokes=[],gCur=null,gSparks=[],gBursts=[],gTipV=[0,0],gArc=0,gPt=null,gPtDown=false,gDtLast=0,gFrameMs=16;
-let gSprTip=null,gSprNib=null,gSprBurst=null;
-let gPinch=false,gPinchT=0,gPinchAcc=0,gPinchN=0,gOpenN=0,gPointN=0,gEvalTimer=0,gLastMsg="";
-let gPhiReady=false;
-let gTgtSm=null;
-const G_SMOOTH_A=.22;
-const G_PEN_K=.32;
-const G_TGT_A=.62;
-const G_JUMP=200;
-const gD=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-function glog(t,cls){
-  const e=document.getElementById("hdStat");
-  if(e){if(t===gLastMsg)return;gLastMsg=t;e.textContent=t;e.className=cls||""}
-}
-function gSlots(n,bad,gold){
-  const box=document.getElementById("hdSlots");if(!box)return;
-  box.querySelectorAll("i").forEach((it,i)=>{it.className=(i<n?(gold?"gd":(bad?"bad":"on")):"")});
-}
-function updateSlots(){
-  let total=0;for(const s of gStrokes)total+=s.length;
-  if(gCur)total+=gCur.length;
-  gSlots(Math.min(3,Math.floor(total/70)+(total>34?1:0)),false,gPhiReady);
-}
-function mkGlow(size,c1,c2,c3){
-  const cv=document.createElement("canvas");
-  cv.width=cv.height=size;const g=cv.getContext("2d");const h=size/2;
-  const rg=g.createRadialGradient(h,h,0,h,h,h);
-  rg.addColorStop(0,c1);rg.addColorStop(.34,c2);rg.addColorStop(1,c3||"rgba(0,0,0,0)");
-  g.fillStyle=rg;g.fillRect(0,0,size,size);return cv;
-}
-function initSprites(){
-  if(gSprTip)return;
-  gSprTip=mkGlow(48,"rgba(220,244,255,.85)","rgba(70,160,255,.3)","rgba(10,60,180,0)");
-  gSprNib=mkGlow(80,"rgba(255,255,255,.9)","rgba(130,225,255,.42)","rgba(20,90,220,0)");
-  gSprBurst=mkGlow(256,"rgba(255,255,255,.95)","rgba(120,210,255,.5)","rgba(20,80,200,0)");
-}
-function sizeGate(){
-  const d=Math.min(devicePixelRatio||1,1.7);
-  ["hdPaint","hdStroke","hdFx"].forEach(id=>{
-    const c=document.getElementById(id);if(!c)return;
-    c.width=Math.round(innerWidth*d);c.height=Math.round(innerHeight*d);
-    c.getContext("2d").setTransform(d,0,0,d,0,0);
-  });
-  gPctx=document.getElementById("hdPaint")?document.getElementById("hdPaint").getContext("2d"):null;
-  gSctx=document.getElementById("hdStroke")?document.getElementById("hdStroke").getContext("2d"):null;
-  gFctx=document.getElementById("hdFx")?document.getElementById("hdFx").getContext("2d"):null;
-  initSprites();
-}
-addEventListener("resize",()=>{if(document.getElementById("hdGate"))sizeGate()});
-function gMap(lm){
-  const v=gCam;
-  const vw=(v&&v.videoWidth)||640,vh=(v&&v.videoHeight)||480;
-  const sc=Math.max(innerWidth/vw,innerHeight/vh);const dw=vw*sc,dh=vh*sc;
-  return[(innerWidth-dw)/2+(1-lm.x)*dw,(innerHeight-dh)/2+lm.y*dh];
-}
-
-/* SECTION: ink */
-function strokeGlow(ctx,pts,w,gold){
-  if(!ctx||pts.length<2)return;
-  ctx.lineCap="round";ctx.lineJoin="round";
-  const path=()=>{
-    ctx.beginPath();ctx.moveTo(pts[0][0],pts[0][1]);
-    for(let i=1;i<pts.length-1;i++){
-      const m=[(pts[i][0]+pts[i+1][0])/2,(pts[i][1]+pts[i+1][1])/2];
-      ctx.quadraticCurveTo(pts[i][0],pts[i][1],m[0],m[1]);
-    }
-    const l=pts[pts.length-1];ctx.lineTo(l[0],l[1]);ctx.stroke();
-  };
-  ctx.globalCompositeOperation="lighter";
-  if(gold){
-    ctx.strokeStyle="rgba(230,180,90,.10)";ctx.lineWidth=w*6;path();
-    ctx.strokeStyle="rgba(255,214,140,.24)";ctx.lineWidth=w*2.4;path();
-  }else{
-    ctx.strokeStyle="rgba(40,140,255,.07)";ctx.lineWidth=w*6;path();
-    ctx.strokeStyle="rgba(90,205,255,.16)";ctx.lineWidth=w*2.4;path();
-  }
-  ctx.globalCompositeOperation="source-over";
-  ctx.strokeStyle=gold?"rgba(255,232,190,.97)":"rgba(248,252,255,.95)";
-  ctx.lineWidth=w;path();
-}
-function paintBaked(){
-  if(!gPctx)return;
-  gPctx.clearRect(0,0,innerWidth,innerHeight);
-  for(const st of gStrokes)if(st.length>=3)strokeGlow(gPctx,smoothPts(st),2.4,gPhiReady);
-}
-function gSpark(x,y,n,mvx,mvy,hot){
-  const cap=gFrameMs>20?70:120;
-  const vm=Math.hypot(mvx||0,mvy||0);const dir=vm>.2?Math.atan2(mvy,mvx):0;
-  for(let i=0;i<n;i++){let ang,sp;
-    if(vm>.2){const side=Math.random()<.5?1:-1;
-      ang=dir+side*(Math.PI/2)+(Math.random()-.5)*(hot?1.5:1.1);
-      sp=(hot?1.7:1)+Math.random()*(hot?3.4:2.2)}
-    else{ang=Math.random()*Math.PI*2;sp=.7+Math.random()*1.6}
-    const off=1.2+Math.random()*2.4;const life=.16+Math.random()*.24;
-    gSparks.push({x:x+Math.cos(ang)*off,y:y+Math.sin(ang)*off,
-      vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp-.5,
-      life:life,max:life,r:.5+Math.random()*1,
-      c:(Math.random()<.5?"#FFFFFF":(Math.random()<.65?"#9BDDFF":"#FFD9A0"))});
-    if(gSparks.length>cap)gSparks.splice(0,gSparks.length-cap)}
-}
-
-/* SECTION: skeleton */
-function drawSkeleton(lm,t){
-  const fx=gFctx;if(!fx)return;
-  const P=[];for(let i=0;i<21;i++)P.push(gMap(lm[i]));
-  const fl=.8+Math.sin(t*.003)*.07;
-  fx.globalCompositeOperation="lighter";
-  fx.lineCap="round";fx.lineJoin="round";fx.beginPath();
-  for(let i=0;i<HAND_CONNS.length;i++){const c=HAND_CONNS[i];
-    fx.moveTo(P[c[0]][0],P[c[0]][1]);fx.lineTo(P[c[1]][0],P[c[1]][1])}
-  fx.strokeStyle="rgba(60,140,255,"+(.16*fl).toFixed(3)+")";fx.lineWidth=3.4;fx.stroke();
-  fx.strokeStyle="rgba(150,220,255,"+(.42*fl).toFixed(3)+")";fx.lineWidth=1;fx.stroke();
-  fx.globalAlpha=.4*fl;
-  for(let k=0;k<HAND_TIPS.length;k++){const p=P[HAND_TIPS[k]];
-    fx.drawImage(gSprTip,p[0]-8,p[1]-8,16,16)}
-  fx.globalAlpha=1;
-  const tipP=P[8];
-  fx.fillStyle=gCanDraw?"rgba(255,238,205,.95)":"rgba(190,235,255,"+(.5*fl).toFixed(3)+")";
-  fx.beginPath();fx.arc(tipP[0],tipP[1],gCanDraw?2.4:1.4,0,6.2832);fx.fill();
-  for(let i=0;i<21;i++){if(i===8)continue;const p=P[i];
-    fx.fillStyle="rgba(190,235,255,"+(.5*fl).toFixed(3)+")";
-    fx.beginPath();fx.arc(p[0],p[1],1.4,0,6.2832);fx.fill()}
-  fx.globalCompositeOperation="source-over";
-}
-function drawNib(){
-  const fx=gFctx;if(!fx||!gPrevP)return;
-  const x=gPx,y=gPy;gArc+=.5;
-  const fl=.55+Math.sin(gArc*3.1)*.18+Math.random()*.16;
-  fx.globalCompositeOperation="lighter";
-  fx.globalAlpha=Math.min(.85,.75*fl+.2);
-  fx.drawImage(gSprNib,x-22,y-22,44,44);
-  fx.globalAlpha=1;
-  const vx=gTipV[0],vy=gTipV[1],vm=Math.hypot(vx,vy);
-  if(vm>.8){const ux=vx/vm,uy=vy/vm,ln=8+Math.min(20,vm*2.2);
-    fx.strokeStyle="rgba(255,255,255,.8)";fx.lineWidth=.9;
-    fx.beginPath();fx.moveTo(x-ux*6,y-uy*6);fx.lineTo(x+ux*ln,y+uy*ln);fx.stroke()}
-  fx.fillStyle="rgba(255,255,255,.95)";fx.beginPath();fx.arc(x,y,1.6,0,6.2832);fx.fill();
-  fx.globalCompositeOperation="source-over";
-}
-
-/* SECTION: snap-burst */
-function spawnBurst(x,y,scale){
-  scale=scale||1;
-  gBursts.push({x:x,y:y,t:performance.now(),s:scale});
-  const n=Math.round(34*scale);
-  for(let i=0;i<n;i++){
-    const ang=Math.random()*Math.PI*2,sp=(2+Math.random()*5.5)*(.8+.45*scale);
-    const life=.3+Math.random()*.45;
-    gSparks.push({x:x,y:y,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp-.8,
-      life:life,max:life,r:.6+Math.random()*1.4,
-      c:(Math.random()<.6?"#CFEFFF":(Math.random()<.5?"#FFFFFF":"#FFD9A0"))});
-  }
-}
-function drawBursts(fx,now){
-  fx.globalCompositeOperation="lighter";
-  for(let i=gBursts.length-1;i>=0;i--){
-    const b=gBursts[i],age=(now-b.t)/1000;
-    if(age>1){gBursts.splice(i,1);continue}
-    const k=age,e=easeOut(Math.min(1,k*1.5)),S=b.s||1;
-    const rBall=(8+130*e)*S;
-    fx.globalAlpha=Math.max(0,(1-k*k))*.9;
-    fx.drawImage(gSprBurst,b.x-rBall,b.y-rBall,rBall*2,rBall*2);
-    for(let ring=0;ring<2;ring++){
-      const rk=easeOut(clamp(k*1.25-ring*.14,0,1));
-      if(rk<=0)continue;
-      const r=(14+(ring?210:150)*rk)*S;
-      fx.globalAlpha=Math.max(0,(1-rk))*(ring?.4:.75);
-      fx.strokeStyle=ring?"rgba(120,205,255,1)":"rgba(255,255,255,1)";
-      fx.lineWidth=Math.max(.4,(ring?1.4:2.2)*(1-rk));
-      fx.beginPath();fx.arc(b.x,b.y,r,0,6.2832);fx.stroke();
-    }
-    const N=14;
-    fx.globalAlpha=Math.max(0,1-k*1.4)*.8;
-    fx.strokeStyle="rgba(190,235,255,1)";fx.lineWidth=.9;
-    for(let j=0;j<N;j++){
-      const a=j/N*6.2832+b.x*.01,r1=(24+90*e)*S,r2=r1+(18+34*e)*S;
-      fx.beginPath();
-      fx.moveTo(b.x+Math.cos(a)*r1,b.y+Math.sin(a)*r1);
-      fx.lineTo(b.x+Math.cos(a)*r2,b.y+Math.sin(a)*r2);
-      fx.stroke();
-    }
-  }
-  fx.globalAlpha=1;fx.globalCompositeOperation="source-over";
-}
-
-/* SECTION: pinch-fx */
-function pinchMid(lm){
-  try{const a=gMap(lm[4]),b=gMap(lm[8]);return[(a[0]+b[0])/2,(a[1]+b[1])/2]}catch(e){return null}
-}
-function drawPinchCharge(fx,x,y,t){
-  const pl=.55+.3*Math.sin(t*.02);
-  fx.globalCompositeOperation="lighter";
-  const s=46+10*Math.sin(t*.012);
-  fx.globalAlpha=.5*pl;
-  fx.drawImage(gSprBurst,x-s/2,y-s/2,s,s);
-  fx.globalAlpha=.85;
-  fx.strokeStyle="rgba(230,200,143,.95)";fx.lineWidth=1.2;
-  fx.beginPath();fx.arc(x,y,20+5*Math.sin(t*.012),0,6.2832);fx.stroke();
-  fx.strokeStyle="rgba(127,212,255,.55)";
-  fx.beginPath();fx.arc(x,y,30+6*Math.sin(t*.009+1),0,6.2832);fx.stroke();
-  fx.globalAlpha=1;fx.globalCompositeOperation="source-over";
-  gPinchAcc+=gFrameMs;
-  if(gPinchAcc>70){
-    gPinchAcc=0;
-    const ang=Math.random()*Math.PI*2,R=46+Math.random()*26;
-    const sx=x+Math.cos(ang)*R,sy=y+Math.sin(ang)*R;
-    const life=.28;
-    gSparks.push({x:sx,y:sy,vx:(x-sx)/(life*60),vy:(y-sy)/(life*60),
-      life:life,max:life,r:.9,c:(Math.random()<.5?"#FFE9C4":"#CFEFFF")});
-  }
-}
-function clearWithFx(x,y){
-  if(gDone)return;
-  spawnBurst(x,y,1.6);
-  fadePaint();resetStrokes();
-  glog("Cleared","ok");
-  setTimeout(()=>{if(!gDone&&gLastMsg==="Cleared")glog("Draw φ · or touch","")},1400);
-}
-
-/* SECTION: pen-step */
-function penDown(x,y){
-  gCur=[[x,y]];
-  gPx=x;gPy=y;gPrevP=[x,y];
-  gTgtSm=[x,y];
-  gTipV[0]=0;gTipV[1]=0;gSpd=0;
-  gKeepFailAt=0;
-  gAct=performance.now();
-}
-function bakeStroke(noSched){
-  if(!gCur)return;
-  const raw=gCur;gCur=null;
-  if(gSctx)gSctx.clearRect(0,0,innerWidth,innerHeight);
-  if(raw.length>=3){
-    gStrokes.push(raw);
-    paintBaked();
-    updateSlots();
-    if(!noSched)scheduleEval(250);
-  }
-  gPrevP=null;gTgtSm=null;
-}
-function drawLiveStroke(){
-  if(!gSctx)return;
-  gSctx.clearRect(0,0,innerWidth,innerHeight);
-  if(gCur&&gCur.length>1)strokeGlow(gSctx,smoothPts(gCur),2.4,gPhiReady);
-}
-function gStep(){
-  if(gDone)return;
-  let tgt=gHand?(gCanDraw?gTarget:null):(gPtDown&&gPt?gPt:null);
-  if(!tgt)return;
-  if(!gCur){penDown(tgt[0],tgt[1]);return}
-  if(gHand&&!gPtDown){
-    if(!gTgtSm)gTgtSm=[tgt[0],tgt[1]];
-    else{gTgtSm[0]+=(tgt[0]-gTgtSm[0])*G_TGT_A;gTgtSm[1]+=(tgt[1]-gTgtSm[1])*G_TGT_A;}
-    tgt=gTgtSm;
-  }
-  const dx=tgt[0]-gPx,dy=tgt[1]-gPy,d=Math.hypot(dx,dy);
-  if(d>G_JUMP){
-    if(!gHand){
-      if(gCur)gCur.push([tgt[0],tgt[1]]);
-      gPx=tgt[0];gPy=tgt[1];gPrevP=[gPx,gPy];
-      gTipV[0]=dx*.5;gTipV[1]=dy*.5;
-      gAct=performance.now();
-      return;
-    }
-    if(gSpd<20){
-      if(gCur)bakeStroke(true);
-      gCanDraw=false;gPointN=0;gTgtSm=null;
-      gTipV[0]=0;gTipV[1]=0;gSpd=0;gPrevP=null;
-      return;
-    }
-  }
-  const k=Math.min(1,G_PEN_K+d*.006+gSpd*.008);
-  const nx=gPx+dx*k,ny=gPy+dy*k;
-  const mvx=nx-gPx,mvy=ny-gPy,mv=Math.hypot(mvx,mvy);
-  if(mv<.4)return;
-  gPx=nx;gPy=ny;gPrevP=[nx,ny];gAct=performance.now();
-  gTipV[0]=gTipV[0]*.35+mvx*.65;gTipV[1]=gTipV[1]*.35+mvy*.65;
-  gSpd=gSpd*.5+mv*.5;
-  if(mv>2.4)gSpark(nx,ny,Math.min(2,Math.round(mv*.07)+1),mvx,mvy,mv>7);
-  const segs=Math.min(12,Math.max(1,Math.ceil(mv/7)));
-  if(gCur){for(let i=1;i<=segs;i++)gCur.push([gPx+mvx*i/segs,gPy+mvy*i/segs])}
-  updateSlots();
-  scheduleEval(900);
-}
-function scheduleEval(delay){
-  clearTimeout(gEvalTimer);
-  gEvalTimer=setTimeout(()=>{
-    if(gDone||gPhiReady||gPtDown||gPinch||gCur)return;
-    gEval();
-  },delay);
-}
-function fadePaint(){
-  const p=document.getElementById("hdPaint");
-  const s=document.getElementById("hdStroke");
-  if(p)p.style.opacity=0;
-  if(s)s.style.opacity=0;
-  setTimeout(()=>{
-    if(gPctx)gPctx.clearRect(0,0,innerWidth,innerHeight);
-    if(gSctx)gSctx.clearRect(0,0,innerWidth,innerHeight);
-    if(p)p.style.opacity=1;if(s)s.style.opacity=1;
-  },240);
-}
-function resetStrokes(){
-  gStrokes=[];gCur=null;gPrevP=null;gSpd=0;gTgtSm=null;
-  gPhiReady=false;
-  if(gPctx)gPctx.clearRect(0,0,innerWidth,innerHeight);
-  if(gSctx)gSctx.clearRect(0,0,innerWidth,innerHeight);
-  gSlots(0,false,false);
-}
-
-/* SECTION: eval */
-function gEval(){
-  clearTimeout(gEvalTimer);
-  if(gCur)return;
-  const total=gStrokes.reduce((a,s)=>a+s.length,0);
-  if(total<12)return;
-  const v=phiCheck(gStrokes);
-  if(v==="ok"){
-    gPhiReady=true;
-    gSlots(3,false,true);
-    glog("Phi Ready · Pinch To Enter","ok");
-    paintBaked();
-    return;
-  }
-  gFail++;
-  gSlots(3,true,false);
-  setTimeout(()=>gSlots(0,false,gPhiReady),600);
-  if(v==="small"||total>4500||gStrokes.length>10){
-    fadePaint();
-    glog(v==="small"?"Draw Bigger · Retry":"Too Messy · Reset","bad");
-    setTimeout(()=>{if(!gDone)glog("Draw φ · or touch","")},1600);
-    resetStrokes();
-  }else{
-    glog(gLastLoop?"Add Vertical Line · Keep Going":"Draw A Loop · Keep Going","bad");
-    setTimeout(()=>{if(!gDone)glog("Draw φ · or touch","")},1800);
-  }
-  if(gFail>=3){const s=document.getElementById("hdSkip");if(s)s.style.display="block"}
-}
-
-/* SECTION: transition */
-function unlockGate(bx,by){
-  if(gDone)return;gDone=true;gRunning=false;gRAF=false;stopCam();
-  clearTimeout(gEvalTimer);
-  try{sessionStorage.setItem("lyra_gate","1");sessionStorage.setItem("lyraUnlock","1")}catch(e){}
-  const ok=document.getElementById("hdOk");if(ok)ok.classList.add("show");
-  const g=document.getElementById("hdGate");if(g)g.classList.add("out");
-  setTimeout(()=>{const gg=document.getElementById("hdGate");if(gg)gg.remove();enterLyra(bx,by)},120);
-}
-function enterLyra(bx,by){
-  const fl=document.getElementById("flash");
-  const B=(bx!=null);
-  if(fl&&B){
-    fl.style.background="radial-gradient(circle at "+bx+"px "+by+"px,rgba(255,255,255,.98),rgba(157,184,255,.85) 30%,rgba(12,18,48,.25) 66%,transparent 82%)";
-    fl.classList.add("on");
-    setTimeout(()=>{if(fl)fl.classList.remove("on");setTimeout(()=>{if(fl)fl.remove()},700)},780);
-  }
-  try{sessionStorage.setItem("lyraUnlock","1")}catch(e){}
-  try{document.body.classList.remove("hdOn")}catch(e){}
-  if(window.__lyraStart)window.__lyraStart();
-  else{var b=document.getElementById("boot");if(b)b.classList.add("off");}
-}
-function stopCam(){try{if(gStream)gStream.getTracks().forEach(t=>t.stop())}catch(e){}}
-function gFailOut(reason){
-  glog(reason);
-  const s=document.getElementById("hdSkip");
-  if(s){s.textContent="Touch Input ›";s.style.display="block"}
-}
-
-/* SECTION: hand-gestures */
-function isPointing(lm){
-  const idxExt=gD(lm[8],lm[0])>gD(lm[6],lm[0])*1.12;
-  const midIn=gD(lm[12],lm[0])<gD(lm[10],lm[0])*1.08;
-  const ringIn=gD(lm[16],lm[0])<gD(lm[14],lm[0])*1.12;
-  const pinkyIn=gD(lm[20],lm[0])<gD(lm[18],lm[0])*1.12;
-  return idxExt&&midIn&&ringIn&&pinkyIn;
-}
-function stillDrawing(lm){
-  return gD(lm[8],lm[0])>gD(lm[6],lm[0])*.85;
-}
-function updatePinch(lm){
-  const hand=Math.max(.001,gD(lm[0],lm[9]));
-  const d=gD(lm[4],lm[8])/hand;
-  if(!gPinch){
-    if(d<.36){
-      if(++gPinchN>=3){
-        gPinch=true;gPinchT=performance.now();gOpenN=0;gPinchAcc=0;gTarget=null;
-        if(gPhiReady)glog("Release To Enter","ok");
-        if(gCur)bakeStroke();
-      }
-    }
-    else gPinchN=0;
-    return;
-  }
-  if(d>.8){
-    if(++gOpenN>=3){
-      gPinch=false;gPinchN=0;
-      const held=performance.now()-gPinchT;
-      if(held>120){
-        const mx=(lm[4].x+lm[8].x)/2,my=(lm[4].y+lm[8].y)/2;
-        const p=gMap({x:mx,y:my});
-        if(gPhiReady){
-          spawnBurst(p[0],p[1],1.25);
-          glog("Access Granted","ok");
-          setTimeout(()=>unlockGate(p[0],p[1]),260);
-        }else if(gStrokes.length&&!gCur){
-          const v=phiCheck(gStrokes);
-          if(v==="ok"){
-            gPhiReady=true;
-            paintBaked();gSlots(3,false,true);
-            spawnBurst(p[0],p[1],1.25);
-            glog("Access Granted","ok");
-            setTimeout(()=>unlockGate(p[0],p[1]),260);
-          }else{
-            clearWithFx(p[0],p[1]);
-          }
-        }else{
-          clearWithFx(p[0],p[1]);
-        }
-      }
-    }
-  }
-  else gOpenN=0;
-  if(gPinch)gTarget=null;
-}
-
-/* SECTION: main-loop */
-function gTick(t){
-  if(!gRAF)return;requestAnimationFrame(gTick);
-  const raw=(t-(gDtLast||t));gDtLast=t;
-  const dt=Math.min(.05,Math.max(.008,raw/1000));
-  gFrameMs=gFrameMs*.85+raw*.15;
-  const fx=gFctx;if(!fx)return;
-  fx.clearRect(0,0,innerWidth,innerHeight);
-  if(gSparks.length>150)gSparks.splice(0,gSparks.length-150);
-  if(gPinch&&gLm){const pm=pinchMid(gLm);if(pm)drawPinchCharge(fx,pm[0],pm[1],t);}
-  gHand=!!gLm&&(performance.now()-gLmT<700);
-  if(gHand){
-    gMissAt=0;
-    const pOk=isPointing(gLm)&&!gPinch;
-    if(pOk)gPointN++;else gPointN=0;
-    if(gCur){
-      const keep=!gPinch&&stillDrawing(gLm)&&!gPhiReady;
-      if(keep){
-        gKeepFailAt=0;gCanDraw=true;gTarget=gMap(gLm[8]);
-      }else{
-        gCanDraw=false;gTarget=null;
-        if(!gKeepFailAt)gKeepFailAt=performance.now();
-        if(performance.now()-gKeepFailAt>450){bakeStroke();gKeepFailAt=0;}
-      }
-    }else{
-      gKeepFailAt=0;
-      if(gPointN>=3&&!gPhiReady){gCanDraw=true;gTarget=gMap(gLm[8]);}
-      else{gCanDraw=false;gTarget=null;}
-    }
-    const fist=gD(gLm[8],gLm[0])<gD(gLm[5],gLm[0])&&gD(gLm[12],gLm[0])<gD(gLm[9],gLm[0])&&gD(gLm[16],gLm[0])<gD(gLm[13],gLm[0]);
-    if(fist&&!gPinch){
-      if(!gFistAt)gFistAt=performance.now();
-      if(performance.now()-gFistAt>1600&&gStrokes.length){
-        clearWithFx(gPx||innerWidth/2,gPy||innerHeight/2);
-        gFistAt=0;
-      }
-    }else gFistAt=0;
-    drawSkeleton(gLm,t);
-  }else{
-    gCanDraw=false;gPinch=false;gPointN=0;gPinchN=0;gOpenN=0;gFistAt=0;
-    gTarget=null;
-    if(gCur){
-      if(!gHandLostAt)gHandLostAt=performance.now();
-      if(performance.now()-gHandLostAt>400){bakeStroke();gHandLostAt=0;}
-    }else gHandLostAt=0;
-    if(!gMissAt)gMissAt=performance.now();
-    if(!gPtDown&&performance.now()-gMissAt>1300)scheduleEval(10);
-  }
-  gStep();
-  drawLiveStroke();
-  drawNib();
-  drawBursts(fx,performance.now());
-  if(gSparks.length){
-    fx.globalCompositeOperation="lighter";
-    for(let i=gSparks.length-1;i>=0;i--){const s=gSparks[i];
-      s.x+=s.vx*dt*60;s.y+=s.vy*dt*60;
-      s.vy+=.035*dt*60;s.vx*=.955;s.vy*=.955;s.life-=dt;
-      if(s.life<=0){gSparks.splice(i,1);continue}
-      const k=Math.max(0,s.life/s.max);
-      fx.globalAlpha=k*.9;fx.strokeStyle=s.c;fx.lineWidth=Math.max(.5,s.r*.85);
-      fx.beginPath();fx.moveTo(s.x,s.y);fx.lineTo(s.x-s.vx*3,s.y-s.vy*3);fx.stroke()}
-    fx.globalAlpha=1;fx.globalCompositeOperation="source-over";
-  }
-}
-
-/* SECTION: gate-flow */
-async function runGate(){
-  const g=$("#hdGate");if(!g||gDone)return;
-  g.classList.add("show");sizeGate();try{document.body.classList.add("hdOn")}catch(e){}
-  glog("Initializing");
-  setTimeout(()=>{if(!gDone){const s=document.getElementById("hdSkip");if(s)s.style.display="block"}},9000);
-  gRAF=true;gDtLast=0;requestAnimationFrame(gTick);
-  g.addEventListener("pointerdown",ev=>{
-    if(gDone)return;
-    if(ev.target&&ev.target.id==="hdSkip")return;
-    if(gPhiReady)return;
-    gPtDown=true;gPt=[ev.clientX,ev.clientY];penDown(ev.clientX,ev.clientY);
-  });
-  g.addEventListener("pointermove",ev=>{if(!gPtDown||gDone)return;gPt=[ev.clientX,ev.clientY]});
-  const up=()=>{
-    if(!gPtDown)return;
-    const lp=gPt;
-    gPtDown=false;gPt=null;
-    if(gCur&&lp&&!gHand){gCur.push([lp[0],lp[1]]);gPx=lp[0];gPy=lp[1];}
-    bakeStroke();scheduleEval(350);
-  };
-  g.addEventListener("pointerup",up);g.addEventListener("pointercancel",up);
-  const ok=await loadMP();if(gDone)return;
-  if(!ok){gFailOut("Engine Offline · Touch Only");return}
-  glog("Camera");
-  try{gStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user",width:{ideal:480},height:{ideal:360},frameRate:{ideal:30,max:30}},audio:false})}catch(e){gFailOut("No Camera · Touch Only");return}
-  if(gDone)return;
-  gCam=$("#hdCam");gCam.srcObject=gStream;try{await gCam.play()}catch(e){}
-  try{
-    gHands=new Hands({locateFile:f=>MPBASE+f});
-    gHands.setOptions({maxNumHands:1,modelComplexity:0,minDetectionConfidence:.55,minTrackingConfidence:.55});
-    gHands.onResults(r=>{
-      const l=(r.multiHandLandmarks&&r.multiHandLandmarks[0])||null;
-      if(l){
-        const now=performance.now();
-        if(!gSm||now-gLmT>220){
-          gSm=l.map(p=>({x:p.x,y:p.y}));
-        }else{
-          for(let i=0;i<21;i++){
-            const dx=l[i].x-gSm[i].x,dy=l[i].y-gSm[i].y;
-            const a=Math.min(.6,G_SMOOTH_A+Math.hypot(dx,dy)*1.8);
-            gSm[i].x+=a*dx;gSm[i].y+=a*dy;
-          }
-        }
-        gLm=gSm;gLmT=now;gGotHand=true;
-        updatePinch(gSm);
-      }else if(gLm&&performance.now()-gLmT>260){gLm=null}
-    });
-  }catch(e){gFailOut("Model Error · Touch Only");return}
-  glog("Draw φ");
-  gRunning=true;
-  setTimeout(()=>{if(!gGotHand&&!gDone)glog("Draw φ · or touch")},9000);
-  (async function loop(){
-    while(gRunning&&!gDone){
-      const t0=performance.now();
-      try{if(gCam&&gCam.readyState>=2)await gHands.send({image:gCam})}catch(e){}
-      const el=performance.now()-t0;
-      await new Promise(r=>setTimeout(r,Math.max(0,33-el)));
-    }
-  })();
-}
-
-/* SECTION: skip */
-const gSkipEl=document.getElementById("hdSkip");
-if(gSkipEl)gSkipEl.onclick=function(){
-  if(gDone)return;
-  gDone=true;gRunning=false;gRAF=false;stopCam();
-  try{sessionStorage.setItem("lyra_gate","1");sessionStorage.setItem("lyraUnlock","1")}catch(e){}
-  const g=document.getElementById("hdGate");if(g)g.classList.add("out");
-  setTimeout(()=>{const gg=document.getElementById("hdGate");if(gg)gg.remove();enterLyra(innerWidth/2,innerHeight/2)},300);
-};
-
-/* SECTION: start */
-(function start(){
-  const demo=/[?&]demo\b/.test(location.search);
-  if(demo){try{sessionStorage.removeItem("lyra_gate");sessionStorage.removeItem("lyraUnlock")}catch(e){}}
-  let remembered=false;
-  try{remembered=!demo&&!!sessionStorage.getItem("lyra_gate")}catch(e){}
-  if(remembered)enterLyra(null,null);
-  else runGate();
-})();
-
-})();
 </script>
 </body>
 </html>
