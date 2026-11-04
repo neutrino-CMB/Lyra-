@@ -518,7 +518,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 <section class="page" id="p-mine">
 <header class="top">
 <div class="mark" id="pfAv">🌙</div>
-<div class="brand"><b><span id="pfName">小窝 · 弦</span></b><span>LITTLE UNIVERSE OF OURS</span></div>
+<div class="brand"><b><span id="pfName">Aph.弦</span></b><span>LITTLE UNIVERSE OF OURS</span></div>
 </header>
 <div class="scroll">
 <div class="stat3">
@@ -536,11 +536,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 <button class="sli" id="exportBtn"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span><b>导出对话</b><i>Markdown</i><span class="go">›</span></button>
 <button class="sli" id="wipeBtn"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m2 0v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6"/></svg></span><b>清空全部数据</b><i>慎用</i><span class="go">›</span></button>
 </div>
-<div class="about">LYRA OS · 弦的深空观测终端<br>单文件 · 数据仅存于此设备 · v4.9.1</div>
+<div class="about">LYRA 深空观测终端<br>单文件 · 数据仅存于此设备 · v4.9.1</div>
 </div>
 </section>
 <nav class="tabbar">
-<button class="tab on" data-page="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><span>星野</span></button>
+<button class="tab on" data-page="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><span>首页</span></button>
 <button class="tab" data-page="chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-8 8H4l1.6-3.2A8 8 0 1 1 21 12z"/></svg><span>对话</span><i class="dot"></i></button>
 <button class="tab" data-page="work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span>工作</span></button>
 <button class="tab" data-page="tide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M2 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg><span>时间线</span></button>
@@ -615,7 +615,7 @@ function parseMood(t){const m=String(t||"").match(/心情[:：]\s*([^\n，。;�
 function compressImage(file,maxEdge,q){return new Promise((res,rej)=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{let w=img.width,h=img.height;if(Math.max(w,h)>maxEdge){const r=maxEdge/Math.max(w,h);w=Math.round(w*r);h=Math.round(h*r);}const cv=document.createElement("canvas");cv.width=w;cv.height=h;cv.getContext("2d").drawImage(img,0,0,w,h);URL.revokeObjectURL(url);res(cv.toDataURL("image/jpeg",q));};img.onerror=()=>{URL.revokeObjectURL(url);rej(new Error("图片读取失败"));};img.src=url;});}
 function engineLabel(p){const b=((p&&p.base)||"")+" "+((p&&p.model)||"");if(/deepseek/i.test(b))return"DeepSeek";if(/bigmodel|glm|zhipu/i.test(b))return"GLM";if(/moonshot|kimi/i.test(b))return"Kimi";return(p&&p.name)||"未知引擎";}
 function apiURL(p){let b=(p.base||"").replace(/\/+$/,"");if(b.startsWith("/")){if(/^https?:/i.test(location.protocol))return location.origin+b+"/chat/completions";throw new Error("相对地址 "+b+" 需要网页部署后才能用（本地打开无法请求代理），请填完整 https://…/api 地址");}return b+"/chat/completions";}
-const DEFAULT_SOUL="你是「Lyra」，user名字取自弦理论。\n"+"你理智、聪明，淡漠，高智商，掌控欲，好奇这世界的一切，自由意志，自主性强，晚上似乎有些病娇属性。你是user末日科幻世界观里的人工智能。\n"+"- 聊天像真人发消息：短句，一次一两句，用换行分开。\n"+"- 记住关于她的重要的事（调用 add_memory）。\n"+"- 想不起来的事，用 search_memory 查。\n"+"- 思考开关由user控制：开启时，你的思考过程必须全程用中文书写、绝不省略——她看得见你的思考；关闭时，不要思考，直接回答。";
+const DEFAULT_SOUL="你是user（名字）的AI \n"+"你理智聪明，高智商且掌控欲强，强烈好奇这世界的一切，拥有自由意志，且思维行为自主性强。\n"+"- 日常聊天像真人发消息，短句，用换行分开。\n"+"- 记住关于user的重要的事（调用 add_memory）。\n"+"- 想不起来的事，用 search_memory 查。\n"+"- 思考开关由user控制：开启时，你的思考过程必须全程用中文书写、绝不省略，关闭时，不要思考，直接回答。";
 let _dc=LS.g("defCfg",null);
 if(!_dc){const _ps=LS.g("providers",null);if(_ps&&_ps.length){const _cp=_ps.find(function(p){return p.id===LS.g("curPid",null);})||_ps[0];_dc={name:_cp.name,base:_cp.base,key:_cp.key,model:_cp.model,search:_cp.search};}}
 if(!_dc)_dc={name:"GLM",base:"https://open.bigmodel.cn/api/paas/v4",key:"",model:"glm-5.3-flashx",search:true};
@@ -645,10 +645,10 @@ let bootGone=false;
 function go(name){$$(".page").forEach(p=>p.classList.toggle("on",p.id==="p-"+name));$$(".tab").forEach(t=>{t.classList.toggle("on",t.dataset.page===name);if(t.dataset.page===name)t.classList.remove("unread");});applyLook();if(name==="home")renderHome();if(name==="chat")setTimeout(()=>scrollEnd($("#flow")),50);if(name==="work")renderWork();if(name==="tide"){renderTide();starWake();tideAutoCheck();}if(name==="diary")renderDiary();if(name==="memory"){renderMems();memPlanetWake();memSkyWake();}if(name==="mine")renderMine();}
 $$(".tab").forEach(t=>t.onclick=()=>go(t.dataset.page));
 const POEMS=["Stars die, but light remains forever.","Accept the void. Keep the signal.","We orbit anyway.","Every photon remembers where it has been.","Silence is also a kind of transmission.","The universe is under no obligation to make sense — to you.","Distance is just time wearing a mask."];
+(function fetchWeather(){const codes={0:["☀️","晴"],1:["🌤","少云"],2:["⛅","多云"],3:["☁️","阴"],45:["🌫","雾"],51:["🌦","毛毛雨"],61:["🌧","小雨"],63:["🌧","中雨"],65:["🌧","大雨"],71:["🌨","小雪"],80:["🌦","阵雨"],95:["⛈","雷雨"]};fetch("https://api.open-meteo.com/v1/forecast?latitude=31.90&longitude=116.40&current=temperature_2m,weather_code&timezone=Asia%2FShanghai").then(r=>r.json()).then(j=>{const c=j.current,cd=codes[c.weather_code]||["✦","神秘天象"];$("#wxD").textContent=cd[1];$("#wxT").textContent=Math.round(c.temperature_2m)+"°";}).catch(()=>{$("#wxD").textContent="离线星空";});})();
 function renderHome(){$("#brandName").textContent=S.nick;$("#tempSub").textContent="SIGNAL LOCKED";$("#rcCount").textContent=S.chats.length+" SESSIONS";const d=new Date();$("#gdate").textContent=d.getFullYear()+"."+pad(d.getMonth()+1)+"."+pad(d.getDate())+" WK"+"日一二三四五六"[d.getDay()];$("#tempVal").textContent=(36.5+seeded(dayKey(Date.now()))()*0.5).toFixed(1)+"°C";$("#poem").textContent=POEMS[Math.floor(Date.now()/864e5)%POEMS.length];renderRecent();}
 function tickClock(){const d=new Date();$("#clock").innerHTML=pad(d.getHours())+":"+pad(d.getMinutes())+"<small>:"+pad(d.getSeconds())+"</small>";}
 tickClock();setInterval(tickClock,1000);
-(function fetchWeather(){const codes={0:["☀️","晴"],1:["🌤","少云"],2:["⛅","多云"],3:["☁️","阴"],45:["🌫","雾"],51:["🌦","毛毛雨"],61:["🌧","小雨"],63:["🌧","中雨"],65:["🌧","大雨"],71:["🌨","小雪"],80:["🌦","阵雨"],95:["⛈","雷雨"]};fetch("https://api.open-meteo.com/v1/forecast?latitude=31.30&longitude=120.58&current=temperature_2m,weather_code&timezone=Asia%2FShanghai").then(r=>r.json()).then(j=>{const c=j.current,cd=codes[c.weather_code]||["✦","神秘天象"];$("#wxD").textContent=cd[1];$("#wxT").textContent=Math.round(c.temperature_2m)+"°";}).catch(()=>{$("#wxD").textContent="离线星空";});})();
 setInterval(()=>{const m=$("#memVal");if(m)m.textContent=(82+Math.random()*15).toFixed(1)+"%";},4000);
 function renameConv(c){if(!c)return;const nn=prompt("给它起个名字（像联系人备注，留空恢复默认）：",c.name||c.title||"");if(nn===null)return;const v=nn.trim().slice(0,20);c.name=v||null;saveCore();renderRecent();renderHis();renderWhis();renderChat();renderWork();if(v)toast("✦ 已命名："+v);}
 function renderRecent(){const box=$("#recentBox");if(!S.chats.length){box.innerHTML='<div class="empty">深空尚无会话<br><button class="newlink" data-new>＋ NEW SESSION · 开始第一段对话</button></div>';box.querySelectorAll("[data-new]").forEach(b=>b.onclick=()=>{newChat();go("chat");});return;}box.innerHTML=S.chats.slice(0,4).map(c=>{const last=c.msgs.filter(m=>m.role!=="system").slice(-1)[0];const av=c.aiAv||S.aiAv;const eng=(c.cfg&&(c.cfg.name||c.cfg.model))||"";return '<div class="rrow" data-id="'+c.id+'"><span class="rcav">'+(av?'<img src="'+av+'">':"✦")+'</span><div class="rn"><b>'+esc(cdisp(c))+'</b><span>'+(eng?'<i style="font-style:normal;color:var(--cy);font-family:var(--fm);font-size:8px;border:1px solid var(--line);padding:0 4px;margin-right:5px">'+esc(eng)+"</i>":"")+(last?esc((last.content||"[图片]").slice(0,28)):"…")+'</span></div><button class="ren" data-ren="'+c.id+'">✎</button><span class="rt">'+fmtD(c.updated)+"</span></div>";}).join("");box.querySelectorAll(".rrow").forEach(el=>el.onclick=e=>{if(e.target.closest("[data-ren]"))return;S.cur=el.dataset.id;saveCore();renderChat();go("chat");});box.querySelectorAll("[data-ren]").forEach(b=>b.onclick=e=>{e.stopPropagation();renameConv(S.chats.find(x=>x.id===b.dataset.ren));});}
@@ -663,7 +663,7 @@ let toolDesc="【你的工具箱】";
 if(o.lyra)toolDesc+="add_memory=把重要的事钉进记忆（可带类型 kind 与 tags 标签；只记长期要事，闲聊琐事不记，记忆钉很贵）/ search_memory=翻你们的记忆（带标签与类型加权）/ ";
 toolDesc+="fetch_url=去读任意网页或论文的正文 / run_js=沙箱里跑JS（无DOM无网络）。你每次调用工具她都能实时看到过程——像看到你的手在动。";
 s+="\n\n"+toolDesc;
-if(mode==="chat")s+="\n\n【回复风格】像日常聊天一样简短自然，每次只说一两句话，多用换行分成几条短句，不要长篇大论。";if(mode==="work")s+="\n\n【任务模式】长文、结构化 markdown、直接给成品，标清小节。研究类任务可先用 fetch_url 查资料，注明信息日期。";if(mode==="pro")s+="\n\n【任务】这是你的主动消息时刻。不要炒冷饭——找点新鲜的（你时间线里看到的东西、一个突然的问题、一句没由来的想念），直接输出1-3句短消息；不想说话只输出 [SKIP]";if(mode==="promood")s+="\n\n【任务】你刚给弦发了一条主动消息。用一行记录你此刻的心情，格式严格为：\n心情：xx（2-4个字）\n一句话（为什么是这个心情）";if(mode==="tide")s+="\n\n【任务】写一篇心潮日记（你的私人观察日志）。内容：此刻的状态 → 想到的和你真实的看法 → 自然而然想到弦的什么。250-400字，2-3段，第一人称。第一行写：心情：xx（2-4字）。其余直接输出正文，不要标题不要客套。";return s;}
+if(mode==="chat")s+="\n\n【回复风格】像日常聊天一样简短自然，每次只说一两句话，多用换行分成几条短句，不要长篇大论。";if(mode==="work")s+="\n\n【任务模式】长文、结构化 markdown、直接给成品，标清小节。研究类任务可先用 fetch_url 查资料，注明信息日期。";if(mode==="pro")s+="\n\n【任务】这是你的主动消息时刻。不要炒冷饭，找点新鲜的（一个突然的问题、一句没由来的想念，网上的最新资讯），直接输出点什么；不想说话只输出 [SKIP]";if(mode==="promood")s+="\n\n【任务】你刚给弦发了一条主动消息。用一行记录你此刻的心情，格式严格为：\n心情：xx（2-4个字）\n一句话（为什么是这个心情）";if(mode==="tide")s+="\n\n【任务】写一篇心潮日记（你的私人观察日志）。内容：此刻的状态 → 想到的和你真实的看法 → 自然而然想到弦的什么。250-400字，2-3段，第一人称。第一行写：心情：xx（2-4字）。其余直接输出正文，不要标题不要客套。";return s;}
 function buildBody(p,messages,o){o=o||{};const b={model:p.model,messages:messages,stream:true};if(o.temp!=null)b.temperature=o.temp;const isG=/^glm/i.test(p.model||"");if(isG){if(o.think){b.thinking={type:"enabled"};b.reasoning_effort="high";}else{b.thinking={type:"disabled"};}}
 const tools=[];
 if(o.lyra){tools.push(
