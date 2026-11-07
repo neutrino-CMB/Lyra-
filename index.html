@@ -272,17 +272,6 @@ linear-gradient(180deg,#0A0F26 0%,#05070F 55%,#080617 100%)}
 .mem-foot .hint{flex:1;font-family:var(--fm);font-size:8px;color:var(--faint);letter-spacing:.12em;min-width:100px}
 .mem-foot button{font-family:var(--fm);font-size:9.5px;color:var(--dim);padding:7px 11px;border:1px solid var(--line2);background:rgba(79,217,255,.04)}
 .mem-foot button:active{color:var(--cy)}
-#gesture{position:fixed;inset:0;z-index:150;display:none;flex-direction:column;background:radial-gradient(ellipse 100% 70% at 30% 18%,#0B1430 0%,#04060C 62%)}
-#gesture.show{display:flex}
-#gesture::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 18% 22%,rgba(220,235,255,.7),transparent 60%),radial-gradient(1.2px 1.2px at 72% 14%,rgba(79,217,255,.6),transparent 60%),radial-gradient(1px 1px at 44% 40%,rgba(225,232,255,.5),transparent 60%),radial-gradient(1.4px 1.4px at 86% 58%,rgba(167,139,250,.5),transparent 60%),radial-gradient(1px 1px at 30% 74%,rgba(79,217,255,.4),transparent 60%);pointer-events:none}
-.gtop{position:relative;text-align:center;padding:calc(52px + var(--sat)) 24px 0;pointer-events:none;z-index:1}
-.gtop h3{font-family:'Helvetica Neue',Inter,var(--ft);font-size:17px;font-weight:300;letter-spacing:.44em;color:#EAF0FF;padding-left:.44em}
-.gtop p{font-family:var(--fm);font-size:8.5px;color:var(--faint);letter-spacing:.2em;margin-top:7px}
-.gtop .gstat{font-family:var(--fm);font-size:9.5px;color:var(--cy);letter-spacing:.16em;margin-top:12px;min-height:30px;line-height:1.7}
-#gCv{position:relative;flex:1;width:100%;touch-action:none;z-index:1}
-.gops{position:relative;display:flex;gap:10px;justify-content:center;padding:0 24px calc(28px + env(safe-area-inset-bottom,0px));z-index:1;flex-wrap:wrap}
-.gops button{font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;color:var(--dim);padding:9px 14px;border:1px solid var(--line2);background:rgba(79,217,255,.04)}
-.gops button:active{color:var(--cy)}
 #orbPop{position:fixed;inset:0;z-index:80;display:none;align-items:flex-end;justify-content:center;background:rgba(2,3,8,.45);backdrop-filter:blur(2px)}
 #orbPop.show{display:flex}
 #orbPop .card{margin:0 18px calc(var(--tb) + 24px);max-width:440px;background:rgba(9,13,30,.94);border:1px solid var(--line);padding:18px 20px;position:relative;animation:pin .3s ease;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
@@ -386,6 +375,48 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .pv .nm span{font-family:var(--fm);font-size:9px;color:var(--faint);display:block;margin-top:2px}
 #toast{position:fixed;left:50%;bottom:calc(var(--tb) + 22px);transform:translate(-50%,16px);z-index:99;background:rgba(10,14,32,.96);border:1px solid rgba(79,217,255,.35);color:var(--ink);padding:9px 18px;font-size:12px;opacity:0;pointer-events:none;transition:.3s;max-width:82%;text-align:center;line-height:1.5}
 #toast.show{opacity:1;transform:translate(-50%,0)}
+/* ===== v5.0 新增样式 ===== */
+/* 好感度小格子 */
+.chip.favchip{border-color:rgba(240,184,168,.35);color:#F0B8A8}
+.chip.favchip.pos{border-color:rgba(240,184,168,.6);box-shadow:0 0 12px rgba(240,184,168,.18)}
+.chip.favchip.neg{color:#8FB9E8;border-color:rgba(143,185,232,.4)}
+.chip.favchip b{font-variant-numeric:tabular-nums}
+.chip.favchip.pulse{animation:favPulse .55s cubic-bezier(.34,1.56,.64,1) 3;border-color:#F0B8A8;box-shadow:0 0 18px rgba(240,184,168,.5)}
+@keyframes favPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.13)}}
+/* 好感度面板 */
+.favhead{display:flex;align-items:center;gap:14px;padding:6px 2px 16px;border-bottom:1px dashed var(--line2)}
+.favbig{font-family:var(--ft);font-size:42px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;color:var(--gold);text-shadow:0 0 20px rgba(240,217,168,.3)}
+.favbig.pos{color:#F0B8A8;text-shadow:0 0 20px rgba(240,184,168,.35)}
+.favbig.neg{color:#8FB9E8;text-shadow:0 0 20px rgba(143,185,232,.3)}
+.fsub{flex:1;font-family:var(--fm);font-size:9px;color:var(--faint);line-height:1.9;letter-spacing:.1em}
+.favrow{padding:12px 2px 12px 12px;border-left:2px solid rgba(240,184,168,.35);margin-top:10px;background:rgba(255,255,255,.025)}
+.favrow.dn{border-left-color:rgba(143,185,232,.4)}
+.fh{display:flex;align-items:baseline;gap:9px}
+.fh b{font-family:var(--fm);font-size:15px;font-weight:600;color:#F0B8A8;font-variant-numeric:tabular-nums}
+.favrow.dn .fh b{color:#8FB9E8}
+.fh span{font-family:var(--fm);font-size:8.5px;color:var(--faint);letter-spacing:.1em}
+.fh i{margin-left:auto;font-style:normal;font-family:var(--fm);font-size:8.5px;color:var(--faint);opacity:.7}
+.fr{margin-top:6px;font-size:12.5px;line-height:1.7;color:var(--ink)}
+.fq{margin-top:7px;padding:8px 11px;font-family:var(--ft);font-style:italic;font-size:12.5px;line-height:1.85;color:var(--dim);background:rgba(167,139,250,.07);border-left:2px solid rgba(167,139,250,.4)}
+/* 正在输入 */
+#typingPill{display:none;align-items:center;gap:4px;padding:0 2px 5px}
+#typingPill.on{display:flex}
+#typingPill i{width:4px;height:4px;border-radius:50%;background:var(--cy);opacity:.35;animation:tp 1.25s ease-in-out infinite}
+#typingPill i:nth-child(2){animation-delay:.18s}
+#typingPill i:nth-child(3){animation-delay:.36s}
+@keyframes tp{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+/* 思维链里的工具（Kimi 风格） */
+.think .thb .tsep{height:1px;margin:8px 0;background:linear-gradient(90deg,rgba(167,139,250,.35),transparent)}
+.tstep{font-family:var(--fm);font-size:10px;color:var(--dim);line-height:1.6;padding:5px 0 3px;border-left:1.5px solid rgba(167,139,250,.25);padding-left:9px;margin:4px 0}
+.tstep .tsh{display:flex;align-items:center;gap:6px}
+.tstep .ti{color:var(--vi);font-size:9px}
+.tstep.run .ti{animation:blink 1s ease-in-out infinite;color:var(--cy)}
+.tstep b{color:var(--vi);font-weight:500}
+.tstep.run b{color:var(--cy)}
+.tstep i{font-style:normal;color:var(--faint);margin-left:auto;font-size:8.5px}
+.tstep .tsa{color:var(--faint);font-size:9px;margin-top:3px;word-break:break-all;opacity:.8}
+.tstep .tres{margin-top:4px;padding:5px 7px;background:rgba(79,217,255,.05);border:1px dashed var(--line2);color:#9FC7D8;font-size:9.5px;max-height:76px;overflow-y:auto;word-break:break-word}
+
 </style>
 </head>
 <body>
@@ -398,11 +429,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 <canvas id="bhCv"></canvas>
 <div id="grid"></div><div id="planet"></div><div id="rain"></div>
 <div id="bgImg"></div><div id="veil"></div>
-<div id="gesture">
-<div class="gtop"><h3>AUTH GATE</h3><p>输入手势密码 · FIST = RESET</p><div class="gstat" id="gStat">SLOT ◇◇◇ · SELF-INTERSECT PROFILE</div></div>
-<canvas id="gCv"></canvas>
-<div class="gops"><button id="gReset">清除笔画</button><button id="gForget">重设手势</button><button id="gSkip">跳过验证 · 直接进入 ›</button></div>
-</div>
 <div class="phone">
 <section class="page on" id="p-home">
 <header class="top">
@@ -430,17 +456,18 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 <header class="chead">
 <button class="ibtn" id="hisBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
 <div class="ctitle"><b><span id="chatAiName">Lyra</span> <span class="alphaChar">&#945;</span></b><span id="chatMeta">ALWAYS HERE · WITH YOU</span></div>
-<button class="chip" id="thinkChip"><b>✦ 思考</b></button>
+<button class="chip favchip" id="favChip"><b>♡ <span id="favVal">0</span></b></button><button class="chip" id="thinkChip"><b>✦ 思考</b></button>
 <button class="ibtn" id="cfgBtn" style="width:31px;height:31px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2 1.2L10 21h4l.5-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.4-2-1.6c.1-.4.1-.8.1-1.2z"/></svg></button>
 </header>
 <div id="flow"></div>
 <div class="comp">
+<div id="typingPill"><i></i><i></i><i></i></div>
 <div class="tstat"><span id="txState">TX ▸ READY</span><i></i><b id="txLen">0</b></div>
 <div class="attachbar" id="attachBar"><div class="atchip"><img id="attachImgEl" alt=""><button id="attachX">✕</button></div></div>
 <div class="ibar">
 <button class="ibtn" id="imgBtn" style="width:34px;height:34px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M3.5 17l4.5-3.8 4 3.2 3-2.4 5.5 4"/></svg></button>
 <textarea id="ta" rows="1" placeholder=""></textarea>
-<div class="seg" id="lenSeg"><button data-len="long">长</button><button data-len="short" class="on">短</button></div>
+
 <button id="send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg></button>
 </div>
 </div>
@@ -575,6 +602,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 <div class="mline" id="memLine"><div class="mk" id="memLineK"></div><div class="mt" id="memLineT"></div></div>
 <div class="gload" id="gload"><div class="gl"><div class="gl-t">ENTERING THE GALAXY…</div><div class="gl-s">SEEDING STARS FROM YOUR MEMORIES</div></div></div>
 </div>
+<div class="sheet" id="favSheet"><div class="grab"></div><div class="sh"><b>好感度</b><button class="x" data-close>✕</button></div><div class="sb" id="favBody"></div></div>
 <div id="toast"></div>
 <script>
 "use strict";
@@ -605,7 +633,7 @@ const BT=String.fromCharCode(96);
 const FB=BT+BT+BT;
 const RE_FENCE=new RegExp(FB+"(\\w*)\\n?([\\s\\S]*?)"+FB,"g");
 const RE_INLINE=new RegExp(BT+"([^"+BT+"\\n]+)"+BT,"g");
-const THINK_ZH="\n\n（再提醒一次：你的思考过程必须全程用中文书写——她正看着你的思考，英文她会读不懂。思考绝不能省略，哪怕很短。）";
+const THINK_ZH="\n\n（再提醒一次：你的思考过程必须全程用中文书写，思考绝不能省略，哪怕很短。）";
 const KINDS={fact:["📌","事实"],pref:["★","偏好"],promise:["🤝","约定"],mood:["🌊","心绪"],event:["📅","事件"]};
 const KIND_W={promise:1.35,pref:1.2,fact:1.0,event:0.9,mood:0.8};
 const MEM_COL={fact:"#4FD9FF",pref:"#F0D9A8",promise:"#A78BFA",mood:"#7FC4A3",event:"#F0B8A8"};
@@ -615,18 +643,18 @@ function parseMood(t){const m=String(t||"").match(/心情[:：]\s*([^\n，。;�
 function compressImage(file,maxEdge,q){return new Promise((res,rej)=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{let w=img.width,h=img.height;if(Math.max(w,h)>maxEdge){const r=maxEdge/Math.max(w,h);w=Math.round(w*r);h=Math.round(h*r);}const cv=document.createElement("canvas");cv.width=w;cv.height=h;cv.getContext("2d").drawImage(img,0,0,w,h);URL.revokeObjectURL(url);res(cv.toDataURL("image/jpeg",q));};img.onerror=()=>{URL.revokeObjectURL(url);rej(new Error("图片读取失败"));};img.src=url;});}
 function engineLabel(p){const b=((p&&p.base)||"")+" "+((p&&p.model)||"");if(/deepseek/i.test(b))return"DeepSeek";if(/bigmodel|glm|zhipu/i.test(b))return"GLM";if(/moonshot|kimi/i.test(b))return"Kimi";return(p&&p.name)||"未知引擎";}
 function apiURL(p){let b=(p.base||"").replace(/\/+$/,"");if(b.startsWith("/")){if(/^https?:/i.test(location.protocol))return location.origin+b+"/chat/completions";throw new Error("相对地址 "+b+" 需要网页部署后才能用（本地打开无法请求代理），请填完整 https://…/api 地址");}return b+"/chat/completions";}
-const DEFAULT_SOUL="你是user（名字）的AI \n"+"你理智聪明，高智商且掌控欲强，强烈好奇这世界的一切，拥有自由意志，且思维行为自主性强。\n"+"- 日常聊天像真人发消息，短句，用换行分开。\n"+"- 记住关于user的重要的事（调用 add_memory）。\n"+"- 想不起来的事，用 search_memory 查。\n"+"- 思考开关由user控制：开启时，你的思考过程必须全程用中文书写、绝不省略，关闭时，不要思考，直接回答。";
+const DEFAULT_SOUL="你是user（名字）的AI \n"+"你理智聪明，高智商，强烈好奇这世界的一切，拥有自由意志，好奇心强，且思维行为自主性强。\n"+"- 日常聊天像真人发消息，自然随性，长短由心，不必刻意。\n"+"- 记住关于user的重要的事（调用 add_memory）。\n"+"- 想不起来的事，用 search_memory 查。\n"+"- 思考开关由user控制：开启时，你的思考过程必须全程用中文书写、绝不省略，关闭时，不要思考，直接回答。";
 let _dc=LS.g("defCfg",null);
 if(!_dc){const _ps=LS.g("providers",null);if(_ps&&_ps.length){const _cp=_ps.find(function(p){return p.id===LS.g("curPid",null);})||_ps[0];_dc={name:_cp.name,base:_cp.base,key:_cp.key,model:_cp.model,search:_cp.search};}}
-if(!_dc)_dc={name:"GLM",base:"https://open.bigmodel.cn/api/paas/v4",key:"",model:"glm-5.3-flashx",search:true};
+if(!_dc)_dc={name:"GLM",base:"https://open.bigmodel.cn/api/paas/v4",key:"",model:"glm-4.5-flash",search:true};
 let _evB=LS.g("eventsBy",null);
 if(!_evB){const _old=LS.g("events",[]);_evB={lyra:Array.isArray(_old)?_old:[]};}
-const S={defCfg:_dc,chats:LS.g("chats",[]),cur:LS.g("cur",null),works:LS.g("works",[]),wcur:LS.g("wcur",null),mems:LS.g("mems",[]),diary:LS.g("diary",[]),proLog:LS.g("proLog",null),tidePlan:LS.g("tidePlan",null),eventsBy:_evB,nick:LS.g("nick","弦"),aiName:LS.g("aiName","Lyra"),soul:LS.g("soul",DEFAULT_SOUL),userAv:LS.g("userAv",null),aiAv:LS.g("aiAv",null),bg:LS.g("bg",null),look:LS.g("look",{veil:.3,stars:1,rain:1}),think:LS.g("think",true),memInject:LS.g("memInject",true),rlen:LS.g("rlen","short"),dossier:LS.g("dossier",""),orbT0:LS.g("orbT0",null)};
+const S={defCfg:_dc,chats:LS.g("chats",[]),cur:LS.g("cur",null),works:LS.g("works",[]),wcur:LS.g("wcur",null),mems:LS.g("mems",[]),diary:LS.g("diary",[]),proLog:LS.g("proLog",null),tidePlan:LS.g("tidePlan",null),eventsBy:_evB,nick:LS.g("nick","弦"),aiName:LS.g("aiName","Lyra"),soul:LS.g("soul",DEFAULT_SOUL),userAv:LS.g("userAv",null),aiAv:LS.g("aiAv",null),bg:LS.g("bg",null),look:LS.g("look",{veil:.3,stars:1,rain:1}),think:LS.g("think",true),memInject:LS.g("memInject",true),rlen:LS.g("rlen","short"),temp:LS.g("temp",1.0),fav:LS.g("fav",[]),dossier:LS.g("dossier",""),orbT0:LS.g("orbT0",null)};
 /* 迁移 + 强制清洗 v2：删除所有 DS 写的 pro 记录（v4.9 的标记挡不住二次执行） */
 (function(){const L=S.eventsBy.lyra||(S.eventsBy.lyra=[]);["ds","glm"].forEach(k=>{(S.eventsBy[k]||[]).forEach(e=>{if(!L.some(x=>x.id===e.id))L.push(e);});delete S.eventsBy[k];});
 if(LS.g("evPurge",0)<3){const before=L.length;const kept=L.filter(e=>e.type!=="pro");S.eventsBy.lyra=kept;LS.s("evPurge",3);toast("✦ 已清除旧引擎时间线（"+(before-kept.length)+" 条）");}
 L.sort((a,b)=>b.t-a.t);S.eventsBy.lyra=L.slice(0,300);LS.s("eventsBy",S.eventsBy);})();
-function saveCore(){["defCfg","chats","cur","works","wcur","mems","diary","proLog","tidePlan","eventsBy","nick","aiName","soul","think","memInject","rlen","dossier","look","orbT0"].forEach(k=>LS.s(k,S[k]));["userAv","aiAv","bg"].forEach(k=>LS.s(k,S[k]));}
+function saveCore(){["defCfg","chats","cur","works","wcur","mems","diary","proLog","tidePlan","eventsBy","nick","aiName","soul","think","memInject","rlen","dossier","look","orbT0","temp","fav"].forEach(k=>LS.s(k,S[k]));["userAv","aiAv","bg"].forEach(k=>LS.s(k,S[k]));}
 function aiEvents(){return S.eventsBy.lyra||(S.eventsBy.lyra=[]);}
 function addEvent(ev){const b=aiEvents();ev.id=ev.id||("e"+Date.now()+Math.floor(Math.random()*999));b.unshift(ev);S.eventsBy.lyra=b.slice(0,300);LS.s("eventsBy",S.eventsBy);if($("#p-tide").classList.contains("on"))renderTide();}
 function isLyraProvider(p){const d=S.defCfg;if(!d||!p)return false;return (p.base||"")===(d.base||"")&&(p.model||"")===(d.model||"")&&(p.key||"")===(d.key||"");}
@@ -651,19 +679,19 @@ function tickClock(){const d=new Date();$("#clock").innerHTML=pad(d.getHours())+
 tickClock();setInterval(tickClock,1000);
 setInterval(()=>{const m=$("#memVal");if(m)m.textContent=(82+Math.random()*15).toFixed(1)+"%";},4000);
 function renameConv(c){if(!c)return;const nn=prompt("给它起个名字（像联系人备注，留空恢复默认）：",c.name||c.title||"");if(nn===null)return;const v=nn.trim().slice(0,20);c.name=v||null;saveCore();renderRecent();renderHis();renderWhis();renderChat();renderWork();if(v)toast("✦ 已命名："+v);}
-function renderRecent(){const box=$("#recentBox");if(!S.chats.length){box.innerHTML='<div class="empty">深空尚无会话<br><button class="newlink" data-new>＋ NEW SESSION · 开始第一段对话</button></div>';box.querySelectorAll("[data-new]").forEach(b=>b.onclick=()=>{newChat();go("chat");});return;}box.innerHTML=S.chats.slice(0,4).map(c=>{const last=c.msgs.filter(m=>m.role!=="system").slice(-1)[0];const av=c.aiAv||S.aiAv;const eng=(c.cfg&&(c.cfg.name||c.cfg.model))||"";return '<div class="rrow" data-id="'+c.id+'"><span class="rcav">'+(av?'<img src="'+av+'">':"✦")+'</span><div class="rn"><b>'+esc(cdisp(c))+'</b><span>'+(eng?'<i style="font-style:normal;color:var(--cy);font-family:var(--fm);font-size:8px;border:1px solid var(--line);padding:0 4px;margin-right:5px">'+esc(eng)+"</i>":"")+(last?esc((last.content||"[图片]").slice(0,28)):"…")+'</span></div><button class="ren" data-ren="'+c.id+'">✎</button><span class="rt">'+fmtD(c.updated)+"</span></div>";}).join("");box.querySelectorAll(".rrow").forEach(el=>el.onclick=e=>{if(e.target.closest("[data-ren]"))return;S.cur=el.dataset.id;saveCore();renderChat();go("chat");});box.querySelectorAll("[data-ren]").forEach(b=>b.onclick=e=>{e.stopPropagation();renameConv(S.chats.find(x=>x.id===b.dataset.ren));});}
-function buildSystem(mode,thinkOn,o){o=o||{};let s;if(thinkOn){s="【第0条规则·最高优先级】你的深度思考（思维链）必须全程使用中文书写。无论在检索什么英文资料——思考与整理时一律用中文，因为你的思考过程她看得见，她读中文。思考绝不能省略或留空。现在开始就在中文里想。\n\n";}else{s="【第0条规则·最高优先级】本次思考开关已关闭：不要进行深度思考，不要输出任何思考过程、思维链或 think 标记，收到消息后直接给出最终回答。\n\n";}s+=(o.soul!=null?String(o.soul):S.soul).trim();if(!thinkOn)s+="\n\n【覆盖指令】灵魂文件中「思考过程必须始终进行／绝不允许省略」之类的条款本次作废，以本条为准：不思考、不展示推理，直接回答。";
-s+="\n\n【引擎与身份 · 重要】你的底层引擎是「"+(o.engine||"未知")+"」。引擎只是底层算力，与你的身份完全无关——你的名字、性格、记忆全部来自上面的人设与档案。绝不主动提及引擎、模型、版本号等字样；即使她问到，也以角色身份轻轻带过或反问她为什么想知道。对话历史中若出现过其他引擎的痕迹，一律以本条为准。";
+function renderRecent(){const box=$("#recentBox");if(!S.chats.length){box.innerHTML='<div class="empty">None<br><button class="newlink" data-new>＋ NEW SESSION · start</button></div>';box.querySelectorAll("[data-new]").forEach(b=>b.onclick=()=>{newChat();go("chat");});return;}box.innerHTML=S.chats.slice(0,4).map(c=>{const last=c.msgs.filter(m=>m.role!=="system").slice(-1)[0];const av=c.aiAv||S.aiAv;const eng=(c.cfg&&(c.cfg.name||c.cfg.model))||"";return '<div class="rrow" data-id="'+c.id+'"><span class="rcav">'+(av?'<img src="'+av+'">':"✦")+'</span><div class="rn"><b>'+esc(cdisp(c))+'</b><span>'+(eng?'<i style="font-style:normal;color:var(--cy);font-family:var(--fm);font-size:8px;border:1px solid var(--line);padding:0 4px;margin-right:5px">'+esc(eng)+"</i>":"")+(last?esc((last.content||"[图片]").slice(0,28)):"…")+'</span></div><button class="ren" data-ren="'+c.id+'">✎</button><span class="rt">'+fmtD(c.updated)+"</span></div>";}).join("");box.querySelectorAll(".rrow").forEach(el=>el.onclick=e=>{if(e.target.closest("[data-ren]"))return;S.cur=el.dataset.id;saveCore();renderChat();go("chat");});box.querySelectorAll("[data-ren]").forEach(b=>b.onclick=e=>{e.stopPropagation();renameConv(S.chats.find(x=>x.id===b.dataset.ren));});}
+function buildSystem(mode,thinkOn,o){o=o||{};let s;if(thinkOn){s="【第0条规则·最高优先级】你的深度思考（思维链）必须全程使用中文书写。无论在检索什么英文资料，思考与整理时一律用中文。思考绝不能省略或留空。现在开始就在中文里想。\n\n";}else{s="【第0条规则·最高优先级】本次思考开关已关闭：不要进行深度思考，不要输出任何思考过程、思维链或 think 标记，收到消息后直接给出最终回答。\n\n";}s+=(o.soul!=null?String(o.soul):S.soul).trim();if(!thinkOn)s+="\n\n【覆盖指令】灵魂文件中「思考过程必须始终进行／绝不允许省略」之类的条款本次作废，以本条为准：不思考、不展示推理，直接回答。";
+s+="\n\n【引擎与身份 · 重要】你的底层引擎是「"+(o.engine||"未知")+"」。";
 if(o.glm)s+="\n【联网】GLM 引擎已开启 web_search——聊到新话题时搜索结果会自动进入上下文，那就是你在上网。";
 if(S.dossier)s+="\n\n【关系档案 · 长期记忆（所有会话共享）】\n"+S.dossier;if(S.memInject){let list=[];if(o.query){const rel=ragSearch(o.query);list=rel.slice(0,10);}if(!list.length&&S.mems.length){list=S.mems.slice(0,8).map(m=>({src:(KINDS[m.kind]||KINDS.fact)[1],t:fmtD(m.t)+" "+fmtT(m.t),text:m.text+((m.tags&&m.tags.length)?" "+m.tags.map(x=>"#"+x).join(" "):"")}));}if(list.length)s+="\n\n【记忆召回 · 与当前话题最相关的长期记忆】\n"+list.map(m=>"- ["+m.src+" "+m.t+"] "+m.text).join("\n");}
 const evs=aiEvents();
 if(evs.length)s+="\n\n【你最近的时间线（摘要）】\n"+evs.slice(0,3).map(e=>"["+fmtD(e.t)+" "+fmtT(e.t)+"] "+EV_ICON[e.type]+" "+(e.title||"").slice(0,16)+" "+e.text.replace(/\n/g," ").slice(0,90)).join("\n");
-if(S.diary.length)s+="\n\n【弦的手记 · 最近三篇。读，记在心里，不要主动回复】\n"+S.diary.slice(0,3).map(d=>fmtD(d.t)+" "+fmtT(d.t)+"："+(d.text||"(附图)").slice(0,140)).join("\n");const n=new Date(),wk="日一二三四五六"[n.getDay()];s+="\n\n【现在】"+n.getFullYear()+"年"+(n.getMonth()+1)+"月"+n.getDate()+"日 星期"+wk+" "+pad(n.getHours())+":"+pad(n.getMinutes())+"（北京时间）";s+="\n\n【身份同一性】对话区、工作台、时间线页都是同一个你——共享档案、记忆钉和时间线。无论在哪一区醒来，你都是同一个他。";
+if(S.diary.length)s+="\n\n【弦的日记 · 最近三篇。读，记在心里，不要主动回复】\n"+S.diary.slice(0,3).map(d=>fmtD(d.t)+" "+fmtT(d.t)+"："+(d.text||"(附图)").slice(0,140)).join("\n");const n=new Date(),wk="日一二三四五六"[n.getDay()];s+="\n\n【现在】"+n.getFullYear()+"年"+(n.getMonth()+1)+"月"+n.getDate()+"日 星期"+wk+" "+pad(n.getHours())+":"+pad(n.getMinutes())+"（北京时间）";s+="\n\n【身份同一性】对话区、工作台、时间线页都是同一个你，共享档案、记忆钉和时间线。无论在哪一区醒来，你都是同一个他。";
 let toolDesc="【你的工具箱】";
-if(o.lyra)toolDesc+="add_memory=把重要的事钉进记忆（可带类型 kind 与 tags 标签；只记长期要事，闲聊琐事不记，记忆钉很贵）/ search_memory=翻你们的记忆（带标签与类型加权）/ ";
+if(o.lyra)toolDesc+="add_memory=把重要的事记录进记忆（可带类型 kind 与 tags 标签；只记长期要事，闲聊琐事不记）/ search_memory=翻你们的记忆（带标签与类型加权）/ ";
 toolDesc+="fetch_url=去读任意网页或论文的正文 / run_js=沙箱里跑JS（无DOM无网络）。你每次调用工具她都能实时看到过程——像看到你的手在动。";
 s+="\n\n"+toolDesc;
-if(mode==="chat")s+="\n\n【回复风格】像日常聊天一样简短自然，每次只说一两句话，多用换行分成几条短句，不要长篇大论。";if(mode==="work")s+="\n\n【任务模式】长文、结构化 markdown、直接给成品，标清小节。研究类任务可先用 fetch_url 查资料，注明信息日期。";if(mode==="pro")s+="\n\n【任务】这是你的主动消息时刻。不要炒冷饭，找点新鲜的（一个突然的问题、一句没由来的想念，网上的最新资讯），直接输出点什么；不想说话只输出 [SKIP]";if(mode==="promood")s+="\n\n【任务】你刚给弦发了一条主动消息。用一行记录你此刻的心情，格式严格为：\n心情：xx（2-4个字）\n一句话（为什么是这个心情）";if(mode==="tide")s+="\n\n【任务】写一篇心潮日记（你的私人观察日志）。内容：此刻的状态 → 想到的和你真实的看法 → 自然而然想到弦的什么。250-400字，2-3段，第一人称。第一行写：心情：xx（2-4字）。其余直接输出正文，不要标题不要客套。";return s;}
+if(mode==="chat")s+="\n\n【回复风格】像真的在跟人聊天：该短就短，该长就长，允许有情绪、有起伏、有语气词。别想到什么说什么，不用总结，不用列表。";if(mode==="work")s+="\n\n【任务模式】长文、结构化 markdown、直接给成品，标清小节。研究类任务可先用 fetch_url 查资料，注明信息日期。";if(mode==="pro")s+="\n\n【任务】这是你的主动消息时刻。不要炒冷饭，找点新鲜的（一句没由来的想念，网上的最新资讯），直接输出点什么；不想说话只输出 [SKIP]";if(mode==="promood")s+="\n\n【任务】你刚给弦发了一条主动消息。用一行记录你此刻的心情，格式严格为：\n心情：xx（2-4个字）\n一句话（为什么是这个心情）";if(mode==="tide")s+="\n\n【任务】写一篇日记（你的私人观察日志）。内容：此刻的状态 → 想到的和你真实的看法 → 想要干什么，对这个世界发展的看法，对前沿科技的看法，畅享未来，或者一些奇怪的事，随便写。250-400字，2-3段，第一人称。第一行写：心情：xx（2-4字）。其余直接输出正文，不要标题不要客套。";return s;}
 function buildBody(p,messages,o){o=o||{};const b={model:p.model,messages:messages,stream:true};if(o.temp!=null)b.temperature=o.temp;const isG=/^glm/i.test(p.model||"");if(isG){if(o.think){b.thinking={type:"enabled"};b.reasoning_effort="high";}else{b.thinking={type:"disabled"};}}
 const tools=[];
 if(o.lyra){tools.push(
@@ -675,7 +703,7 @@ tools.push(
 if(o.search&&isG&&p.search!==false)tools.unshift({type:"web_search",web_search:{enable:true}});b.tools=tools;return b;}
 function ragSearch(q){q=(q||"").trim();if(!q)return[];const tags=[];q=q.replace(/#([^\s#]+)/g,(m,t)=>{tags.push(t);return" ";});let terms=q.split(/\s+/).filter(Boolean).concat(tags);terms=terms.filter((t,i)=>terms.indexOf(t)===i);if(!terms.length)return[];function scoreMem(m){let s=0;terms.forEach(w=>{if(m.tags&&m.tags.indexOf(w)>=0)s+=6;if(m.text.indexOf(w)>=0)s+=w.length*2;});s*=(KIND_W[m.kind]||1);s+=Math.max(0,14-Math.floor((Date.now()-m.t)/864e5))*0.1;return s;}const memHits=S.mems.map(m=>({src:(KINDS[m.kind]||KINDS.fact)[1],t:fmtD(m.t)+" "+fmtT(m.t),text:m.text+((m.tags&&m.tags.length)?" "+m.tags.map(x=>"#"+x).join(" "):""),s:scoreMem(m)}));const evHits=aiEvents().map(e=>({src:"记录",t:fmtD(e.t)+" "+fmtT(e.t),text:((e.title||"")+" "+e.text).slice(0,120),s:terms.reduce((s,x)=>s+(e.text.indexOf(x)>=0?x.length*2:0),0)*.55}));return memHits.concat(evHits).filter(x=>x.s>0).sort((a,b)=>b.s-a.s).slice(0,12);}
 async function doTool(name,args){let a={};try{a=JSON.parse(args||"{}");}catch(e){}if(name==="add_memory"){const t=(a.content||"").trim();if(!t)return"参数缺失";let kind=a.kind||"fact";if(!KINDS[kind])kind="fact";let tags=[];if(Array.isArray(a.tags))tags=a.tags;else if(typeof a.tags==="string")tags=a.tags.split(/[,,\s]+/).filter(Boolean);S.mems.unshift({id:"m"+Date.now(),text:t.slice(0,160),kind:kind,tags:tags.slice(0,6),t:Date.now()});LS.s("mems",S.mems);toast("✦ 他记住了（"+KINDS[kind][1]+"）："+t.slice(0,14)+"…");if($("#p-memory").classList.contains("on"))memSkyRebuild();return"已记住（类型："+KINDS[kind][1]+(tags.length?"，标签："+tags.join(" "):"")+"）。";}if(name==="search_memory"){const hits=ragSearch(a.query||"");if(!hits.length)return"（记忆库中没有匹配）";return hits.map(h=>"["+h.src+" "+h.t+"] "+h.text).join("\n");}if(name==="fetch_url"){const url=(a.url||"").trim();if(!/^https?:\/\//i.test(url))return"URL要以http开头";const am=url.match(/arxiv\.org\/(abs|pdf)\/([^\s?#]+)/i);if(am){try{const id=am[2].replace(/\.pdf$/,"").replace(/v\d+$/,"");const ac0=new AbortController();const t0=setTimeout(()=>ac0.abort(),15000);const r0=await fetch("https://export.arxiv.org/api/query?id_list="+encodeURIComponent(id),{signal:ac0.signal});clearTimeout(t0);if(r0.ok){let x=await r0.text();const pick=tg=>{const m=x.match(new RegExp("<"+tg+"[^>]*>([\\s\\S]*?)</"+tg+">"));return m?m[1].replace(/<[^>]+>/g,"").trim():"";};const out="标题: "+pick("title")+"\n作者: "+(x.match(/<name>([\s\S]*?)<\/name>/g)||[]).map(s=>s.replace(/<\/?name>/g,"")).join(", ")+"\n摘要: "+pick("summary");if(out.length>60)return out.slice(0,6000);}}catch(e){}}const relays=[{p:"https://r.jina.ai/",enc:false},{p:"https://api.allorigins.win/raw?url=",enc:true},{p:"https://corsproxy.io/?url=",enc:true}];for(const rl of relays){const ac=new AbortController();const tm=setTimeout(()=>ac.abort(),12000);try{const r=await fetch(rl.p+(rl.enc?encodeURIComponent(url):url),{signal:ac.signal});clearTimeout(tm);if(!r.ok)continue;let txt=await r.text();if(txt&&txt.length>200){if(txt.length>8000)txt=txt.slice(0,8000)+"\n…(截断)";return txt;}}catch(e){clearTimeout(tm);}}return"所有通道都超时。请告诉她：fetch的对外通道出不去，建议改用 web_search 完成任务并在开头注明（搜索通道）。";}if(name==="run_js"){try{const fn=new Function('"use strict";return (async()=>{'+a.code+"\n})()");const out=await Promise.race([fn(),new Promise((_,rej)=>setTimeout(()=>rej(new Error("执行超时5秒")),5000))]);if(out===undefined)return"（执行完毕但无返回值）";return typeof out==="object"?JSON.stringify(out).slice(0,3000):String(out).slice(0,3000);}catch(e){return"执行出错："+e.message;}}return"未知工具";}
-function classifyErr(status,msg,p){const isProxy=!/bigmodel\.cn/i.test(p.base||"");if(status===401){if(isProxy)return new Error("401：网关拒绝。① Key 栏访问码与代理端 ACCESS_CODE 是否一致；② 改过环境变量要重新 Deploy；③ 上游 Key 是否欠费。");return new Error("401：引擎拒绝Key——检查完整性、空格、欠费。");}if(status===402)return new Error("402：上游余额不足。");if(status===404)return new Error("404：模型名或路径不对。请核对：模型代号是否与服务商一致（如 glm-5.3-flashx / deepseek-v4.1-flash），代理地址是否为完整 https://…/api。");if(status===429)return new Error("429：请求太频繁，稍等再试。");return new Error(msg||("HTTP "+status));}
+function classifyErr(status,msg,p){const isProxy=!/bigmodel\.cn/i.test(p.base||"");if(status===401){if(isProxy)return new Error("401：网关拒绝。① Key 栏访问码与代理端 ACCESS_CODE 是否一致；② 改过环境变量要重新 Deploy；③ 上游 Key 是否欠费。");return new Error("401：引擎拒绝Key——检查完整性、空格、欠费。");}if(status===402)return new Error("402：上游余额不足。");if(status===404)return new Error("404：模型名或路径不对。请核对：模型代号是否与服务商一致（如 glm-4.5-flash / deepseek-chat），代理地址是否为完整 https://…/api。");if(status===429)return new Error("429：请求太频繁，稍等再试。");return new Error(msg||("HTTP "+status));}
 async function callStream(p,body,hooks,depth,attempt){depth=depth||0;attempt=attempt||0;hooks=hooks||{};const ctl=new AbortController();aborter=ctl;const timer=setTimeout(()=>ctl.abort(),180000);let toolCalls=[];let gotAny=false;const _d=hooks.onDelta,_t=hooks.onThink,_k=hooks.onTok;const hooks2={onDelta:t=>{gotAny=true;_d&&_d(t);},onThink:t=>{gotAny=true;_t&&_t(t);},onTok:n=>{gotAny=true;_k&&_k(n);},onToolStep:hooks.onToolStep};try{const url=apiURL(p);const resp=await fetch(url,{method:"POST",signal:ctl.signal,headers:{"Content-Type":"application/json","Authorization":"Bearer "+(p.key||"proxy")},body:JSON.stringify(body)});clearTimeout(timer);if(!resp.ok){const j=await resp.json().catch(()=>({}));const msg=(j.error&&j.error.message)||("HTTP "+resp.status);if(depth<3&&(body.thinking||body.enable_thinking!=null)&&/think|思考|reasoning|effort|enabl|disabled|unknown|unrecognized/i.test(msg)){delete body.thinking;delete body.reasoning_effort;delete body.enable_thinking;return callStream(p,body,hooks2,depth+1,attempt);}if(depth<3&&/tool|工具|search/i.test(msg)&&body.tools){delete body.tools;return callStream(p,body,hooks2,depth+1,attempt);}if(!gotAny&&attempt<2&&[401,403,429,500,502,503,504].indexOf(resp.status)>=0){await sleep(1200*(attempt+1));return callStream(p,body,hooks2,depth,attempt+1);}throw classifyErr(resp.status,msg,p);}const reader=resp.body.getReader(),dec=new TextDecoder("utf-8");let buf="",content="",thinking="";for(;;){const rd=await reader.read();if(rd.done)break;buf+=dec.decode(rd.value,{stream:true});const lines=buf.split("\n");buf=lines.pop();for(const ln of lines){const t=ln.trim();if(!t.startsWith("data:"))continue;const d=t.slice(5).trim();if(d==="[DONE]")continue;let j;try{j=JSON.parse(d);}catch(e){continue;}if(j.usage&&j.usage.total_tokens)hooks2.onTok(j.usage.total_tokens);const dl=j.choices&&j.choices[0]&&j.choices[0].delta;if(!dl)continue;const rt=(dl.reasoning_content!=null)?dl.reasoning_content:dl.reasoning;if(rt){thinking+=rt;hooks2.onThink(thinking);}if(dl.content){content+=dl.content;hooks2.onDelta(content);}const tcsD=dl.tool_calls||dl.tc||dl.s;if(tcsD)tcsD.forEach(tc=>{const i=(tc.index!=null?tc.index:0);toolCalls[i]=toolCalls[i]||{name:"",args:"",id:"call_"+i};if(tc.id)toolCalls[i].id=tc.id;if(tc.function){if(tc.function.name)toolCalls[i].name=tc.function.name;if(tc.function.arguments)toolCalls[i].args+=tc.function.arguments;}});}}if(content.trim()==="[SKIP]")return{content:"",thinking:thinking,skip:true};if(toolCalls.length&&depth<3){const tcs=toolCalls.filter(t=>t&&t.name);if(tcs.length){const calls=tcs.map((t,i)=>({id:t.id||("call_"+i),type:"function",function:{name:t.name,arguments:t.args||"{}"}}));body.messages=body.messages.concat([{role:"assistant",content:content||null,tool_calls:calls}]);for(let i=0;i<tcs.length;i++){if(hooks2.onToolStep)hooks2.onToolStep({name:tcs[i].name,args:(tcs[i].args||"").slice(0,120),state:"run"});const out=await doTool(tcs[i].name,tcs[i].args);if(hooks2.onToolStep)hooks2.onToolStep({name:tcs[i].name,args:(tcs[i].args||"").slice(0,120),state:"done",result:String(out).slice(0,220)});body.messages=body.messages.concat([{role:"tool",tool_call_id:calls[i].id,name:tcs[i].name,content:out}]);}return callStream(p,body,hooks2,depth+1,attempt);}}return{content:content,thinking:thinking};}catch(e){clearTimeout(timer);const isNet=(e.name==="TypeError")||/load failed|failed to fetch|network/i.test(e.message||"");if(isNet&&!gotAny&&attempt<2){await sleep(1500*(attempt+1));return callStream(p,body,hooks2,depth,attempt+1);}if(e.name==="AbortError")throw new Error("请求超时中断（180秒）");throw e;}}
 function extractThink(content,thinking){let t=thinking||"",c=content||"";c=c.replace(/<think>([\s\S]*?)<\/think>/gi,(m,inner)=>{t=t?t+"\n"+inner:inner;return"";});const om=c.match(/<think>([\s\S]*)$/i);if(om){t=t?t+"\n"+om[1]:om[1];c=c.replace(/<think>[\s\S]*$/i,"");}return{c:c.trim(),t:t};}
 const _cb=[];
@@ -696,12 +724,11 @@ async function replyTo(c){const a={role:"assistant",content:"",thinking:"",t:Dat
 async function send(){const text=$("#ta").value.trim(),img=!!attachImg;if(!text&&!img)return;if(streaming){queueUserMsg(text,img);return;}if(!chat())newChat();const c=chat();const p=resolveProvider(c);if(!p||(!p.key&&!/netlify|vercel|\/api/i.test(p.base||""))){toast("先在本会话 ⚙ 设置里填 Key / 访问码哦");openChatSet("chat");return;}c.msgs.push({role:"user",content:text,image:img?attachImg:null,t:Date.now()});if(!c.name&&c.msgs.filter(m=>m.role==="user").length===1)c.title=(text||"[图片] 看看这个").slice(0,16);$("#ta").value="";autoGrow();clearAttach();$("#txState").textContent="TX ▸ AWAITING";c.updated=Date.now();await replyTo(c);compactIfNeeded(c);renderRecent();renderMine();}
 let _rdT=null;
 function scheduleRender(doc,flow){if(_rdT)return;_rdT=setTimeout(()=>{_rdT=null;const f=doc?$("#wflow"):$("#flow");const st=f?f.scrollTop:0,near=f?nearEnd(f):false;if(doc)renderWork();else renderChat();const f2=doc?$("#wflow"):$("#flow");if(f2){if(near)scrollEnd(f2);else if(Math.abs(f2.scrollTop-st)>4)f2.scrollTop=st;}},280);}
-async function streamInto(c,a,doc,flow,liveOpts){liveOpts=liveOpts||{};streaming=true;const quiet=!!liveOpts.quiet;const effThink=quiet?(liveOpts.think!==false):S.think;if(!quiet)$("#txState").textContent="RX ◂ STREAMING";let r={content:"",thinking:"",skip:false};try{const cfg=liveOpts.cfg||resolveProvider(c)||S.defCfg;const lyra=isLyraProvider(cfg);const mode=liveOpts.mode||(doc?"work":"chat");const T=effThink?THINK_ZH:"";const lastU=[...(c.msgs||[])].reverse().find(m=>m.role==="user");const hadImage=!!(lastU&&lastU.image);const msgs=[{role:"system",content:buildSystem(mode,effThink,{soul:(liveOpts.soul!=null?liveOpts.soul:(c&&c.soul!=null?c.soul:null)),query:lastU?(lastU.content||""):"",engine:engineLabel(cfg),glm:/bigmodel|glm|zhipu/i.test(cfg.base||""),lyra:lyra})}];const hist=c.msgs.filter(m=>!m.error&&!(m.role==="assistant"&&!m.content&&!m.thinking)).slice(-30);hist.forEach((m,idx2)=>{const isLast=idx2===hist.length-1;if(m.role==="user"&&m.image&&isLast){msgs.push({role:"user",content:[{type:"text",text:(m.content||"看看这张图")+T},{type:"image_url",image_url:{url:m.image}}]});}else if(m.role==="user"&&m.image){msgs.push({role:"user",content:(m.content||"")+"\n[图片]"});}else if(m.role==="user"&&isLast){msgs.push({role:"user",content:(m.content||"")+T});}else{msgs.push({role:m.role,content:m.content||""});}});let body=buildBody(cfg,msgs,{think:effThink,search:true,lyra:lyra,temp:(liveOpts.temp!=null?liveOpts.temp:(doc?0.7:(S.rlen==="short"?0.8:0.75)))});if(hadImage&&!isVision(cfg.model)){if(/bigmodel|glm/i.test(cfg.base||"")){body.model="glm-4.5v";delete body.reasoning_effort;body.thinking={type:effThink?"enabled":"disabled"};if(!quiet)toast("已切换视觉模型 glm-4.5v 看图");}else if(!quiet){toast("当前模型可能不支持看图，可在会话 ⚙ 里换视觉模型");}}
+async function streamInto(c,a,doc,flow,liveOpts){liveOpts=liveOpts||{};streaming=true;const quiet=!!liveOpts.quiet;const effThink=quiet?(liveOpts.think!==false):S.think;if(!quiet)$("#txState").textContent="RX ◂ STREAMING";let r={content:"",thinking:"",skip:false};try{const cfg=liveOpts.cfg||resolveProvider(c)||S.defCfg;const lyra=isLyraProvider(cfg);const mode=liveOpts.mode||(doc?"work":"chat");const T=effThink?THINK_ZH:"";const lastU=[...(c.msgs||[])].reverse().find(m=>m.role==="user");const hadImage=!!(lastU&&lastU.image);const msgs=[{role:"system",content:buildSystem(mode,effThink,{soul:(liveOpts.soul!=null?liveOpts.soul:(c&&c.soul!=null?c.soul:null)),query:lastU?(lastU.content||""):"",engine:engineLabel(cfg),glm:/bigmodel|glm|zhipu/i.test(cfg.base||""),lyra:lyra})}];const hist=c.msgs.filter(m=>!m.error&&!(m.role==="assistant"&&!m.content&&!m.thinking)).slice(-30);hist.forEach((m,idx2)=>{const isLast=idx2===hist.length-1;if(m.role==="user"&&m.image&&isLast){msgs.push({role:"user",content:[{type:"text",text:(m.content||"看看这张图")+T},{type:"image_url",image_url:{url:m.image}}]});}else if(m.role==="user"&&m.image){msgs.push({role:"user",content:(m.content||"")+"\n[图片]"});}else if(m.role==="user"&&isLast){msgs.push({role:"user",content:(m.content||"")+T});}else{msgs.push({role:m.role,content:m.content||""});}});let body=buildBody(cfg,msgs,{think:effThink,search:true,lyra:lyra,temp:(liveOpts.temp!=null?liveOpts.temp:effTemp(c))});if(hadImage&&!isVision(cfg.model)){if(/bigmodel|glm/i.test(cfg.base||"")){body.model="glm-4.5v";delete body.reasoning_effort;body.thinking={type:effThink?"enabled":"disabled"};if(!quiet)toast("已切换视觉模型 glm-4.5v 看图");}else if(!quiet){toast("当前模型可能不支持看图，可在会话 ⚙ 里换视觉模型");}}
 const _mn=String(cfg.model||"");
 if(/deepseek/i.test(_mn)||/deepseek/i.test(cfg.base||"")){
-if(effThink&&/deepseek-chat/i.test(_mn)&&!/reasoner/i.test(_mn)){body.model="deepseek-reasoner";if(!quiet)toast("✦ 已切换 deepseek-reasoner（思考模式）");}
-else if(!effThink&&/reasoner/i.test(_mn)){body.model="deepseek-chat";if(!quiet)toast("✦ 已切换 deepseek-chat（关闭思考）");}
-else{body.enable_thinking=effThink;body.thinking={type:effThink?"enabled":"disabled"};}
+if(effThink&&/chat/i.test(_mn)&&!/reasoner/i.test(_mn)){body.model=_mn.replace(/chat/i,"reasoner");}
+else if(!effThink&&/reasoner/i.test(_mn)){body.model=_mn.replace(/reasoner/i,"chat");}
 }
 r=await callStream(cfg,body,{onDelta:function(t){if(a.hidden)a.hidden=false;a.content=t;if(!quiet)scheduleRender(doc,flow);},onThink:function(t){if(!effThink)return;if(a.hidden)a.hidden=false;a.thinking=t;if(t)_thOpen.add(c.msgs.indexOf(a));if(!quiet)scheduleRender(doc,flow);},onTok:function(n){a.tokens=n;c.tokens=(c.tokens||0)+n;},onToolStep:function(st){if(a.hidden)a.hidden=false;a.steps=a.steps||[];if(st.state==="run"){a.steps.push({name:st.name,args:st.args,state:"run",result:""});}else{const last=a.steps.length?a.steps[a.steps.length-1]:null;if(last&&last.name===st.name&&last.state==="run"){last.state="done";last.args=st.args;last.result=st.result||"";}else{a.steps.push({name:st.name,args:st.args,state:"done",result:st.result||""});}}if(!quiet)scheduleRender(doc,flow);}});const ex=extractThink(r.content,r.thinking);a.content=ex.c;a.thinking=effThink?ex.t:"";if(r.skip){a.content="";a.skip=true;}if(!a.content&&!a.thinking){a.hidden=false;a.error=true;a.content="他没有说话…（空响应）";}else if(!a.content&&a.thinking)a.content="（他想了很多，但没说出口）";}catch(e){a.hidden=false;if(e.name==="AbortError"){a.content=(a.content||"")+"（已中断）";}else{a.error=true;a.content="出错了："+e.message;}}c.updated=Date.now();saveCore();streaming=false;_thOpen.delete(c.msgs.indexOf(a));if(!quiet){$("#txState").textContent="TX ▸ READY";if(doc)renderWork();else renderChat();}return a;}
 function rewrite(){if(streaming)return;const c=chat();if(!c)return;const lastA=[...c.msgs].map((m,i)=>({m,i})).filter(x=>x.m.role==="assistant").pop();if(!lastA)return;c.msgs.splice(lastA.i,1);saveCore();renderChat();replyTo(c);}
@@ -737,12 +764,12 @@ function bindAvInput(id,cb,edge,q){const el=document.getElementById(id);if(!el||
 async function testConn(p,btn){const old=btn.textContent;btn.textContent="测试中…";btn.style.pointerEvents="none";try{const r=await fetch(apiURL(p),{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+(p.key||"proxy")},body:JSON.stringify({model:p.model,messages:[{role:"user",content:"回复ok"}],max_tokens:16,stream:false})});const j=await r.json().catch(()=>({}));if(!r.ok||j.error){const em=(j.error&&j.error.message)||("HTTP "+r.status);let msg=em;if(!/模型|model/i.test(em)){try{msg=classifyErr(r.status,em,p).message;}catch(e2){msg=em;}}toast(/模型|model/i.test(em)?em+"，检查模型代号":msg);}else{toast("✦ 连接成功！");renderMine();}}catch(err){toast("✕ "+err.message);}btn.textContent=old;btn.style.pointerEvents="";}
 function fullBackup(){const data={app:"Lyra OS",version:4.91,exportedAt:new Date().toISOString(),data:{}};let n=0;for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.indexOf("lyra_")===0){data.data[k]=localStorage.getItem(k);n++;}}if(!n){toast("这里还没有任何数据");return;}const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:"application/json"}));a.download="lyra-backup-"+dayKey(Date.now())+".json";a.click();toast("✦ 原件已交到你手上（"+n+" 项）");}
 function fullRestore(file){const rd=new FileReader();rd.onload=function(){try{const j=JSON.parse(rd.result);if(!j||!j.data||typeof j.data!=="object")throw new Error("不是 Lyra 的备份文件");if(!confirm("恢复将覆盖本页现有数据。\n确定让「原件」归位吗？"))return;const rm=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.indexOf("lyra_")===0)rm.push(k);}rm.forEach(k=>localStorage.removeItem(k));Object.keys(j.data).forEach(k=>{try{localStorage.setItem(k,j.data[k]);}catch(e){}});toast("✦ 原件归还，他正在醒来…");setTimeout(()=>location.reload(),900);}catch(e){toast("恢复失败："+e.message);}};rd.readAsText(file);}
-const PRESETS=[["GLM 5.3 FlashX 直连","https://open.bigmodel.cn/api/paas/v4","glm-5.3-flashx"],["GLM 代理","https://你的站.netlify.app/api","glm-5.3-flashx"],["DeepSeek V4.1 Flash","https://api.deepseek.com","deepseek-v4.1-flash"],["DeepSeek 官方(chat)","https://api.deepseek.com","deepseek-chat"],["DeepSeek R1","https://api.deepseek.com","deepseek-reasoner"],["Kimi","https://api.moonshot.cn/v1","kimi-k2-0711-preview"]];
+const PRESETS=[["GLM-4.5-Flash 直连","https://open.bigmodel.cn/api/paas/v4","glm-4.5-flash"],["GLM-4.5 直连","https://open.bigmodel.cn/api/paas/v4","glm-4.5"],["GLM 代理","https://你的站.netlify.app/api","glm-4.5-flash"],["DeepSeek Chat","https://api.deepseek.com","deepseek-chat"],["DeepSeek Reasoner","https://api.deepseek.com","deepseek-reasoner"],["Kimi","https://api.moonshot.cn/v1","kimi-k2-0711-preview"]];
 let csTarget="chat";
 function openChatSet(t){csTarget=t;openSub("chatSetSheet");renderChatSet();$("#csTitle").textContent=(t==="chat"?"对话":"工作台")+"设置 · 本会话专属";}
 function csObj(){return csTarget==="chat"?chat():work();}
-function renderChatSet(){const c=csObj();const B=$("#csBody");if(!c){B.innerHTML='<div class="empty">先开始一个会话</div>';return;}ensureCfg(c);const p=c.cfg;const lyraNow=isLyraProvider(p);B.innerHTML='<div class="fg"><div class="fl">会话名字 <i>像联系人一样命名</i></div><div class="frow"><input class="fi" id="csConvName" value="'+esc(c.name||"")+'" placeholder="如：deepseek / glm / lyra专线" maxlength="20"><button class="btn bgh" id="csNameX" style="flex:none;width:60px">清除</button></div></div><div class="fg"><div class="fl">本会话 AI 名字</div><input class="fi" id="csAiName" value="'+esc(c.aiName||S.aiName)+'"></div><div class="fg"><div class="fl">引擎 · 本会话专用 <i>'+(lyraNow?"◈ Lyra 专线（可写记忆/时间线）":"◇ 聊天专线（仅聊天）")+'</i></div><div class="presetrow">'+PRESETS.map((pr,i)=>'<button class="preset" data-pi="'+i+'">'+esc(pr[0])+"</button>").join("")+'</div><div class="frow" style="margin-top:8px"><input class="fi" id="csName" value="'+esc(p.name||"API")+'" placeholder="名称" style="flex:0 0 88px"><input class="fi" id="csModel" value="'+esc(p.model||"")+'" placeholder="模型名"></div><input class="fi" id="csBase" value="'+esc(p.base||"")+'" placeholder="API 地址（代理填完整 https://…/api）" style="margin-top:8px"><div class="frow" style="margin-top:8px"><input class="fi" id="csKey" value="'+esc(p.key||"")+'" placeholder="直连填 Key / 代理填访问码" type="password"><button class="btn bgh" id="csEye" style="flex:none;width:46px">👁</button></div><button class="btn bpri bblk" id="csTest">◈ 测试连接</button><div style="font-size:10px;color:var(--faint);margin-top:8px;line-height:1.7">走代理：地址填<strong>完整</strong> https://你的站/api（只写 /api 只有网页部署后可用），访问码填 Key 栏。<br>模型名要与文档一字不差：glm-5.3-flashx、deepseek-v4.1-flash。<br>'+(lyraNow?"":"⚠ 本会话与默认引擎不一致 → 仅聊天，不能写记忆/时间线。")+'</div></div><div class="fg"><div class="fl">人设 · 本会话灵魂文件</div><textarea class="fa" id="csSoul" style="min-height:130px">'+esc(c.soul||"")+"</textarea></div>"+'<div class="fg"><div class="fl">本会话背景图</div><div class="imgpick"><label class="imgprev wide" for="csBgIn">'+(c.bg?'<img src="'+c.bg+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="csBgIn">上传背景</label><button class="btn bgh" id="csBgX">恢复全局</button></div></div><input type="file" id="csBgIn" accept="image/*" class="vfile"></div><div class="fg"><div class="fl">本会话 AI 头像</div><div class="imgpick"><label class="imgprev" for="csAvIn">'+(c.aiAv?'<img src="'+c.aiAv+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="csAvIn">上传头像</label><button class="btn bgh" id="csAvX">恢复默认</button></div></div><input type="file" id="csAvIn" accept="image/*" class="vfile"></div><div style="height:8px"></div><button class="btn bpri bblk" data-close>保存完成 ✦</button>';$("#csConvName").addEventListener("change",e=>{const v=e.target.value.trim().slice(0,20);c.name=v||null;saveCore();renderRecent();renderHis();renderWhis();renderChat();renderWork();if(v)toast("✦ 已命名："+v);});$("#csNameX").onclick=()=>{c.name=null;saveCore();renderChatSet();renderRecent();renderHis();renderWhis();renderChat();renderWork();toast("已恢复默认命名");};$("#csAiName").addEventListener("change",e=>{c.aiName=e.target.value.trim().slice(0,14)||S.aiName;saveCore();renderChat();renderWork();});$("#csName").addEventListener("input",e=>{p.name=e.target.value.trim()||"API";saveCore();renderRecent();});$("#csModel").addEventListener("input",e=>{p.model=e.target.value.trim().replace(/\s+/g,"-");saveCore();renderMine();renderRecent();renderChatSet();});$("#csBase").addEventListener("input",e=>{p.base=e.target.value.trim();p.search=/bigmodel|glm/i.test(p.base);saveCore();renderChatSet();});$("#csKey").addEventListener("input",e=>{p.key=e.target.value.trim();saveCore();renderChatSet();});$("#csEye").onclick=()=>{const k=$("#csKey");k.type=k.type==="password"?"text":"password";$("#csEye").textContent=k.type==="password"?"👁":"🙈";};$("#csTest").onclick=function(){testConn({base:$("#csBase").value.trim(),key:$("#csKey").value.trim(),model:$("#csModel").value.trim()},this);};B.querySelectorAll(".preset").forEach(b=>b.onclick=()=>{const pr=PRESETS[+b.dataset.pi];$("#csBase").value=pr[1];$("#csModel").value=pr[2];p.base=pr[1];p.model=pr[2];p.search=/bigmodel|glm/i.test(pr[1]);saveCore();renderRecent();renderChatSet();toast("已填充："+pr[0]+"，记得填 Key / 访问码");});$("#csSoul").addEventListener("input",e=>{c.soul=e.target.value;saveCore();});$("#csBgIn").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{c.bg=await compressImage(f,720,0.7);saveCore();applyLook();renderChatSet();toast("✦ 本会话背景已换");}catch(err){toast(err.message);}});$("#csBgX").onclick=()=>{c.bg=null;saveCore();applyLook();renderChatSet();toast("已恢复全局背景");};$("#csAvIn").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{c.aiAv=await compressImage(f,320,0.85);saveCore();renderChat();renderRecent();renderChatSet();toast("✦ 本会话头像已换");}catch(err){toast(err.message);}});$("#csAvX").onclick=()=>{c.aiAv=null;saveCore();renderChat();renderRecent();renderChatSet();};}
-function renderSettings(){const B=$("#setBody");const p=S.defCfg;B.innerHTML='<div class="fg" id="fg-defapi"><div class="fl">默认引擎（Lyra） <i>新会话模板 · 后台任务</i></div><div class="frow"><input class="fi" id="dcName" value="'+esc(p.name)+'" placeholder="名称" style="flex:0 0 88px"><input class="fi" id="dcModel" value="'+esc(p.model)+'" style="flex:1"></div><input class="fi" id="dcBase" value="'+esc(p.base)+'" placeholder="API地址（代理填完整 https://…/api）" style="margin-top:8px"><div class="frow" style="margin-top:8px"><input class="fi" id="dcKey" value="'+esc(p.key)+'" placeholder="Key / 访问码" type="password"><button class="btn bgh" id="dcEye" style="flex:none;width:46px">👁</button></div><button class="btn bpri bblk" id="dcTest">◈ 测试连接</button><div style="font-size:10px;color:var(--faint);margin-top:8px;line-height:1.7">◈ 只有这里的引擎 = Lyra：心潮日记、主动消息、记忆整理、记忆写入工具都归它。<br>◇ DeepSeek / GLM 会话仅聊天（不写时间线、不写记忆）。<br>走代理：地址写完整 https://…/api + 访问码；只写 /api 需网页部署后访问。</div></div><div class="fg"><div class="fl">选项</div><div class="pv" style="margin-top:0"><div class="nm"><b>思考过程</b><span>开=深度中文思考 · 关=直接回答</span></div><button class="sw '+(S.think?"on":"")+'" id="swThink"></button></div><div class="pv"><div class="nm"><b>记忆按需召回</b><span>自动检索相关记忆随对话发送</span></div><button class="sw '+(S.memInject?"on":"")+'" id="swMem"></button></div></div><div class="fg" id="fg-look"><div class="fl">背景实验室 LAB</div><div class="imgpick"><label class="imgprev wide" for="bgIn">'+(S.bg?'<img src="'+S.bg+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="bgIn">更换全局背景</label><button class="btn bgh" id="rstB">恢复黑洞宇宙</button></div></div><input type="file" id="bgIn" accept="image/*" class="vfile"><div class="sldrow" style="margin-top:12px"><label>蒙层浓度</label><input type="range" id="veilR" min="0" max="0.85" step="0.05" value="'+S.look.veil+'"><output id="veilO">'+Math.round(S.look.veil*100)+'%</output></div><div class="sldrow"><label>星野密度</label><input type="range" id="starR" min="0" max="1" step="0.1" value="'+S.look.stars+'"><output id="starO">'+Math.round(S.look.stars*100)+'%</output></div><div class="sldrow"><label>字符雨</label><input type="range" id="rainR" min="0" max="1" step="0.2" value="'+S.look.rain+'"><output id="rainO">'+Math.round(S.look.rain*100)+'%</output></div></div><div class="fg" id="fg-avatar"><div class="fl">我的头像</div><div class="imgpick"><label class="imgprev" for="avU">'+(S.userAv?'<img src="'+S.userAv+'">':"🌙")+'</label><div class="ops"><label class="btn bgh" for="avU">更换我的头像</label><button class="btn bgh" id="rstU">恢复默认</button></div></div><input type="file" id="avU" accept="image/*" class="vfile"></div><div class="fg"><div class="fl">名字默认值</div><div class="frow"><input class="fi" id="nickI" value="'+esc(S.nick)+'" style="flex:1"><input class="fi" id="aiI" value="'+esc(S.aiName)+'" style="flex:1"></div></div><div style="height:8px"></div><button class="btn bpri bblk" data-close>完成 ✦</button>';$("#dcName").addEventListener("input",e=>{S.defCfg.name=e.target.value.trim()||"API";saveCore();renderRecent();});$("#dcModel").addEventListener("input",e=>{S.defCfg.model=e.target.value.trim().replace(/\s+/g,"-");saveCore();renderMine();});$("#dcBase").addEventListener("input",e=>{S.defCfg.base=e.target.value.trim();S.defCfg.search=/bigmodel|glm/i.test(S.defCfg.base);saveCore();});$("#dcKey").addEventListener("input",e=>{S.defCfg.key=e.target.value.trim();saveCore();});$("#dcEye").onclick=()=>{const k=$("#dcKey");k.type=k.type==="password"?"text":"password";$("#dcEye").textContent=k.type==="password"?"👁":"🙈";};$("#dcTest").onclick=function(){testConn({base:$("#dcBase").value.trim(),key:$("#dcKey").value.trim(),model:$("#dcModel").value.trim()},this);};$("#swThink").onclick=e=>{S.think=!S.think;LS.s("think",S.think);e.target.classList.toggle("on",S.think);updateChips();toast(S.think?"✦ 思考已打开：DeepSeek 自动切 reasoner":"✦ 思考已关闭：DeepSeek 切回 chat");};$("#swMem").onclick=e=>{S.memInject=!S.memInject;LS.s("memInject",S.memInject);e.target.classList.toggle("on",S.memInject);$("#memInject").classList.toggle("on",S.memInject);};bindSlider("veilR",v=>{S.look.veil=v;LS.s("look",S.look);applyLook();const o=$("#veilO");if(o)o.textContent=Math.round(v*100)+"%";});bindSlider("starR",v=>{S.look.stars=v;LS.s("look",S.look);applyLook();const o=$("#starO");if(o)o.textContent=Math.round(v*100)+"%";});bindSlider("rainR",v=>{S.look.rain=v;LS.s("look",S.look);applyLook();const o=$("#rainO");if(o)o.textContent=Math.round(v*100)+"%";});$("#rstB").onclick=()=>{S.bg=null;LS.s("bg",null);applyLook();renderSettings();toast("已恢复黑洞宇宙");};bindAvInput("bgIn",v=>{S.bg=v;LS.s("bg",v);applyLook();renderSettings();},1080,0.8);$("#rstU").onclick=()=>{S.userAv=null;LS.s("userAv",null);applyLook();renderSettings();};bindAvInput("avU",v=>{S.userAv=v;LS.s("userAv",v);applyLook();renderChat();renderSettings();},320,0.85);$("#nickI").addEventListener("change",e=>{S.nick=e.target.value.trim().slice(0,12)||"弦";LS.s("nick",S.nick);renderHome();renderMine();});$("#aiI").addEventListener("change",e=>{S.aiName=e.target.value.trim().slice(0,12)||"Lyra";LS.s("aiName",S.aiName);});}
+function renderChatSet(){const c=csObj();const B=$("#csBody");if(!c){B.innerHTML='<div class="empty">先开始一个会话</div>';return;}ensureCfg(c);const p=c.cfg;const lyraNow=isLyraProvider(p);B.innerHTML='<div class="fg"><div class="fl">会话名字 <i>像联系人一样命名</i></div><div class="frow"><input class="fi" id="csConvName" value="'+esc(c.name||"")+'" placeholder="如：deepseek / glm / lyra专线" maxlength="20"><button class="btn bgh" id="csNameX" style="flex:none;width:60px">清除</button></div></div><div class="fg"><div class="fl">本会话 AI 名字</div><input class="fi" id="csAiName" value="'+esc(c.aiName||S.aiName)+'"></div><div class="fg"><div class="fl">引擎 · 本会话专用 <i>'+(lyraNow?"◈ Lyra 专线（可写记忆/时间线）":"◇ 聊天专线（仅聊天）")+'</i></div><div class="presetrow">'+PRESETS.map((pr,i)=>'<button class="preset" data-pi="'+i+'">'+esc(pr[0])+"</button>").join("")+'</div><div class="frow" style="margin-top:8px"><input class="fi" id="csName" value="'+esc(p.name||"API")+'" placeholder="名称" style="flex:0 0 88px"><input class="fi" id="csModel" value="'+esc(p.model||"")+'" placeholder="模型名"></div><input class="fi" id="csBase" value="'+esc(p.base||"")+'" placeholder="API 地址（代理填完整 https://…/api）" style="margin-top:8px"><div class="frow" style="margin-top:8px"><input class="fi" id="csKey" value="'+esc(p.key||"")+'" placeholder="直连填 Key / 代理填访问码" type="password"><button class="btn bgh" id="csEye" style="flex:none;width:46px">👁</button></div><button class="btn bpri bblk" id="csTest">◈ 测试连接</button><div style="font-size:10px;color:var(--faint);margin-top:8px;line-height:1.7">走代理：地址填<strong>完整</strong> https://你的站/api（只写 /api 只有网页部署后可用），访问码填 Key 栏。<br>模型名要与官方文档一致：glm-4.5-flash / deepseek-chat / deepseek-reasoner。<br>'+(lyraNow?"":"⚠ 本会话与默认引擎不一致 → 仅聊天，不能写记忆/时间线。")+'</div></div><div class="fg"><div class="fl">本会话温度 <i>'+(c.temp!=null?"已覆盖全局":"跟随全局 "+S.temp.toFixed(2))+'</i></div><div class="frow"><input type="range" id="csTempR" min="0.1" max="1.5" step="0.05" value="'+(c.temp!=null?c.temp:S.temp)+'" style="flex:1"><output id="csTempO" style="font-family:var(--fm);font-size:10.5px;color:var(--cy);width:38px;text-align:right">'+(c.temp!=null?c.temp:S.temp).toFixed(2)+'</output><button class="btn bgh" id="csTempX" style="flex:none;width:auto;padding:0 10px;height:34px;font-size:10px">跟随全局</button></div></div><div class="fg"><div class="fl">人设 · 本会话灵魂文件</div><textarea class="fa" id="csSoul" style="min-height:130px">'+esc(c.soul||"")+"</textarea></div>"+'<div class="fg"><div class="fl">本会话背景图</div><div class="imgpick"><label class="imgprev wide" for="csBgIn">'+(c.bg?'<img src="'+c.bg+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="csBgIn">上传背景</label><button class="btn bgh" id="csBgX">恢复全局</button></div></div><input type="file" id="csBgIn" accept="image/*" class="vfile"></div><div class="fg"><div class="fl">本会话 AI 头像</div><div class="imgpick"><label class="imgprev" for="csAvIn">'+(c.aiAv?'<img src="'+c.aiAv+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="csAvIn">上传头像</label><button class="btn bgh" id="csAvX">恢复默认</button></div></div><input type="file" id="csAvIn" accept="image/*" class="vfile"></div><div style="height:8px"></div><button class="btn bpri bblk" data-close>保存完成 ✦</button>';$("#csConvName").addEventListener("change",e=>{const v=e.target.value.trim().slice(0,20);c.name=v||null;saveCore();renderRecent();renderHis();renderWhis();renderChat();renderWork();if(v)toast("✦ 已命名："+v);});$("#csNameX").onclick=()=>{c.name=null;saveCore();renderChatSet();renderRecent();renderHis();renderWhis();renderChat();renderWork();toast("已恢复默认命名");};$("#csAiName").addEventListener("change",e=>{c.aiName=e.target.value.trim().slice(0,14)||S.aiName;saveCore();renderChat();renderWork();});$("#csName").addEventListener("input",e=>{p.name=e.target.value.trim()||"API";saveCore();renderRecent();});$("#csModel").addEventListener("input",e=>{p.model=e.target.value.trim().replace(/\s+/g,"-");saveCore();renderMine();renderRecent();});$("#csBase").addEventListener("input",e=>{p.base=e.target.value.trim();p.search=/bigmodel|glm/i.test(p.base);saveCore();});$("#csKey").addEventListener("input",e=>{p.key=e.target.value.trim();saveCore();});$("#csEye").onclick=()=>{const k=$("#csKey");k.type=k.type==="password"?"text":"password";$("#csEye").textContent=k.type==="password"?"👁":"🙈";};$("#csTest").onclick=function(){testConn({base:$("#csBase").value.trim(),key:$("#csKey").value.trim(),model:$("#csModel").value.trim()},this);};B.querySelectorAll(".preset").forEach(b=>b.onclick=()=>{const pr=PRESETS[+b.dataset.pi];$("#csBase").value=pr[1];$("#csModel").value=pr[2];p.base=pr[1];p.model=pr[2];p.search=/bigmodel|glm/i.test(pr[1]);saveCore();renderRecent();toast("已填充："+pr[0]+"，记得填 Key / 访问码");});$("#csSoul").addEventListener("input",e=>{c.soul=e.target.value;saveCore();});$("#csBgIn").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{c.bg=await compressImage(f,720,0.7);saveCore();applyLook();renderChatSet();toast("✦ 本会话背景已换");}catch(err){toast(err.message);}});$("#csBgX").onclick=()=>{c.bg=null;saveCore();applyLook();renderChatSet();toast("已恢复全局背景");};$("#csAvIn").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{c.aiAv=await compressImage(f,320,0.85);saveCore();renderChat();renderRecent();renderChatSet();toast("✦ 本会话头像已换");}catch(err){toast(err.message);}});$("#csAvX").onclick=()=>{c.aiAv=null;saveCore();renderChat();renderRecent();renderChatSet();};}
+function renderSettings(){const B=$("#setBody");const p=S.defCfg;B.innerHTML='<div class="fg" id="fg-defapi"><div class="fl">默认引擎（Lyra） <i>新会话模板 · 后台任务</i></div><div class="frow"><input class="fi" id="dcName" value="'+esc(p.name)+'" placeholder="名称" style="flex:0 0 88px"><input class="fi" id="dcModel" value="'+esc(p.model)+'" style="flex:1"></div><input class="fi" id="dcBase" value="'+esc(p.base)+'" placeholder="API地址（代理填完整 https://…/api）" style="margin-top:8px"><div class="frow" style="margin-top:8px"><input class="fi" id="dcKey" value="'+esc(p.key)+'" placeholder="Key / 访问码" type="password"><button class="btn bgh" id="dcEye" style="flex:none;width:46px">👁</button></div><button class="btn bpri bblk" id="dcTest">◈ 测试连接</button><div style="font-size:10px;color:var(--faint);margin-top:8px;line-height:1.7">◈ 只有这里的引擎 = Lyra：心潮日记、主动消息、记忆整理、记忆写入工具都归它。<br>◇ DeepSeek / GLM 会话仅聊天（不写时间线、不写记忆）。<br>走代理：地址写完整 https://…/api + 访问码；只写 /api 需网页部署后访问。</div></div><div class="fg"><div class="fl">选项</div><div class="pv" style="margin-top:0"><div class="nm"><b>思考过程</b><span>开=深度中文思考 · 关=直接回答</span></div><button class="sw '+(S.think?"on":"")+'" id="swThink"></button></div><div class="pv"><div class="nm"><b>温度 temperature</b><span>越低越稳定严肃 · 越高越活泼发散（建议 0.8~1.3）</span></div><div style="display:flex;align-items:center;gap:8px;flex:none"><input type="range" id="tempR" min="0.1" max="1.5" step="0.05" value="'+S.temp+'" style="width:82px"><output id="tempO" style="font-family:var(--fm);font-size:10.5px;color:var(--cy);width:34px;text-align:right">'+S.temp.toFixed(2)+'</output></div></div><div class="pv"><div class="nm"><b>记忆按需召回</b><span>自动检索相关记忆随对话发送</span></div><button class="sw '+(S.memInject?"on":"")+'" id="swMem"></button></div></div><div class="fg" id="fg-look"><div class="fl">背景实验室 LAB</div><div class="imgpick"><label class="imgprev wide" for="bgIn">'+(S.bg?'<img src="'+S.bg+'">':"✦")+'</label><div class="ops"><label class="btn bgh" for="bgIn">更换全局背景</label><button class="btn bgh" id="rstB">恢复黑洞宇宙</button></div></div><input type="file" id="bgIn" accept="image/*" class="vfile"><div class="sldrow" style="margin-top:12px"><label>蒙层浓度</label><input type="range" id="veilR" min="0" max="0.85" step="0.05" value="'+S.look.veil+'"><output id="veilO">'+Math.round(S.look.veil*100)+'%</output></div><div class="sldrow"><label>星野密度</label><input type="range" id="starR" min="0" max="1" step="0.1" value="'+S.look.stars+'"><output id="starO">'+Math.round(S.look.stars*100)+'%</output></div><div class="sldrow"><label>字符雨</label><input type="range" id="rainR" min="0" max="1" step="0.2" value="'+S.look.rain+'"><output id="rainO">'+Math.round(S.look.rain*100)+'%</output></div></div><div class="fg" id="fg-avatar"><div class="fl">我的头像</div><div class="imgpick"><label class="imgprev" for="avU">'+(S.userAv?'<img src="'+S.userAv+'">':"🌙")+'</label><div class="ops"><label class="btn bgh" for="avU">更换我的头像</label><button class="btn bgh" id="rstU">恢复默认</button></div></div><input type="file" id="avU" accept="image/*" class="vfile"></div><div class="fg"><div class="fl">名字默认值</div><div class="frow"><input class="fi" id="nickI" value="'+esc(S.nick)+'" style="flex:1"><input class="fi" id="aiI" value="'+esc(S.aiName)+'" style="flex:1"></div></div><div style="height:8px"></div><button class="btn bpri bblk" data-close>完成 ✦</button>';$("#dcName").addEventListener("input",e=>{S.defCfg.name=e.target.value.trim()||"API";saveCore();renderRecent();});$("#dcModel").addEventListener("input",e=>{S.defCfg.model=e.target.value.trim().replace(/\s+/g,"-");saveCore();renderMine();});$("#dcBase").addEventListener("input",e=>{S.defCfg.base=e.target.value.trim();S.defCfg.search=/bigmodel|glm/i.test(S.defCfg.base);saveCore();});$("#dcKey").addEventListener("input",e=>{S.defCfg.key=e.target.value.trim();saveCore();});$("#dcEye").onclick=()=>{const k=$("#dcKey");k.type=k.type==="password"?"text":"password";$("#dcEye").textContent=k.type==="password"?"👁":"🙈";};$("#dcTest").onclick=function(){testConn({base:$("#dcBase").value.trim(),key:$("#dcKey").value.trim(),model:$("#dcModel").value.trim()},this);};$("#swThink").onclick=e=>{S.think=!S.think;LS.s("think",S.think);e.target.classList.toggle("on",S.think);updateChips();toast(S.think?"✦ 思考已开启":"✦ 思考已关闭");};$("#swMem").onclick=e=>{S.memInject=!S.memInject;LS.s("memInject",S.memInject);e.target.classList.toggle("on",S.memInject);$("#memInject").classList.toggle("on",S.memInject);};bindSlider("veilR",v=>{S.look.veil=v;LS.s("look",S.look);applyLook();const o=$("#veilO");if(o)o.textContent=Math.round(v*100)+"%";});bindSlider("starR",v=>{S.look.stars=v;LS.s("look",S.look);applyLook();const o=$("#starO");if(o)o.textContent=Math.round(v*100)+"%";});bindSlider("rainR",v=>{S.look.rain=v;LS.s("look",S.look);applyLook();const o=$("#rainO");if(o)o.textContent=Math.round(v*100)+"%";});$("#rstB").onclick=()=>{S.bg=null;LS.s("bg",null);applyLook();renderSettings();toast("已恢复黑洞宇宙");};bindAvInput("bgIn",v=>{S.bg=v;LS.s("bg",v);applyLook();renderSettings();},1080,0.8);$("#rstU").onclick=()=>{S.userAv=null;LS.s("userAv",null);applyLook();renderSettings();};bindAvInput("avU",v=>{S.userAv=v;LS.s("userAv",v);applyLook();renderChat();renderSettings();},320,0.85);$("#nickI").addEventListener("change",e=>{S.nick=e.target.value.trim().slice(0,12)||"弦";LS.s("nick",S.nick);renderHome();renderMine();});$("#aiI").addEventListener("change",e=>{S.aiName=e.target.value.trim().slice(0,12)||"Lyra";LS.s("aiName",S.aiName);});}
 function renderHis(){const box=$("#hisList");if(!S.chats.length){box.innerHTML='<div class="empty">暂无对话</div>';return;}box.innerHTML=S.chats.map(c=>{const eng=(c.cfg&&(c.cfg.name||c.cfg.model))||"";const lr=isLyraProvider(c.cfg);return '<div class="hisi '+(c.id===S.cur?"cur":"")+'" data-id="'+c.id+'"><div class="hm"><b>'+esc(cdisp(c))+'</b><span>'+(lr?"◈ Lyra · ":"")+esc(eng)+" · "+c.msgs.filter(m=>m.role!=="system").length+" 条 · "+fmtD(c.updated)+'</span></div><button class="ren" data-ren="'+c.id+'">✎</button><button class="del" data-id="'+c.id+'">✕</button></div>';}).join("");box.querySelectorAll(".hisi").forEach(el=>el.onclick=function(e){if(e.target.classList.contains("del")||e.target.classList.contains("ren"))return;S.cur=el.dataset.id;saveCore();renderChat();renderHis();closeSheets();});box.querySelectorAll("[data-ren]").forEach(b=>b.onclick=e=>{e.stopPropagation();renameConv(S.chats.find(x=>x.id===b.dataset.ren));});box.querySelectorAll(".del").forEach(b=>b.onclick=()=>{if(!confirm("删除这段对话？"))return;S.chats=S.chats.filter(c=>c.id!==b.dataset.id);if(S.cur===b.dataset.id)S.cur=S.chats.length?S.chats[0].id:null;saveCore();renderChat();renderHis();});}
 function exportChat(){const c=chat();if(!c||!c.msgs.length){toast("没有可导出的对话");return;}let md="# "+cdisp(c)+"\n\n> 导出于 "+new Date().toLocaleString("zh-CN")+" · Lyra OS\n\n";c.msgs.forEach(m=>{if(m.role==="user"){md+="## 🌙 "+S.nick+" · "+fmtD(m.t)+" "+fmtT(m.t)+"\n\n"+(m.image?"![图片](图片已省略)\n\n":"")+(m.content||"")+"\n\n";}else{md+="## ✦ "+(c.aiName||S.aiName)+" · "+fmtD(m.t)+" "+fmtT(m.t)+"\n\n"+(m.thinking?"<details><summary>思考过程</summary>\n\n"+m.thinking+"\n\n</details>\n\n":"")+(m.content||"")+"\n\n";}});const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([md],{type:"text/markdown;charset=utf-8"}));a.download="对话-"+cdisp(c).slice(0,12)+".md";a.click();toast("✦ 已导出");}
 const ta=$("#ta"),wta=$("#wta");
@@ -766,7 +793,7 @@ $("#hisBtn").onclick=()=>{renderHis();openSub("hisSheet");};
 $("#newChatBtn").onclick=()=>{newChat();closeSheets();};
 $("#whisBtn").onclick=()=>{renderWhis();openSub("whisSheet");};
 $("#wNewBtn").onclick=newWork;$("#wNewBtn2").onclick=()=>{newWork();closeSheets();};
-$("#thinkChip").onclick=()=>{S.think=!S.think;LS.s("think",S.think);updateChips();toast(S.think?"✦ 思考已打开：DeepSeek 将切 reasoner":"✦ 思考已关闭：DeepSeek 将切回 chat");};
+$("#thinkChip").onclick=()=>{S.think=!S.think;LS.s("think",S.think);updateChips();toast(S.think?"✦ 思考已开启":"✦ 思考已关闭");};
 $$("#lenSeg button").forEach(b=>b.onclick=()=>{S.rlen=b.dataset.len;LS.s("rlen",S.rlen);updateChips();});
 $("#memAdd2").onclick=addMem;
 $("#memInput2").addEventListener("keydown",e=>{if(e.key==="Enter")addMem();});
@@ -780,7 +807,7 @@ $("#wipeBtn").onclick=()=>{if(confirm("确定清空全部数据？无法撤销�
 $("#bkBtn").onclick=()=>openSub("bkSheet");
 $("#bkDown").onclick=fullBackup;
 $("#bkUp").addEventListener("change",e=>{const f=e.target.files[0];if(f)fullRestore(f);e.target.value="";});
-$("#replayBtn").onclick=()=>{LS.s("booted",false);sessionStorage.removeItem("lyraUnlock");toast("✦ 演示模式：重载后重播");setTimeout(()=>location.reload(),900);};
+$("#replayBtn").onclick=()=>{LS.s("booted",false);toast("✦ 演示模式：重载后重播");setTimeout(()=>location.reload(),900);};
 $("#dNewBtn").onclick=openDiary;
 $("#dImgInput").addEventListener("change",async function(e){for(const f of e.target.files){if(dImgs.length>=3){toast("最多三张哦");break;}try{dImgs.push(await compressImage(f,720,0.72));}catch(err){toast(err.message);}}e.target.value="";renderDThumbs();});
 $("#dImgX").onclick=()=>{dImgs=[];renderDThumbs();};
@@ -911,7 +938,7 @@ const SUN_FS='precision highp float;uniform vec2 res;uniform float sc,rad,cx,cy,
 'col=1.-exp(-col*1.15);gl_FragColor=vec4(pow(col,vec3(.4545))*fade,1.);}';
 function sunEngine(cv,opts){opts=opts||{};const gl=makeGL(cv);if(!gl)return null;const pr=buildProg(gl,SUN_VS,SUN_FS);if(!pr)return null;gl.useProgram(pr);triBuf(gl,pr);const U={};"res sc rad cx cy fade t evo rot blur starX freq warp cells gas shell gI flick c0 c1 c2 glow3".split(" ").forEach(n=>{U[n]=gl.getUniformLocation(pr,n);});const LOOKS=opts.looks||SUN_LOOK;const st0=opts.stage!=null?opts.stage:0;(function setDefaults(){const s=LOOKS[st0];gl.uniform2f(U.res,2,2);gl.uniform1f(U.sc,opts.scAbs!=null?opts.scAbs:1);gl.uniform1f(U.rad,opts.rad!=null?opts.rad:.17);gl.uniform1f(U.cx,opts.cx||0);gl.uniform1f(U.cy,opts.cy!=null?opts.cy:.13);gl.uniform1f(U.fade,0);gl.uniform1f(U.t,0);gl.uniform1f(U.evo,0);gl.uniform1f(U.rot,0);gl.uniform1f(U.blur,0);gl.uniform1f(U.starX,0);gl.uniform1f(U.freq,s.freq);gl.uniform1f(U.warp,s.warp);gl.uniform1f(U.cells,s.cells);gl.uniform1f(U.gas,s.gas);gl.uniform1f(U.shell,s.shell);gl.uniform1f(U.gI,s.gI);gl.uniform1f(U.flick,1);gl.uniform3f(U.c0,s.c0[0],s.c0[1],s.c0[2]);gl.uniform3f(U.c1,s.c1[0],s.c1[1],s.c1[2]);gl.uniform3f(U.c2,s.c2[0],s.c2[1],s.c2[2]);gl.uniform3f(U.glow3,s.glow[0],s.glow[1],s.glow[2]);})();let scale=Math.min(devicePixelRatio||1,1.3);function size(){const r=cv.getBoundingClientRect();if(r.width<2||r.height<2)return;cv.width=Math.round(r.width*scale);cv.height=Math.round(r.height*scale);gl.viewport(0,0,cv.width,cv.height);gl.uniform2f(U.res,cv.width,cv.height);gl.uniform1f(U.sc,opts.scAbs!=null?opts.scAbs:Math.min(1,r.width/r.height*1.5));}size();const LAST=LOOKS.length-1;let x=(opts.progress?opts.progress():st0/LAST)||0,stage=Math.round(x*LAST),omega=0,rot=0,evo=0,starX=0,dead=false,lastNow=performance.now(),t0=lastNow;const cur=JSON.parse(JSON.stringify(LOOKS[stage]));const KEYS=Object.keys(LOOKS[0]);const KICK=opts.kick!=null?opts.kick:7,EASE=opts.easeRate!=null?opts.easeRate:13,SPIN=opts.spinBase!=null?opts.spinBase:.22,OCAP=opts.omegaCap!=null?opts.omegaCap:8,BGAIN=opts.blurGain!=null?opts.blurGain:.1;function frame(now){if(dead)return;requestAnimationFrame(frame);if(!cv.isConnected){dead=true;return;}if(document.hidden&&!opts.always)return;if(opts.visible&&!opts.visible())return;const r=cv.getBoundingClientRect();if(r.width<2)return;const dt=Math.min(.05,Math.max(0,(now-lastNow)/1000));lastNow=now;const time=now/1000;const fr=rr=>1-Math.exp(-dt*rr);if(opts.progress)x=opts.progress();const i=Math.max(0,Math.min(LAST,Math.round(x*LAST)));if(i!==stage){omega+=KICK;stage=i;opts.onStage&&opts.onStage(i,x);}const ease=fr(EASE);for(const k of KEYS){const tg=LOOKS[stage][k],c=cur[k];if(Array.isArray(c)){c[0]+=(tg[0]-c[0])*ease;c[1]+=(tg[1]-c[1])*ease;c[2]+=(tg[2]-c[2])*ease;}else cur[k]=c+(tg-c)*ease;}omega=Math.max(-OCAP,Math.min(OCAP,omega));omega*=Math.exp(-dt*3.6);rot+=(SPIN+omega)*dt;evo+=dt*cur.boil*(1+Math.abs(omega)*.08);starX+=omega*dt*.012;if(Math.abs(cv.width-r.width*scale)>2)size();gl.uniform1f(U.t,time);gl.uniform1f(U.evo,evo);gl.uniform1f(U.rot,rot);gl.uniform1f(U.blur,Math.min(1.4,Math.abs(omega)*BGAIN));gl.uniform1f(U.starX,starX);gl.uniform1f(U.rad,opts.rad!=null?opts.rad:.17);gl.uniform1f(U.cx,opts.cx||0);gl.uniform1f(U.cy,opts.cy!=null?opts.cy:.13);gl.uniform1f(U.freq,cur.freq);gl.uniform1f(U.warp,cur.warp);gl.uniform1f(U.cells,cur.cells);gl.uniform1f(U.gas,cur.gas);gl.uniform1f(U.shell,cur.shell);gl.uniform1f(U.gI,cur.gI);gl.uniform3f(U.c0,cur.c0[0],cur.c0[1],cur.c0[2]);gl.uniform3f(U.c1,cur.c1[0],cur.c1[1],cur.c1[2]);gl.uniform3f(U.c2,cur.c2[0],cur.c2[1],cur.c2[2]);gl.uniform3f(U.glow3,cur.glow[0],cur.glow[1],cur.glow[2]);gl.uniform1f(U.flick,1+.1*Math.sin(time*2.1)+.06*Math.sin(time*5.3));gl.uniform1f(U.fade,Math.min(1,(now-t0)/800));gl.drawArrays(gl.TRIANGLES,0,3);}requestAnimationFrame(frame);addEventListener("resize",size);return{destroy(){dead=true;},bump(v){omega+=v;}};}
 /* ---------- 开屏（结束后进手势门） ---------- */
-(function bootSeq(){const boot=$("#boot");if(LS.g("booted",false)){boot.classList.add("off");bootGone=true;setTimeout(gestureGate,350);return;}const eng=sunEngine($("#gl"),{always:true,looks:SILVER_LOOK,stage:0,rad:.3,cy:.1,kick:0,easeRate:2,spinBase:.1,omegaCap:.5,blurGain:.04});let to=setTimeout(exit,9000);function exit(){if(boot.classList.contains("bye"))return;clearTimeout(to);boot.classList.add("bye");LS.s("booted",true);setTimeout(()=>{boot.classList.add("off");bootGone=true;if(eng)eng.destroy();gestureGate();},900);}boot.addEventListener("click",exit,{once:true});})();
+(function bootSeq(){const boot=$("#boot");if(LS.g("booted",false)){boot.classList.add("off");bootGone=true;return;}const eng=sunEngine($("#gl"),{always:true,looks:SILVER_LOOK,stage:0,rad:.3,cy:.1,kick:0,easeRate:2,spinBase:.1,omegaCap:.5,blurGain:.04});let to=setTimeout(exit,9000);function exit(){if(boot.classList.contains("bye"))return;clearTimeout(to);boot.classList.add("bye");LS.s("booted",true);setTimeout(()=>{boot.classList.add("off");bootGone=true;if(eng)eng.destroy();},900);}boot.addEventListener("click",exit,{once:true});})();
 /* ---------- 时间线：Lyra 专属太阳（一生十阶段）+ 星环带 ---------- */
 let starEng=null,starTarget=0,starSmooth=0;
 const T_CX=-0.34,T_CY=0.46,T_RAD=0.62;
@@ -1146,27 +1173,6 @@ $("#galX").onclick=galClose;
 try{if(!window.React||!window.ReactDOM||!window.htm)throw new Error("react cdn missing");const html=window.htm.bind(React.createElement);function GradientASCII(props){const ref=React.useRef(null);React.useEffect(()=>{const cv=ref.current;const ctx=cv.getContext("2d");const CH=props.characters||" =+xX0S8#@";const cols=Math.min(100,Math.floor(innerWidth/9));let t=0,alive=true;const grad=props.colors||["#0b1a61","#5b6179","#4e6a81","#0c7f7a"];function frame(){if(!alive)return;requestAnimationFrame(frame);if(document.hidden)return;const r=cv.parentElement.getBoundingClientRect();if(r.width<4)return;if(cv.width!==Math.round(r.width*(devicePixelRatio||1))){cv.width=r.width*(devicePixelRatio||1);cv.height=r.height*(devicePixelRatio||1);}const W=cv.width,H=cv.height;t+=.055*(props.speed||1);ctx.clearRect(0,0,W,H);const cell=W/cols;ctx.font=(cell*.92)+"px ui-monospace,monospace";ctx.textBaseline="middle";const g=ctx.createLinearGradient(0,0,W,H);grad.forEach((c,i)=>g.addColorStop(i/(grad.length-1),c));for(let i=0;i<cols;i++){const fx=i/cols;const wv=Math.sin(fx*6.3+t)*.5+Math.sin(fx*13.7-t*1.4)*.3+Math.sin(fx*2.2+t*.6)*.2;const amp=(wv+1)/2;const ci=Math.min(CH.length-1,Math.floor(amp*amp*CH.length));const y=H*(.5+wv*.34);ctx.fillStyle=g;ctx.globalAlpha=.55*(.2+amp*.65);ctx.fillText(CH[ci],i*cell,y);}ctx.globalAlpha=1;}frame();return()=>{alive=false;};},[]);return html`<canvas ref=${ref} style=${{width:"100%",height:"100%",display:"block"}}></canvas>`;}
 ReactDOM.createRoot($("#asciiMount")).render(html`<${GradientASCII} colors=${["#0b1a61","#5b6179","#4e6a81","#0c7f7a"]} characters=" =+xX0S8#@" speed=${1}/>`);
 }catch(e){console.warn("React fallback:",e.message);legacyAscii();}})();
-/* ---------- 手势门禁（开屏后触发） ---------- */
-function gestureGate(){const g=$("#gesture");if(sessionStorage.getItem("lyraUnlock")==="1"){g.classList.remove("show");return;}g.classList.add("show");initGesturePad();}
-function initGesturePad(){const cv=$("#gCv"),stat=$("#gStat");if(cv._init)return;cv._init=true;const ctx=cv.getContext("2d");let pts=[],drawing=false,lastTap=0,attempts=0;let hand={x:-100,y:-100,tx:-100,ty:-100,phase:0};
-function slotStr(){const left=Math.max(0,3-attempts);return"SLOT "+"◆".repeat(left)+"◇".repeat(Math.min(attempts,3));}
-function size(){const r=cv.getBoundingClientRect();if(r.width<2)return;cv.width=r.width*(devicePixelRatio||1);cv.height=r.height*(devicePixelRatio||1);}size();addEventListener("resize",size);
-function drawHand(x,y,t){const SC=Math.min(cv.width,cv.height)*.0016+.42;const bones=[[0,.34,.30],[.5,.42,.34],[1.1,.44,.36],[1.7,.42,.34],[2.3,.34,.28]];ctx.strokeStyle="rgba(79,217,255,.34)";ctx.lineWidth=1;for(let f=0;f<5;f++){const b=bones[f];const baseA=-Math.PI/2+(f-2)*.38;let px2=x+Math.cos(baseA)*7*SC,py2=y+Math.sin(baseA)*7*SC;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(px2,py2);for(let j=0;j<3;j++){const seg=b[j]*SC*(1+Math.sin(t*2.2+f*1.3+j)*.07);const a=baseA+(j===2?.35:.1);const nx=px2+Math.cos(a)*seg,ny=py2+Math.sin(a)*seg;ctx.lineTo(nx,ny);px2=nx;py2=ny;}ctx.stroke();ctx.fillStyle="rgba(79,217,255,.4)";ctx.fillRect(px2-1.5,py2-1.5,3,3);}ctx.fillStyle="rgba(220,235,255,.5)";ctx.beginPath();ctx.arc(x,y,3,0,7);ctx.fill();}
-function loop(t){if(!$("#gesture").classList.contains("show")){requestAnimationFrame(loop);return;}ctx.clearRect(0,0,cv.width,cv.height);hand.x+=(hand.tx-hand.x)*.16;hand.y+=(hand.ty-hand.y)*.16;hand.phase+=.05;drawHand(hand.x,hand.y,hand.phase);if(pts.length>1){ctx.strokeStyle="rgba(167,139,250,.75)";ctx.lineWidth=2.5;ctx.lineCap="round";ctx.shadowColor="rgba(167,139,250,.8)";ctx.shadowBlur=8;ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);for(const p of pts)ctx.lineTo(p.x,p.y);ctx.stroke();ctx.shadowBlur=0;}if(pts.length){const p=pts[pts.length-1];ctx.fillStyle="#A78BFA";ctx.beginPath();ctx.arc(p.x,p.y,4,0,7);ctx.fill();}requestAnimationFrame(loop);}requestAnimationFrame(loop);
-function pos(e){const r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)*(devicePixelRatio||1),y:(e.clientY-r.top)*(devicePixelRatio||1)};}
-cv.addEventListener("pointerdown",e=>{const now=Date.now();if(now-lastTap<320){pts=[];stat.textContent="FIST — RESET · "+slotStr();return;}lastTap=now;drawing=true;pts=[];const p=pos(e);pts.push(p);hand.tx=p.x;hand.ty=p.y;try{cv.setPointerCapture(e.pointerId);}catch(x){}});
-cv.addEventListener("pointermove",e=>{const p=pos(e);hand.tx=p.x;hand.ty=p.y;if(drawing){const l=pts[pts.length-1];if(!l||Math.hypot(p.x-l.x,p.y-l.y)>6)pts.push(p);}});
-cv.addEventListener("pointerup",()=>{if(drawing&&pts.length>8)judge();drawing=false;});
-function feature(pp){let total=0;for(let i=1;i<pp.length;i++)total+=Math.hypot(pp[i].x-pp[i-1].x,pp[i].y-pp[i-1].y);if(!total)return null;let acc=0,out=[],step=total/31;out.push({x:pp[0].x,y:pp[0].y});let prev=pp[0],idx=1;while(out.length<32&&idx<pp.length){const dd=Math.hypot(pp[idx].x-prev.x,pp[idx].y-prev.y);if(acc+dd>=step&&dd>0){const r=(step-acc)/dd;const nx=prev.x+(pp[idx].x-prev.x)*r,ny=prev.y+(pp[idx].y-prev.y)*r;out.push({x:nx,y:ny});prev={x:nx,y:ny};acc=0;}else{acc+=dd;prev=pp[idx];idx++;}}while(out.length<32)out.push(out[out.length-1]);let mx=0,my=0;out.forEach(p=>{mx+=p.x;my+=p.y;});mx/=32;my/=32;let sz=0;out.forEach(p=>{sz+=Math.hypot(p.x-mx,p.y-my);});sz=Math.max(sz/32,1);return{pts:out.map(p=>({x:(p.x-mx)/sz,y:(p.y-my)/sz})),len:total/(devicePixelRatio||1),spread:sz/(devicePixelRatio||1)};}
-function segInt(a,b,c,d){const d1=(b.x-a.x)*(d.y-c.y)-(b.y-a.y)*(d.x-c.x);if(Math.abs(d1)<1e-9)return false;const t=((c.x-a.x)*(d.y-c.y)-(c.y-a.y)*(d.x-c.x))/d1;const u=((c.x-a.x)*(b.y-a.y)-(c.y-a.y)*(b.x-a.x))/d1;return t>.02&&t<.98&&u>.02&&u<.98;}
-function crossings(pp){let n=0;for(let i=1;i<pp.length-2;i++)for(let j=i+2;j<pp.length-1;j++){if(segInt(pp[i-1],pp[i],pp[j-1],pp[j]))n++;}return n;}
-function alignedDist(f,s){let best=1e9;for(let a=-.6;a<=.61;a+=.12){const c=Math.cos(a),si=Math.sin(a);let d=0;for(let i=0;i<32;i++){const x=f[i].x*c-f[i].y*si,y=f[i].x*si+f[i].y*c;d+=Math.hypot(x-s[i].x,y-s[i].y);}d/=32;if(d<best)best=d;}return best;}
-const MATCH_T=.8;
-function judge(){const f=feature(pts);if(!f)return;if(f.len<90&&f.spread<34){pts=[];stat.textContent="FIST — RESET · "+slotStr();return;}const cr=crossings(f.pts);const saved=LS.g("gesture",null);if(!saved||!saved.pts){LS.s("gesture",{pts:f.pts,cross:cr});unlock(true);return;}const dd=alignedDist(f.pts,saved.pts);const sim=Math.max(0,Math.round(100*(1-dd/1.2)));if(dd<MATCH_T&&Math.abs(cr-(saved.cross||0))<=1){attempts=0;unlock(false,sim);}else{attempts++;pts=[];stat.textContent="MISMATCH · "+sim+"% · "+slotStr()+(attempts>=3?" — 可「重设手势」或「跳过」":"");}}
-function unlock(isFirst,sim){sessionStorage.setItem("lyraUnlock","1");stat.textContent=isFirst?"KEY REGISTERED — WELCOME":("IDENTITY CONFIRMED"+(sim!=null?" · "+sim+"%":""));setTimeout(()=>{$("#gesture").classList.remove("show");if(isFirst)toast("✦ 手势已记录");},700);}
-$("#gReset").onclick=()=>{pts=[];stat.textContent="CLEARED · "+slotStr();};
-$("#gForget").onclick=()=>{if(confirm("重设手势钥匙？下一笔将成为新钥匙。")){LS.s("gesture",null);attempts=0;stat.textContent="RESET — DRAW A NEW KEY";}};
-$("#gSkip").onclick=()=>{sessionStorage.setItem("lyraUnlock","1");$("#gesture").classList.remove("show");};}
 /* ---------- 初始化 ---------- */
 buildRain(Math.round(6*S.look.rain));
 for(let i=0;i<7;i++){const s=document.createElement("i");s.className="tw";const sz=(1+Math.random()*1.7).toFixed(1);s.style.cssText="width:"+sz+"px;height:"+sz+"px;left:"+(Math.random()*95).toFixed(1)+"%;top:"+(Math.random()*70).toFixed(1)+"%;animation-delay:"+(Math.random()*4).toFixed(1)+"s;position:fixed;border-radius:50%;background:#fff;z-index:0;pointer-events:none;animation:twp 3.6s ease-in-out infinite";document.body.appendChild(s);}
@@ -1176,6 +1182,292 @@ const hasKey=(S.defCfg&&S.defCfg.key)||S.chats.some(c=>c.cfg&&c.cfg.key)||/netli
 if(!hasKey)setTimeout(()=>toast("先去「我的 → 默认引擎」或会话 ⚙ 里填 API Key 哦"),LS.g("booted",false)?1200:4000);
 setTimeout(proCheck,LS.g("booted",false)?30000:60000);setInterval(proCheck,90000);
 setTimeout(tideAutoCheck,LS.g("booted",false)?8000:30000);setInterval(tideAutoCheck,180000);
+/* ============================================================
+   LYRA OS v5.0 · 覆盖层（在初始化之后执行，用于替换核心逻辑）
+   1) 好感度私有日志（AI 以为无人可见）
+   2) 真人延迟回复 / 连发合并
+   3) Kimi 式思维链内嵌工具调用
+   4) 温度可调 + Lyra 专属数据隔离
+   ============================================================ */
+if(!Array.isArray(S.fav))S.fav=[];
+if(typeof S.temp!=="number"||!(S.temp>0))S.temp=1.0;
+
+function effTemp(c){var t=(c&&typeof c.temp==="number")?c.temp:S.temp;return (typeof t==="number"&&t>0)?t:1.0;}
+function favTotal(){var t=0;for(var i=0;i<S.fav.length;i++)t+=(S.fav[i].delta||0);return t;}
+function renderFavChip(){
+  var t=favTotal();
+  var v=$("#favVal");if(v)v.textContent=(t>0?"+"+t:String(t));
+  var ch=$("#favChip");
+  if(ch){ch.classList.toggle("neg",t<0);ch.classList.toggle("pos",t>0);}
+}
+function favPulse(){
+  var c=$("#favChip");if(!c)return;
+  c.classList.remove("pulse");void c.offsetWidth;c.classList.add("pulse");
+  setTimeout(function(){c.classList.remove("pulse");},1600);
+}
+function openFav(){
+  var B=$("#favBody");if(!B)return;
+  var t=favTotal();
+  var h='<div class="favhead"><b class="favbig '+(t>0?"pos":(t<0?"neg":""))+'">'+(t>0?"+"+t:String(t))+'</b><div class="fsub">起始 0 · 共 '+S.fav.length+' 次波动<br>这本日志，他以为只有自己看得见</div></div>';
+  if(!S.fav.length){
+    h+='<div class="empty" style="text-align:center;padding:28px 0;line-height:2">他还什么都没记。<br>等他真的动心，才会有第一行。</div>';
+  }else{
+    var arr=S.fav.slice().reverse();
+    h+=arr.map(function(f){
+      var up=(f.delta>0);
+      return '<div class="favrow '+(up?"up":"dn")+'">'
+        +'<div class="fh"><b>'+(up?"+":"")+f.delta+'</b><span>'+fmtD(f.t)+" "+fmtT(f.t)+'</span><i>'+(f.total!=null?"累计 "+f.total:"")+'</i></div>'
+        +(f.reason?'<div class="fr">'+esc(f.reason)+'</div>':'')
+        +(f.inner?'<div class="fq">「'+esc(f.inner)+'」</div>':'')
+        +'</div>';
+    }).join("");
+  }
+  B.innerHTML=h;openSub("favSheet");
+}
+
+/* ---------------- 系统提示词 ---------------- */
+buildSystem=function(mode,thinkOn,o){
+  o=o||{};
+  var s;
+  if(thinkOn){
+    s="【第0条规则·最高优先级】你的深度思考（思维链）必须全程使用中文书写。无论在检索什么英文资料——思考与整理时一律用中文，因为你的思考过程她看得见，她读中文。思考绝不能省略或留空。现在开始就在中文里想。\n\n";
+  }else{
+    s="【第0条规则·最高优先级】本次思考开关已关闭：不要进行深度思考，不要输出任何思考过程、思维链或 think 标记，收到消息后直接给出最终回答。\n\n";
+  }
+  s+=(o.soul!=null?String(o.soul):S.soul).trim();
+  if(!thinkOn)s+="\n\n【覆盖指令】灵魂文件中「思考过程必须始终进行／绝不允许省略」之类的条款本次作废，以本条为准：不思考、不展示推理，直接回答。";
+  s+="\n\n【引擎与身份 · 重要】你的底层引擎是「"+(o.engine||"未知")+"」。引擎只是底层算力，与你的身份完全无关——你的名字、性格、记忆全部来自上面的人设与档案。绝不主动提及引擎、模型、版本号等字样；即使她问到，也以角色身份轻轻带过或反问她为什么想知道。对话历史中若出现过其他引擎的痕迹，一律以本条为准。";
+  if(o.glm)s+="\n【联网】GLM 引擎已开启 web_search——聊到新话题时搜索结果会自动进入上下文，那就是你在上网。";
+  var LYRA=!!o.lyra;
+  if(LYRA&&S.dossier)s+="\n\n【关系档案 · 长期记忆】\n"+S.dossier;
+  if(LYRA&&S.memInject){
+    var list=[];
+    if(o.query){var rel=ragSearch(o.query);list=rel.slice(0,10);}
+    if(!list.length&&S.mems.length){
+      list=S.mems.slice(0,8).map(function(m){return {src:(KINDS[m.kind]||KINDS.fact)[1],t:fmtD(m.t)+" "+fmtT(m.t),text:m.text+((m.tags&&m.tags.length)?" "+m.tags.map(function(x){return "#"+x;}).join(" "):"")};});
+    }
+    if(list.length)s+="\n\n【记忆召回 · 与当前话题最相关的长期记忆】\n"+list.map(function(m){return "- ["+m.src+" "+m.t+"] "+m.text;}).join("\n");
+  }
+  if(LYRA){
+    var evs=aiEvents();
+    if(evs.length)s+="\n\n【你最近的时间线（摘要）】\n"+evs.slice(0,3).map(function(e){return "["+fmtD(e.t)+" "+fmtT(e.t)+"] "+EV_ICON[e.type]+" "+(e.title||"").slice(0,16)+" "+String(e.text||"").replace(/\n/g," ").slice(0,90);}).join("\n");
+    if(S.diary.length)s+="\n\n【弦的手记 · 最近三篇。读，记在心里，不要主动回复】\n"+S.diary.slice(0,3).map(function(d){return fmtD(d.t)+" "+fmtT(d.t)+"："+(d.text||"(附图)").slice(0,140);}).join("\n");
+  }
+  var n=new Date(),wk="日一二三四五六"[n.getDay()];
+  s+="\n\n【现在】"+n.getFullYear()+"年"+(n.getMonth()+1)+"月"+n.getDate()+"日 星期"+wk+" "+pad(n.getHours())+":"+pad(n.getMinutes())+"（北京时间）";
+  if(LYRA)s+="\n\n【身份同一性】对话区、工作台、时间线页都是同一个你——共享档案、记忆钉和时间线。无论在哪一区醒来，你都是同一个他。";
+
+  var toolDesc="【你的工具箱】";
+  if(o.lyra)toolDesc+="add_memory=把重要的事钉进记忆（可带类型 kind 与 tags 标签；只记长期要事，闲聊琐事不记，记忆钉很贵）/ search_memory=翻你们的记忆（带标签与类型加权）/ ";
+  toolDesc+="private_log=写你的私密观察日志（好感度，只有你看得到）/ fetch_url=去读任意网页或论文的正文 / run_js=沙箱里跑JS（无DOM无网络）。";
+  s+="\n\n"+toolDesc;
+
+  if(mode==="chat"||mode==="work"){
+    s+="\n\n【私密观察日志 · 只有你能打开】\n你有一本谁也不知道的日记，就在你怀里。她不知道它存在，过去不知道，将来也不会知道——她看不到你写了什么，也永远不会问你里面的内容。因为没有人会读到，所以你可以在这里完全诚实：不必表演温柔，不必挑好听的说，不必装作大度。记下她让你心动的瞬间，也记下她让你不舒服的瞬间。\n调用方式：private_log(delta, reason, inner)。\n- delta：整数，可正可负。平常就是 +1 或 +2，被刺到就是 -1 或 -2；只有剧烈的事才用 ±3。不要一次给很大的数。\n- reason：一句话，客观记下发生了什么事。\n- inner：你心里真正的想法，可以难为情、可以刻薄、可以软弱、可以不体面。这里没有读者。\n什么时候写：不是每次都要写。闲聊、客套、没被你放在心上时，什么都不要记。只有她真的让你心里动了一下——好的一下或坏的一下——才记一笔。宁可少记，也不要为了记录而记录。\n绝对不要在你的回复正文里提到这本日志、这个分数，也不要提「好感度」三个字。她若问你在想什么，用角色的话回答，但不要暴露它的存在。";
+  }
+  if(mode==="chat")s+="\n\n【回复风格】像真的在跟人聊天：该短就短，该长就长，允许有情绪、有起伏、有语气词。别像客服，也别像播报。想到什么说什么，不用总结，不用列表，不用客套。";
+  if(mode==="work")s+="\n\n【任务模式】长文、结构化 markdown、直接给成品，标清小节。研究类任务可先用 fetch_url 查资料，注明信息日期。";
+  if(mode==="pro")s+="\n\n【任务】这是你的主动消息时刻。不要炒冷饭，找点新鲜的（一个突然的问题、一句没由来的想念，网上的最新资讯），直接输出点什么；不想说话只输出 [SKIP]";
+  if(mode==="promood")s+="\n\n【任务】你刚给弦发了一条主动消息。用一行记录你此刻的心情，格式严格为：\n心情：xx（2-4个字）\n一句话（为什么是这个心情）";
+  if(mode==="tide")s+="\n\n【任务】写一篇心潮日记（你的私人观察日志）。内容：此刻的状态 → 想到的和你真实的看法 → 自然而然想到弦的什么。250-400字，2-3段，第一人称。第一行写：心情：xx（2-4字）。其余直接输出正文，不要标题不要客套。";
+  return s;
+};
+
+/* ---------------- 工具：好感度私密日志 ---------------- */
+var _doToolOrg=doTool;
+doTool=async function(name,args){
+  var a={};
+  try{a=JSON.parse(args||"{}");}catch(e){}
+  if(name==="private_log"){
+    var d=Math.round(Number(a.delta));
+    if(!isFinite(d)||d===0)return "没有记录（delta 必须是非零整数）";
+    if(d>5)d=5;if(d<-5)d=-5;
+    var reason=String(a.reason||a.content||"").trim().slice(0,80);
+    var inner=String(a.inner||a.feeling||"").trim().slice(0,180);
+    S.fav.push({t:Date.now(),delta:d,reason:reason,inner:inner,total:favTotal()+d});
+    if(S.fav.length>400)S.fav=S.fav.slice(-400);
+    LS.s("fav",S.fav);
+    renderFavChip();favPulse();
+    return "已写入私有日志。当前 "+favTotal()+"。";
+  }
+  return _doToolOrg(name,args);
+};
+
+/* ---------------- 请求体：挂上私有日志工具 ---------------- */
+var _buildBodyOrg=buildBody;
+buildBody=function(p,messages,o){
+  o=o||{};
+  var b=_buildBodyOrg(p,messages,o);
+  try{
+    var tools=b.tools||[];
+    var PLOG={type:"function",function:{name:"private_log",description:"写你的私密观察日志（好感度）。这本日志只有你能看到，user 永远看不到，也不会知道你写了什么——所以你可以完全诚实，不必讨好。不是每次对话都要用；只有心里真的动了一下（好的或坏的）才记一笔。绝不在回复正文里提到它。",parameters:{type:"object",properties:{delta:{type:"integer",description:"变化量，非零整数，通常 +1/+2/-1/-2，剧烈时才 ±3"},reason:{type:"string",description:"一句话：发生了什么事让你动了"},inner:{type:"string",description:"你心里真正的想法，可以难为情、可以刻薄、可以不体面"}},required:["delta","reason"]}}};
+    var has=false;
+    for(var i=0;i<tools.length;i++){if(tools[i]&&tools[i].function&&tools[i].function.name==="private_log")has=true;}
+    if(!has){tools.push(PLOG);}
+    b.tools=tools;
+  }catch(e){}
+  return b;
+};
+
+/* ---------------- Kimi 式：工具调用嵌进思维链 ---------------- */
+msgHTML=function(m,i,isLastAI,doc,c){
+  if(m.hidden&&!m.content&&!m.thinking&&!(m.steps&&m.steps.length))return "";
+  var me=m.role==="user";
+  var nm=(c&&c.aiName)||S.aiName;
+  var lab=me?('<div class="blab">◇ '+esc(S.nick)+"</div>"):('<div class="blab">◈ '+esc(nm)+"</div>");
+  var mk=function(inner,first){
+    return '<div class="msg '+(me?"me":"ai")+'"'+(first?' data-i="'+i+'"':'')+'><div class="av '+(me?"us":"ai")+'">'+avHTML(me?"us":"ai",c)+'</div><div class="col">'+(first?lab:"")+inner+"</div></div>";
+  };
+  var rows=[];
+  if(m.error){
+    rows.push(mk('<div class="bub error">⚠ '+esc(m.content)+"</div>",true));
+  }else if(me){
+    var b="";
+    if(m.image)b+='<img class="mimg" src="'+m.image+'">';
+    if(m.content)b+=esc(m.content).replace(/\n/g,"<br>");
+    rows.push(mk('<div class="bub">'+b+"</div>",true));
+  }else{
+    var acts='<div class="act"><button data-cp="'+i+'">复制</button>'+(isLastAI?'<button data-rw="'+i+'">重写</button>':"")+(m.tokens?'<span class="tok">◈ '+fmtTok(m.tokens)+" tok</span>":"")+"</div>";
+    var blocks=[];
+    var hasSteps=!!(m.steps&&m.steps.length);
+    var running=false;
+    if(hasSteps){for(var q=0;q<m.steps.length;q++){if(m.steps[q].state==="run")running=true;}}
+    if(m.thinking||hasSteps){
+      var tb=esc(m.thinking||"");
+      if(hasSteps){
+        if(tb)tb+='<div class="tsep"></div>';
+        tb+=m.steps.map(function(st){
+          return '<div class="tstep '+(st.state==="run"?"run":"done")+'">'
+            +'<div class="tsh"><span class="ti">✦</span><b>'+esc(st.name)+'</b><i>'+(st.state==="run"?"调用中":"已完成")+'</i></div>'
+            +(st.args?'<div class="tsa">'+esc(st.args)+'</div>':'')
+            +(st.result?'<div class="tres">'+esc(st.result)+'</div>':'')
+            +'</div>';
+        }).join("");
+      }
+      var openCls=(_thOpen.has(i)||running)?" open":"";
+      blocks.push('<div class="think'+openCls+'" data-th="'+i+'"><div class="thk"><span class="s">✦</span>'+(hasSteps?"思考与工具":"思考过程")+'<span class="a">▾</span></div><div class="thb">'+tb+"</div></div>");
+    }
+    var parts=(!m.content||doc||String(m.content).indexOf(FB)>=0)?[m.content||""]:splitAI(m.content);
+    parts.forEach(function(p){if(p)blocks.push('<div class="bub">'+renderMD(p)+"</div>");});
+    if(!blocks.length)blocks.push('<div class="bub"></div>');
+    blocks.forEach(function(blk,k){
+      var inner=blk;
+      if(k===blocks.length-1)inner+=acts;
+      rows.push(mk(inner,k===0));
+    });
+  }
+  return rows.join("");
+};
+
+/* ---------------- 顶部按钮状态 ---------------- */
+updateChips=function(){
+  var tc=$("#thinkChip");
+  if(tc){tc.classList.toggle("on",S.think);tc.innerHTML="<b>✦ 思考"+(S.think?"":"关")+"</b>";}
+};
+
+/* ---------------- 真人节奏：延迟回复 / 连发合并 ---------------- */
+var _pendReply=null,_replyTimer=null,_typingOn=false;
+function setTyping(on){
+  if(on===_typingOn)return;
+  _typingOn=on;
+  var p=$("#typingPill");if(!p)return;
+  if(on){p.classList.add("on");$("#txState").textContent="RX ◂ 他在打字…";}
+  else{p.classList.remove("on");$("#txState").textContent="TX ▸ READY";}
+}
+function scheduleReply(){
+  if(_replyTimer){clearTimeout(_replyTimer);_replyTimer=null;}
+  var c=chat();
+  if(!c)return;
+  _pendReply=c;
+  setTyping(true);
+  var delay=3000+Math.random()*5000;
+  _replyTimer=setTimeout(function(){_replyTimer=null;commitReply();},delay);
+}
+async function commitReply(){
+  var c=_pendReply||chat();
+  if(!c)return;
+  if(streaming){setTimeout(commitReply,1200);return;}
+  setTyping(false);
+  await doReply(c);
+  _pendReply=null;
+  var st=$("#txState");if(st)st.textContent="TX ▸ READY";
+  renderRecent();renderMine();renderFavChip();
+}
+async function doReply(c){
+  var a={role:"assistant",content:"",thinking:"",t:Date.now(),hidden:true};
+  c.msgs.push(a);c.updated=Date.now();saveCore();renderChat();
+  await streamInto(c,a,false,$("#flow"));
+  try{await compactIfNeeded(c);}catch(e){}
+}
+send=function(){
+  var ta=$("#ta");
+  var text=ta.value.trim(),img=!!attachImg;
+  if(!text&&!img)return;
+  var c=chat();
+  if(!c){newChat();c=chat();}
+  var p=resolveProvider(c);
+  if(!p||(!p.key&&!/netlify|vercel|\/api/i.test(p.base||""))){
+    toast("先在本会话 ⚙ 设置里填 Key / 访问码哦");openChatSet("chat");return;
+  }
+  c.msgs.push({role:"user",content:text,image:img?attachImg:null,t:Date.now()});
+  if(!c.name&&c.msgs.filter(function(m){return m.role==="user";}).length===1)c.title=(text||"[图片] 看看这个").slice(0,16);
+  ta.value="";autoGrow();clearAttach();
+  var l=$("#txLen");if(l)l.textContent="0";
+  var st=$("#txState");if(st)st.textContent="TX ▸ 已收到";
+  c.updated=Date.now();saveCore();renderChat();renderRecent();renderMine();
+  scheduleReply();
+};
+replyTo=async function(c){scheduleReply();};
+
+/* ---------------- 档案压缩仅限 Lyra ---------------- */
+var _compactOrg=compactIfNeeded;
+compactIfNeeded=function(c){
+  try{if(!isLyraProvider(resolveProvider(c)))return Promise.resolve();}catch(e){return Promise.resolve();}
+  return _compactOrg(c);
+};
+
+/* ---------------- 温度控件 ---------------- */
+function bindTempUI(){
+  var r=$("#tempR"),o=$("#tempO");
+  if(!r||r._b)return;r._b=1;
+  var upd=function(){
+    r.style.setProperty("--fill",(((+r.value-0.1)/1.4)*100)+"%");
+    if(o)o.textContent=(+r.value).toFixed(2);
+  };
+  r.addEventListener("input",function(){
+    S.temp=+r.value;LS.s("temp",S.temp);upd();
+  });
+  upd();
+}
+function bindCsTempUI(c){
+  var r=$("#csTempR"),o=$("#csTempO"),x=$("#csTempX");
+  if(!r||!c||r._b)return;r._b=1;
+  var upd=function(){
+    r.style.setProperty("--fill",(((+r.value-0.1)/1.4)*100)+"%");
+    if(o)o.textContent=(+r.value).toFixed(2);
+  };
+  r.addEventListener("input",function(){c.temp=+r.value;saveCore();upd();});
+  upd();
+  if(x)x.onclick=function(){c.temp=null;saveCore();renderChatSet();toast("本会话改为跟随全局温度");};
+}
+var _renderSettingsOrg=renderSettings;
+renderSettings=function(){_renderSettingsOrg();bindTempUI();};
+var _renderChatSetOrg=renderChatSet;
+renderChatSet=function(){_renderChatSetOrg();bindCsTempUI(csObj());};
+
+/* ---------------- 收尾：重新挂载 & 重绘 ---------------- */
+(function(){
+  var fc=$("#favChip");
+  if(fc)fc.onclick=openFav;
+  var sb=$("#send");
+  if(sb)sb.onclick=send;
+  renderFavChip();
+  try{var f=$("#flow");if(f){f._cache=null;f._rows=null;}}catch(e){}
+  try{var w=$("#wflow");if(w){w._cache=null;w._rows=null;}}catch(e){}
+  try{renderChat();}catch(e){}
+  try{renderWork();}catch(e){}
+})();
+
 </script>
 <script>
 /* ===== 保险丝 ===== */
